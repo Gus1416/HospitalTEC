@@ -41,7 +41,5 @@ public class Usuario {
    */
   public void setPassword(String pPassword) {
     this.password = pPassword;
-  }
-  
-  
+  } 
 }
