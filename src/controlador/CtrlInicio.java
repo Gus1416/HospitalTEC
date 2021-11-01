@@ -1,10 +1,12 @@
 package controlador;
 
+import controlador.controladores_registros.CtrlRegistroDoctor;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import vista.Inicio;
+import vista.registros.RegistroDoctor;
 
 /**
  *
@@ -40,6 +42,12 @@ public class CtrlInicio implements ActionListener {
         int opcion2 = JOptionPane.showOptionDialog(null, "Indique el tipo de funcionario", 
                 "Registro de funcionario", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, 
                 null, botonesFuncionario, botonesFuncionario[0]);
+        if (opcion2 == 0){
+          RegistroDoctor registroDoctor = new RegistroDoctor();
+          CtrlRegistroDoctor ctrlRegistroDoctor = new CtrlRegistroDoctor(registroDoctor);
+          ctrlRegistroDoctor.iniciar();
+          registroDoctor.setVisible(true);
+        }
       }
     }
   }
