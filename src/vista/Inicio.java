@@ -44,6 +44,11 @@ public class Inicio extends javax.swing.JFrame {
 
     btnRegistrarse.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
     btnRegistrarse.setText("Registrarse");
+    btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRegistrarseActionPerformed(evt);
+      }
+    });
     jPanel1.add(btnRegistrarse);
 
     btnIniciarSesion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -54,7 +59,7 @@ public class Inicio extends javax.swing.JFrame {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,6 +71,10 @@ public class Inicio extends javax.swing.JFrame {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
+
+  private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnRegistrarseActionPerformed
 
   /**
    * @param args the command line arguments

@@ -3,6 +3,7 @@ package controlador;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import vista.Inicio;
 
 /**
@@ -28,7 +29,19 @@ public class CtrlInicio implements ActionListener {
   
   @Override
   public void actionPerformed(ActionEvent e) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    if (e.getSource() == this.inicio.btnRegistrarse){
+      String[] botonesUsuario = {"Paciente", "Funcionario"};
+      int opcion = JOptionPane.showOptionDialog(null, "Indique el tipo de usuario", 
+              "Registro de usuarios", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, 
+              null, botonesUsuario, botonesUsuario[0]);
+      
+      if (opcion == 1){
+        String[] botonesFuncionario = {"Doctor", "Enfermero", "Secretario"};
+        int opcion2 = JOptionPane.showOptionDialog(null, "Indique el tipo de funcionario", 
+                "Registro de funcionario", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, 
+                null, botonesFuncionario, botonesFuncionario[0]);
+      }
+    }
   }
-  
+ 
 }
