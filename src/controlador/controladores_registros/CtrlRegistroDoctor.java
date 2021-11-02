@@ -23,6 +23,8 @@ public class CtrlRegistroDoctor implements ActionListener {
     this.registroDoctor = pRegistroDoctor;
     this.areaCrud = new AreaCRUD();
     this.centroCrud = new CentroAtencionCRUD();
+    this.registroDoctor.btnAgregarEspecialidad.addActionListener(this);
+    this.registroDoctor.btnRegistrarDoctor.addActionListener(this);
   }
   
   public void iniciar(){
@@ -48,7 +50,9 @@ public class CtrlRegistroDoctor implements ActionListener {
   }
 
   @Override
-  public void actionPerformed(ActionEvent e) {throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == this.registroDoctor.btnAgregarEspecialidad){
+      
+    }
   }
 }
