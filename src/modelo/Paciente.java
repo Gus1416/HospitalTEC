@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -11,7 +6,7 @@ import java.time.LocalDate;
  *
  * @author Maria Laura
  */
-public class Paciente {
+public class Paciente extends Usuario {
     
     private String id;
     private String nombre;
@@ -21,14 +16,16 @@ public class Paciente {
     private String lugarResidencia;
     private String telefono;
 
-    public Paciente(String id, String nombre, LocalDate fechaNacimiento, String tipoSangre, String nacionalidad, String lugarResidencia, String telefono) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.tipoSangre = tipoSangre;
-        this.nacionalidad = nacionalidad;
-        this.lugarResidencia = lugarResidencia;
-        this.telefono = telefono;
+    public Paciente(String pCedula, String pPassword,String id, String nombre, LocalDate fechaNacimiento, String tipoSangre, 
+            String nacionalidad, String lugarResidencia, String telefono) {
+      super(pCedula, pPassword);
+      this.id = id;
+      this.nombre = nombre;
+      this.fechaNacimiento = fechaNacimiento;
+      this.tipoSangre = tipoSangre;
+      this.nacionalidad = nacionalidad;
+      this.lugarResidencia = lugarResidencia;
+      this.telefono = telefono;
     }
 
     public String getId() {

@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 
 
-public class Citas extends Funcionario {
+public class Citas {
     private int iDCita;
     private String especialidad;
     private LocalDate fechaCita;
@@ -21,7 +21,7 @@ public class Citas extends Funcionario {
     private EstadoCita Estado;
 
     public Citas(int iDCita, String especialidad, LocalDate fechaCita, String observacionAdicional, String iD, String Nombre, LocalDate FechaIngreso, String Area) {
-        super(iD, Nombre, FechaIngreso, Area);
+
         this.iDCita = iDCita;
         this.especialidad = especialidad;
         this.fechaCita = fechaCita;

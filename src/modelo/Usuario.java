@@ -1,48 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 /**
  *
- * @author sebcor
+ * @author Gustavo
  */
-
-
 public class Usuario {
-    private String correoElectronico;
-    private String contraseña;
+  private String cedula;
+  private String password;
+  
+  public Usuario(){}
+  
+  public Usuario (String pCedula, String pPassword){
+    this.cedula = pCedula;
+    this.password = pPassword;
+  }
 
-    /**
-     * @return the correoElectronico
-     */
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
+  /**
+   * @return the cedula
+   */
+  public String getCedula() {
+    return cedula;
+  }
 
-    /**
-     * @param correoElectronico the correoElectronico to set
-     */
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
+  /**
+   * @param pCedula the cedula to set
+   */
+  public void setCedula(String pCedula) {
+    this.cedula = pCedula;
+  }
 
-    /**
-     * @return the contraseña
-     */
-    public String getContraseña() {
-        return contraseña;
-    }
+  /**
+   * @return the password
+   */
+  public String getPassword() {
+    return password;
+  }
 
-    /**
-     * @param contraseña the contraseña to set
-     */
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-    
-    
-    
+  /**
+   * @param pPassword the password to set
+   */
+  public void setPassword(String pPassword) {
+    this.password = pPassword;
+  } 
 }

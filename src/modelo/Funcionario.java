@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -11,80 +6,92 @@ import java.time.LocalDate;
  *
  * @author sebcor
  */
-public class Funcionario {
-    
-    private String iD;
-    private String Nombre;
-    private LocalDate FechaIngreso;
-    private String Area;
-  //  private CentroAtencion Centro;
+public class Funcionario extends Usuario {
 
-    public Funcionario(String iD, String Nombre, LocalDate FechaIngreso, String Area) {
-        this.iD = iD;
-        this.Nombre = Nombre;
-        this.FechaIngreso = FechaIngreso;
-        this.Area = Area;
-    }
+  private String nombre;
+  private String tipoFuncionario;
+  private LocalDate fechaIngreso;
+  private Area area;
+  private CentroAtencion centro;
+  
+  public Funcionario(){}
 
-    /**
-     * @return the iD
-     */
-    public String getiD() {
-        return iD;
-    }
+  public Funcionario(String pCedula, String pPassword, String pNombre, String pTipoFuncionario, 
+          LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro) {
+    super(pCedula, pPassword);
+    this.nombre = pNombre;
+    this.fechaIngreso = pFechaIngreso;
+    this.area = pArea;
+    this.centro = pCentro;
+  }
 
-    /**
-     * @param iD the iD to set
-     */
-    public void setiD(String iD) {
-        this.iD = iD;
-    }
+  /**
+   * @return the nombre
+   */
+  public String getNombre() {
+    return nombre;
+  }
 
-    /**
-     * @return the Nombre
-     */
-    public String getNombre() {
-        return Nombre;
-    }
+  /**
+   * @param Nombre the nombre to set
+   */
+  public void setNombre(String Nombre) {
+    this.nombre = Nombre;
+  }
 
-    /**
-     * @param Nombre the Nombre to set
-     */
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
+  /**
+   * @return the fechaIngreso
+   */
+  public LocalDate getFechaIngreso() {
+    return fechaIngreso;
+  }
 
-    /**
-     * @return the FechaIngreso
-     */
-    public LocalDate getFechaIngreso() {
-        return FechaIngreso;
-    }
+  /**
+   * @param FechaIngreso the fechaIngreso to set
+   */
+  public void setFechaIngreso(LocalDate FechaIngreso) {
+    this.fechaIngreso = FechaIngreso;
+  }
 
-    /**
-     * @param FechaIngreso the FechaIngreso to set
-     */
-    public void setFechaIngreso(LocalDate FechaIngreso) {
-        this.FechaIngreso = FechaIngreso;
-    }
+  /**
+   * @return the area
+   */
+  public Area getArea() {
+    return area;
+  }
 
-    /**
-     * @return the Area
-     */
-    public String getArea() {
-        return Area;
-    }
+  /**
+   * @param area the area to set
+   */
+  public void setArea(Area area) {
+    this.area = area;
+  }
 
-    /**
-     * @param Area the Area to set
-     */
-    public void setArea(String Area) {
-        this.Area = Area;
-    }
-    
-    
-    
-    
-    
-    
+  /**
+   * @return the centro
+   */
+  public CentroAtencion getCentro() {
+    return centro;
+  }
+
+  /**
+   * @param centro the centro to set
+   */
+  public void setCentro(CentroAtencion centro) {
+    this.centro = centro;
+  }
+
+  /**
+   * @return the tipoFuncionario
+   */
+  public String getTipoFuncionario() {
+    return tipoFuncionario;
+  }
+
+  /**
+   * @param tipoFuncionario the tipoFuncionario to set
+   */
+  public void setTipoFuncionario(String tipoFuncionario) {
+    this.tipoFuncionario = tipoFuncionario;
+  }
 }
