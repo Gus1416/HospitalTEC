@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -12,35 +7,33 @@ import java.time.LocalDate;
  * @author Maria Laura
  */
 public class Enfermero extends Funcionario {
-    private boolean personalCargo;
-    private boolean experienciaCapacitaciones;
+  private boolean personalCargo;
+  private boolean experienciaCapacitaciones;
 
-    public Enfermero(boolean personalCargo, boolean experienciaCapacitaciones, String iD, String Nombre, LocalDate FechaIngreso, String Area) {
-        super(iD, Nombre, FechaIngreso, Area);
-        this.personalCargo = personalCargo;
-        this.experienciaCapacitaciones = experienciaCapacitaciones;
-    }
+  public Enfermero(){}
+  
+  public Enfermero(String pCedula, String pPassword, String pNombre, String pTipoFuncionario, 
+          LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro, boolean pPersonasACargo, 
+          boolean pExpCapacitaciones) {
+    super (pCedula, pPassword, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
+    this.personalCargo = pPersonasACargo;
+    this.experienciaCapacitaciones = pExpCapacitaciones;
+  }
 
-    public boolean isPersonalCargo() {
-        return personalCargo;
-    }
+  public boolean isPersonalCargo() {
+    return personalCargo;
+  }
 
-    public void setPersonalCargo(boolean personalCargo) {
-        this.personalCargo = personalCargo;
-    }
+  public void setPersonalCargo(boolean personalCargo) {
+    this.personalCargo = personalCargo;
+  }
 
-    public boolean isExperienciaCapacitaciones() {
-        return experienciaCapacitaciones;
-    }
+  public boolean isExperienciaCapacitaciones() {
+    return experienciaCapacitaciones;
+  }
 
-    public void setExperienciaCapacitaciones(boolean experienciaCapacitaciones) {
-        this.experienciaCapacitaciones = experienciaCapacitaciones;
-    }
-
-    
-
-    
-
-    }
-    
+  public void setExperienciaCapacitaciones(boolean experienciaCapacitaciones) {
+    this.experienciaCapacitaciones = experienciaCapacitaciones;
+  }
+}
 

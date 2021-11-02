@@ -47,8 +47,8 @@ public class RegistroDoctor extends javax.swing.JFrame {
     jTextField3 = new javax.swing.JTextField();
     jLabel6 = new javax.swing.JLabel();
     jLabel7 = new javax.swing.JLabel();
-    jComboBox1 = new javax.swing.JComboBox<>();
-    jComboBox2 = new javax.swing.JComboBox<>();
+    cbAreas = new javax.swing.JComboBox<>();
+    cbCentroAtencion = new javax.swing.JComboBox<>();
     jPanel3 = new javax.swing.JPanel();
     jScrollPane1 = new javax.swing.JScrollPane();
     jList1 = new javax.swing.JList<>();
@@ -110,13 +110,13 @@ public class RegistroDoctor extends javax.swing.JFrame {
     jLabel7.setForeground(new java.awt.Color(255, 255, 255));
     jLabel7.setText("Centro de Atención:");
 
-    jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
-    jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+    cbAreas.setBackground(new java.awt.Color(102, 102, 102));
+    cbAreas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    cbAreas.setForeground(new java.awt.Color(255, 255, 255));
 
-    jComboBox2.setBackground(new java.awt.Color(102, 102, 102));
-    jComboBox2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
+    cbCentroAtencion.setBackground(new java.awt.Color(102, 102, 102));
+    cbCentroAtencion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    cbCentroAtencion.setForeground(new java.awt.Color(255, 255, 255));
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -133,8 +133,8 @@ public class RegistroDoctor extends javax.swing.JFrame {
           .addComponent(jLabel6)
           .addComponent(jLabel7))
         .addGap(0, 162, Short.MAX_VALUE))
-      .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(cbAreas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(cbCentroAtencion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,11 +153,11 @@ public class RegistroDoctor extends javax.swing.JFrame {
         .addGap(18, 18, 18)
         .addComponent(jLabel6)
         .addGap(5, 5, 5)
-        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(cbAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(jLabel7)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(cbCentroAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(0, 0, Short.MAX_VALUE))
     );
 
@@ -310,10 +310,10 @@ public class RegistroDoctor extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  public javax.swing.JComboBox<String> cbAreas;
+  public javax.swing.JComboBox<String> cbCentroAtencion;
   private javax.swing.JButton jButton1;
   private javax.swing.JButton jButton2;
-  private javax.swing.JComboBox<String> jComboBox1;
-  private javax.swing.JComboBox<String> jComboBox2;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;

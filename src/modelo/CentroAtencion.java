@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 /**
@@ -10,59 +5,60 @@ package modelo;
  * @author Maria Laura
  */
 public class CentroAtencion {
-    private int id;
-    private String nombre;
-    private String lugar;
-    private int capacidadPacientes;
-    private String tipo;
+  private int id;
+  private String nombre;
+  private String lugar;
+  private int capacidadPacientes;
+  private String tipo;
 
-    public CentroAtencion(int id, String nombre, String lugar, int capacidadPacientes, String tipo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.lugar = lugar;
-        this.capacidadPacientes = capacidadPacientes;
-        this.tipo = tipo;
-    }
+  public CentroAtencion(int pId, String pNombre, String pLugar, int pCapacidadPacientes, String pTipo) {
+    this.id = pId;
+    this.nombre = pNombre;
+    this.lugar = pLugar;
+    this.capacidadPacientes = pCapacidadPacientes;
+    this.tipo = pTipo;
+  }
 
-    public int getId() {
-        return id;
-    }
+  CentroAtencion() {
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getNombre() {
-        return nombre;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+  public String getNombre() {
+    return nombre;
+  }
 
-    public String getLugar() {
-        return lugar;
-    }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
+  public String getLugar() {
+    return lugar;
+  }
 
-    public int getCapacidadPacientes() {
-        return capacidadPacientes;
-    }
+  public void setLugar(String lugar) {
+    this.lugar = lugar;
+  }
 
-    public void setCapacidadPacientes(int capacidadPacientes) {
-        this.capacidadPacientes = capacidadPacientes;
-    }
+  public int getCapacidadPacientes() {
+    return capacidadPacientes;
+  }
 
-    public String getTipo() {
-        return tipo;
-    }
+  public void setCapacidadPacientes(int capacidadPacientes) {
+    this.capacidadPacientes = capacidadPacientes;
+  }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
- 
+  public String getTipo() {
+    return tipo;
+  }
 
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
 }

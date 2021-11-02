@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -11,23 +6,50 @@ import java.time.LocalDate;
  *
  * @author sebcor
  */
-public class Doctor extends Funcionario{
-    
-    
-    private int idMedico;
-    private ArrayList especialidad;
+public class Doctor extends Funcionario {
 
-    public Doctor(int idMedico, ArrayList especialidad, String iD, String Nombre, LocalDate FechaIngreso, String Area) {
-        super(iD, Nombre, FechaIngreso, Area);
-        this.idMedico = idMedico;
-        this.especialidad = especialidad;
-    }
-    
+  private int codigoMedico;
+  private ArrayList especialidades;
+
+  public Doctor(String pCedula, String pPassword, String pNombre, String pTipoFuncionario, 
+          LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro, int pCodigoMedico, 
+          ArrayList<String> pEspecialidades ) {
+    super (pCedula, pPassword, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
+    this.codigoMedico = pCodigoMedico;
+    this.especialidades = pEspecialidades;
+  }
+
+  
+  
 //    1. Cancelar cita de paciente
 //    2. Asignar cita de paciente
 //    3. Atender cita (Registrar diagnósticos y tratamientos).
 
-    
-    
-    
+  /**
+   * @return the codigoMedico
+   */
+  public int getCodigoMedico() {
+    return codigoMedico;
+  }
+
+  /**
+   * @param codigoMedico the codigoMedico to set
+   */
+  public void setCodigoMedico(int codigoMedico) {
+    this.codigoMedico = codigoMedico;
+  }
+
+  /**
+   * @return the especialidades
+   */
+  public ArrayList getEspecialidades() {
+    return especialidades;
+  }
+
+  /**
+   * @param especialidades the especialidades to set
+   */
+  public void setEspecialidades(ArrayList especialidades) {
+    this.especialidades = especialidades;
+  }
 }

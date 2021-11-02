@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -13,9 +8,10 @@ import java.time.LocalDate;
  */
 public class Secretario extends Funcionario {
 
-    public Secretario(String iD, String Nombre, LocalDate FechaIngreso, String Area) {
-        super(iD, Nombre, FechaIngreso, Area);
-    }
-    
-    
+  public Secretario(){}
+  
+  public Secretario(String pCedula, String pPassword, String pNombre, String pTipoFuncionario,
+          LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro) {
+    super(pCedula, pPassword, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
+  }
 }
