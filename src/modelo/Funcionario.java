@@ -20,6 +20,7 @@ public class Funcionario extends Usuario {
           LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro) {
     super(pCedula, pPassword);
     this.nombre = pNombre;
+    this.tipoFuncionario = pTipoFuncionario;
     this.fechaIngreso = pFechaIngreso;
     this.area = pArea;
     this.centro = pCentro;

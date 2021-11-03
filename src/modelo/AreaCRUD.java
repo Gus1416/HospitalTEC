@@ -43,4 +43,28 @@ public class AreaCRUD extends Conexion{
       }
     }
   }
+  
+  public Area buscarArea(String pNombreArea){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Area area = new Area();
+    
+    String sql = "SELECT * FROM area WHERE nombre = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pNombreArea);
+      rs = ps.executeQuery();
+      
+      while(rs.next()){
+        area.setNombreArea(rs.getString("nombre"));
+      }
+      return area;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    }
+  }
 }

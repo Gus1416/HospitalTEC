@@ -19,6 +19,8 @@ public class DoctorCRUD extends Conexion{
     
     String sql = "CALL registrar_doctor(?,?,?,?,?,?,?,?)";
     
+    System.out.println(pDoctor.getTipoFuncionario());
+    
     try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pDoctor.getCedula());
@@ -42,5 +44,41 @@ public class DoctorCRUD extends Conexion{
         System.err.println(ex);
       }
     }
+  }
+  
+  public boolean registrarEspecialidades(Doctor pDoctor){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "INSERT INTO doctor_especialidades (codigo_medico, especialidad) VALUES" 
+            + completarQuery(pDoctor);
+    try{
+      ps = con.prepareStatement(sql);
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
+  
+  private String completarQuery(Doctor pDoctor){
+    String query = "";
+    for (int i = 0; i < pDoctor.getEspecialidades().size(); i++){
+      query += "(" + pDoctor.getCodigoMedico() + ", '" + pDoctor.getEspecialidades().get(i) + "')";
+      if (i == pDoctor.getEspecialidades().size()-1){
+        query += ";";
+      } else {
+        query += ",";
+      }
+    }
+    return query;
   }
 }

@@ -3,11 +3,17 @@ package controlador.controladores_registros;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.AreaCRUD;
 import modelo.ArrayList;
 import modelo.CentroAtencion;
 import modelo.CentroAtencionCRUD;
+import modelo.Doctor;
+import modelo.DoctorCRUD;
+import modelo.Hash;
 import vista.registros.RegistroDoctor;
 
 /**
@@ -18,11 +24,15 @@ public class CtrlRegistroDoctor implements ActionListener {
   private RegistroDoctor registroDoctor;
   private AreaCRUD areaCrud;
   private CentroAtencionCRUD centroCrud;
+  private DoctorCRUD doctorCrud;
+  private DefaultListModel modelo;
   
   public CtrlRegistroDoctor(RegistroDoctor pRegistroDoctor){
     this.registroDoctor = pRegistroDoctor;
     this.areaCrud = new AreaCRUD();
     this.centroCrud = new CentroAtencionCRUD();
+    this.doctorCrud = new DoctorCRUD();
+    this.modelo = new DefaultListModel();
     this.registroDoctor.btnAgregarEspecialidad.addActionListener(this);
     this.registroDoctor.btnRegistrarDoctor.addActionListener(this);
   }
@@ -52,7 +62,50 @@ public class CtrlRegistroDoctor implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.registroDoctor.btnAgregarEspecialidad){
-      
+      String especialidad = this.registroDoctor.txtEspecialidad.getText();
+      modelo.addElement(especialidad);
+      this.registroDoctor.listEspecialidades.setModel(modelo);
+      this.registroDoctor.txtEspecialidad.setText("");
     }
+    
+    if (e.getSource() == this.registroDoctor.btnRegistrarDoctor){
+      String cedula = registroDoctor.txtCedulaDoctor.getText();
+      String password = Hash.sha1(registroDoctor.passContrasena.getText());
+      String nombre = registroDoctor.txtNombreDoctor.getText();
+      String tipoFuncionario = "Doctor";
+      System.out.println(tipoFuncionario);
+      LocalDate fechaIngreso = LocalDate.now();
+      Area area = areaCrud.buscarArea((String)registroDoctor.cbAreas.getSelectedItem());
+      CentroAtencion centro = centroCrud.buscarCentro((String)registroDoctor.cbCentroAtencion.getSelectedItem());
+      int codigoMedico = Integer.parseInt(registroDoctor.txtCodigoMedico.getText());
+      ArrayList<String> especialidades = recorrerLista();
+      Doctor nuevoDoctor = new Doctor(cedula, password, nombre, tipoFuncionario, fechaIngreso, area, 
+              centro, codigoMedico, especialidades);
+      if (doctorCrud.registrarDoctor(nuevoDoctor) && doctorCrud.registrarEspecialidades(nuevoDoctor)){
+        JOptionPane.showMessageDialog(null, "Nuevo doctor registrado");
+        limpiar();
+      }else{
+        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+      }
+    }
+  }
+  
+  private ArrayList<String> recorrerLista(){
+    ArrayList<String> especialidades = new ArrayList<>();
+    for (int i = 0; i < this.modelo.getSize(); i++){
+      especialidades.add((String)this.modelo.getElementAt(i));
+    }
+    return especialidades;
+  }
+  
+  private void limpiar(){
+    this.registroDoctor.txtNombreDoctor.setText("");
+    this.registroDoctor.txtCedulaDoctor.setText("");
+    this.registroDoctor.txtCodigoMedico.setText("");
+    this.registroDoctor.passContrasena.setText("");
+    this.registroDoctor.cbAreas.setSelectedIndex(0);
+    this.registroDoctor.cbCentroAtencion.setSelectedIndex(0);
+    this.modelo.clear();
+    this.registroDoctor.listEspecialidades.setModel(modelo);
   }
 }
