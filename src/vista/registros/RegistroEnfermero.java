@@ -4,7 +4,6 @@
  */
 package vista.registros;
 
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -14,14 +13,13 @@ import javax.swing.JPanel;
  *
  * @author Gustavo
  */
-public class RegistroDoctor extends javax.swing.JFrame {
-  
+public class RegistroEnfermero extends javax.swing.JFrame {
   FondoPanel fondo = new FondoPanel();
 
   /**
-   * Creates new form RegistroDoctor
+   * Creates new form RegistroEnfermero
    */
-  public RegistroDoctor() {
+  public RegistroEnfermero() {
     this.setContentPane(fondo);
     initComponents();
   }
@@ -35,40 +33,45 @@ public class RegistroDoctor extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    jLabel1 = new javax.swing.JLabel();
+    buttonGroup1 = new javax.swing.ButtonGroup();
+    buttonGroup2 = new javax.swing.ButtonGroup();
     jPanel1 = new javax.swing.JPanel();
     jLabel2 = new javax.swing.JLabel();
-    jPanel2 = new javax.swing.JPanel();
+    jPanel3 = new javax.swing.JPanel();
     jLabel3 = new javax.swing.JLabel();
     txtNombreDoctor = new javax.swing.JTextField();
     jLabel4 = new javax.swing.JLabel();
     txtCedulaDoctor = new javax.swing.JTextField();
-    jLabel5 = new javax.swing.JLabel();
-    txtCodigoMedico = new javax.swing.JTextField();
     jLabel6 = new javax.swing.JLabel();
     jLabel7 = new javax.swing.JLabel();
     cbAreas = new javax.swing.JComboBox<>();
     cbCentroAtencion = new javax.swing.JComboBox<>();
-    jPanel3 = new javax.swing.JPanel();
-    jScrollPane1 = new javax.swing.JScrollPane();
-    listEspecialidades = new javax.swing.JList<>();
+    jPanel4 = new javax.swing.JPanel();
     jLabel8 = new javax.swing.JLabel();
-    txtEspecialidad = new javax.swing.JTextField();
-    btnAgregarEspecialidad = new javax.swing.JButton();
     jLabel9 = new javax.swing.JLabel();
     passContrasena = new javax.swing.JPasswordField();
     btnRegistrarDoctor = new javax.swing.JButton();
+    jPanel5 = new javax.swing.JPanel();
+    rbOpcionSi = new javax.swing.JRadioButton();
+    rbOpcionNo = new javax.swing.JRadioButton();
+    jLabel10 = new javax.swing.JLabel();
+    jPanel6 = new javax.swing.JPanel();
+    rbOpcionSi1 = new javax.swing.JRadioButton();
+    rbOpcionNo1 = new javax.swing.JRadioButton();
+    jPanel2 = new javax.swing.JPanel();
+    jLabel1 = new javax.swing.JLabel();
+
+    buttonGroup1.add(rbOpcionSi);
+    buttonGroup1.add(rbOpcionNo);
+
+    buttonGroup2.add(rbOpcionSi1);
+    buttonGroup2.add(rbOpcionNo1);
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setResizable(false);
 
-    jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel1.setText("Registro de Doctores");
-
+    jPanel1.setMaximumSize(new java.awt.Dimension(750, 480));
+    jPanel1.setMinimumSize(new java.awt.Dimension(750, 480));
     jPanel1.setOpaque(false);
-    jPanel1.setMaximumSize(new java.awt.Dimension(750, 470));
-    jPanel1.setMinimumSize(new java.awt.Dimension(750, 470));
     jPanel1.setLayout(null);
 
     jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -78,6 +81,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
     jLabel2.setBounds(30, 30, 570, 32);
 
     jPanel2.setOpaque(false);
+    jPanel3.setOpaque(false);
 
     jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,14 +100,6 @@ public class RegistroDoctor extends javax.swing.JFrame {
     txtCedulaDoctor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     txtCedulaDoctor.setForeground(new java.awt.Color(255, 255, 255));
 
-    jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-    jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel5.setText("Código de Médico:");
-
-    txtCodigoMedico.setBackground(new java.awt.Color(102, 102, 102));
-    txtCodigoMedico.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    txtCodigoMedico.setForeground(new java.awt.Color(255, 255, 255));
-
     jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel6.setForeground(new java.awt.Color(255, 255, 255));
     jLabel6.setText("Área:");
@@ -120,27 +116,25 @@ public class RegistroDoctor extends javax.swing.JFrame {
     cbCentroAtencion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     cbCentroAtencion.setForeground(new java.awt.Color(255, 255, 255));
 
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+    jPanel3.setLayout(jPanel3Layout);
+    jPanel3Layout.setHorizontalGroup(
+      jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addComponent(txtNombreDoctor)
       .addComponent(txtCedulaDoctor)
-      .addComponent(txtCodigoMedico)
-      .addGroup(jPanel2Layout.createSequentialGroup()
-        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel3Layout.createSequentialGroup()
+        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel3)
           .addComponent(jLabel4)
-          .addComponent(jLabel5)
           .addComponent(jLabel6)
           .addComponent(jLabel7))
         .addGap(0, 162, Short.MAX_VALUE))
       .addComponent(cbAreas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(cbCentroAtencion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
-    jPanel2Layout.setVerticalGroup(
-      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel2Layout.createSequentialGroup()
+    jPanel3Layout.setVerticalGroup(
+      jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel3Layout.createSequentialGroup()
         .addComponent(jLabel3)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(txtNombreDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,48 +143,25 @@ public class RegistroDoctor extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(txtCedulaDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
-        .addComponent(jLabel5)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(txtCodigoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
         .addComponent(jLabel6)
-        .addGap(5, 5, 5)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(cbAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(jLabel7)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(cbCentroAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(0, 0, Short.MAX_VALUE))
+        .addGap(0, 14, Short.MAX_VALUE))
     );
 
-    jPanel1.add(jPanel2);
-    jPanel2.setBounds(30, 80, 320, 350);
+    jPanel1.add(jPanel3);
+    jPanel3.setBounds(30, 80, 320, 290);
 
-    jPanel3.setOpaque(false);
-    jPanel3.setPreferredSize(new java.awt.Dimension(320, 346));
-
-    listEspecialidades.setBackground(new java.awt.Color(102, 102, 102));
-    listEspecialidades.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    listEspecialidades.setForeground(new java.awt.Color(255, 255, 255));
-    jScrollPane1.setViewportView(listEspecialidades);
+    jPanel4.setOpaque(false);
+    jPanel4.setPreferredSize(new java.awt.Dimension(320, 346));
 
     jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel8.setText("Indique sus especialidades");
-
-    txtEspecialidad.setBackground(new java.awt.Color(102, 102, 102));
-    txtEspecialidad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    txtEspecialidad.setForeground(new java.awt.Color(255, 255, 255));
-
-    btnAgregarEspecialidad.setBackground(new java.awt.Color(51, 51, 51));
-    btnAgregarEspecialidad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    btnAgregarEspecialidad.setForeground(new java.awt.Color(0, 255, 0));
-    btnAgregarEspecialidad.setText("✔");
-    btnAgregarEspecialidad.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnAgregarEspecialidadActionPerformed(evt);
-      }
-    });
+    jLabel8.setText("¿Ha tenido personas a su cargo?");
 
     jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,69 +176,127 @@ public class RegistroDoctor extends javax.swing.JFrame {
     btnRegistrarDoctor.setForeground(new java.awt.Color(0, 0, 0));
     btnRegistrarDoctor.setText("Registrar");
 
-    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-    jPanel3.setLayout(jPanel3Layout);
-    jPanel3Layout.setHorizontalGroup(
-      jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jScrollPane1)
-      .addComponent(passContrasena)
-      .addGroup(jPanel3Layout.createSequentialGroup()
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jLabel8)
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnAgregarEspecialidad))
-          .addComponent(jLabel9))
-        .addGap(0, 1, Short.MAX_VALUE))
+    jPanel5.setBackground(new java.awt.Color(102, 102, 102));
+    jPanel5.setOpaque(false);
+    jPanel5.setLayout(null);
+
+    rbOpcionSi.setBackground(new java.awt.Color(102, 102, 102));
+    rbOpcionSi.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    rbOpcionSi.setForeground(new java.awt.Color(255, 255, 255));
+    rbOpcionSi.setText("Si");
+    jPanel5.add(rbOpcionSi);
+    rbOpcionSi.setBounds(0, 0, 130, 20);
+
+    rbOpcionNo.setBackground(new java.awt.Color(102, 102, 102));
+    rbOpcionNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    rbOpcionNo.setForeground(new java.awt.Color(255, 255, 255));
+    rbOpcionNo.setText("No");
+    jPanel5.add(rbOpcionNo);
+    rbOpcionNo.setBounds(130, 0, 140, 20);
+
+    jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+    jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel10.setText("¿Tiene experiencia en capacitaciones?");
+
+    jPanel6.setBackground(new java.awt.Color(102, 102, 102));
+    jPanel6.setOpaque(false);
+    jPanel6.setLayout(null);
+
+    rbOpcionSi1.setBackground(new java.awt.Color(102, 102, 102));
+    rbOpcionSi1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    rbOpcionSi1.setForeground(new java.awt.Color(255, 255, 255));
+    rbOpcionSi1.setText("Si");
+    jPanel6.add(rbOpcionSi1);
+    rbOpcionSi1.setBounds(0, 0, 130, 20);
+
+    rbOpcionNo1.setBackground(new java.awt.Color(102, 102, 102));
+    rbOpcionNo1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    rbOpcionNo1.setForeground(new java.awt.Color(255, 255, 255));
+    rbOpcionNo1.setText("No");
+    jPanel6.add(rbOpcionNo1);
+    rbOpcionNo1.setBounds(130, 0, 140, 20);
+
+    javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+    jPanel4.setLayout(jPanel4Layout);
+    jPanel4Layout.setHorizontalGroup(
+      jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addComponent(btnRegistrarDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addGroup(jPanel4Layout.createSequentialGroup()
+        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+          .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(0, 8, Short.MAX_VALUE))
+      .addComponent(passContrasena)
     );
-    jPanel3Layout.setVerticalGroup(
-      jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+    jPanel4Layout.setVerticalGroup(
+      jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
         .addComponent(jLabel8)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnAgregarEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(18, 18, 18)
+        .addComponent(jLabel10)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(jLabel9)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(passContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-        .addComponent(btnRegistrarDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(29, 29, 29)
+        .addComponent(btnRegistrarDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
-    jPanel1.add(jPanel3);
-    jPanel3.setBounds(400, 80, 310, 350);
+    jPanel1.add(jPanel4);
+    jPanel4.setBounds(390, 80, 320, 280);
+
+    jPanel2.setOpaque(false);
+
+    jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel1.setText("<html>Registro de Enfermeros</html>");
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap())
+    );
+    jPanel2Layout.setVerticalGroup(
+      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        .addGap(0, 0, Short.MAX_VALUE)
+        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+    );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addContainerGap(363, Short.MAX_VALUE)
-        .addComponent(jLabel1)
-        .addGap(26, 26, 26))
+        .addContainerGap(501, Short.MAX_VALUE)
+        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap())
+      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
-
-  private void btnAgregarEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEspecialidadActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_btnAgregarEspecialidadActionPerformed
 
   /**
    * @param args the command line arguments
@@ -290,37 +319,38 @@ public class RegistroDoctor extends javax.swing.JFrame {
       }
     } catch (ClassNotFoundException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
 
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new RegistroDoctor().setVisible(true);
+        new RegistroEnfermero().setVisible(true);
       }
     });
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  public javax.swing.JButton btnAgregarEspecialidad;
   public javax.swing.JButton btnRegistrarDoctor;
+  public javax.swing.ButtonGroup buttonGroup1;
+  public javax.swing.ButtonGroup buttonGroup2;
   public javax.swing.JComboBox<String> cbAreas;
   public javax.swing.JComboBox<String> cbCentroAtencion;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
-  private javax.swing.JLabel jLabel5;
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
   private javax.swing.JLabel jLabel8;
@@ -328,12 +358,15 @@ public class RegistroDoctor extends javax.swing.JFrame {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
-  private javax.swing.JScrollPane jScrollPane1;
-  public javax.swing.JList<String> listEspecialidades;
+  private javax.swing.JPanel jPanel4;
+  private javax.swing.JPanel jPanel5;
+  private javax.swing.JPanel jPanel6;
   public javax.swing.JPasswordField passContrasena;
+  public javax.swing.JRadioButton rbOpcionNo;
+  public javax.swing.JRadioButton rbOpcionNo1;
+  public javax.swing.JRadioButton rbOpcionSi;
+  public javax.swing.JRadioButton rbOpcionSi1;
   public javax.swing.JTextField txtCedulaDoctor;
-  public javax.swing.JTextField txtCodigoMedico;
-  public javax.swing.JTextField txtEspecialidad;
   public javax.swing.JTextField txtNombreDoctor;
   // End of variables declaration//GEN-END:variables
 
