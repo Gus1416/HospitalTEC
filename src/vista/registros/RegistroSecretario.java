@@ -13,13 +13,14 @@ import javax.swing.JPanel;
  *
  * @author Gustavo
  */
-public class RegistroEnfermero extends javax.swing.JFrame {
+public class RegistroSecretario extends javax.swing.JFrame {
+  
   FondoPanel fondo = new FondoPanel();
 
   /**
-   * Creates new form RegistroEnfermero
+   * Creates new form RegistroSecretario
    */
-  public RegistroEnfermero() {
+  public RegistroSecretario() {
     this.setContentPane(fondo);
     initComponents();
   }
@@ -33,8 +34,6 @@ public class RegistroEnfermero extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    buttonGroup1 = new javax.swing.ButtonGroup();
-    buttonGroup2 = new javax.swing.ButtonGroup();
     jPanel1 = new javax.swing.JPanel();
     jLabel2 = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
@@ -43,31 +42,20 @@ public class RegistroEnfermero extends javax.swing.JFrame {
     jLabel4 = new javax.swing.JLabel();
     txtCedulaEnfermero = new javax.swing.JTextField();
     jLabel6 = new javax.swing.JLabel();
-    jLabel7 = new javax.swing.JLabel();
     cbAreas = new javax.swing.JComboBox<>();
-    cbCentroAtencion = new javax.swing.JComboBox<>();
     jPanel4 = new javax.swing.JPanel();
-    jLabel8 = new javax.swing.JLabel();
     jLabel9 = new javax.swing.JLabel();
     passContrasena = new javax.swing.JPasswordField();
     btnRegistrarEnfermero = new javax.swing.JButton();
-    jPanel5 = new javax.swing.JPanel();
-    rbOpcionSi = new javax.swing.JRadioButton();
-    rbOpcionNo = new javax.swing.JRadioButton();
-    jLabel10 = new javax.swing.JLabel();
-    jPanel6 = new javax.swing.JPanel();
-    rbOpcionSi1 = new javax.swing.JRadioButton();
-    rbOpcionNo1 = new javax.swing.JRadioButton();
+    jLabel7 = new javax.swing.JLabel();
+    cbCentroAtencion = new javax.swing.JComboBox<>();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
 
-    buttonGroup1.add(rbOpcionSi);
-    buttonGroup1.add(rbOpcionNo);
-
-    buttonGroup2.add(rbOpcionSi1);
-    buttonGroup2.add(rbOpcionNo1);
-
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    setMaximumSize(new java.awt.Dimension(750, 480));
+    setMinimumSize(new java.awt.Dimension(750, 480));
+    setResizable(false);
 
     jPanel1.setMaximumSize(new java.awt.Dimension(750, 480));
     jPanel1.setMinimumSize(new java.awt.Dimension(750, 480));
@@ -104,17 +92,9 @@ public class RegistroEnfermero extends javax.swing.JFrame {
     jLabel6.setForeground(new java.awt.Color(255, 255, 255));
     jLabel6.setText("Área:");
 
-    jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-    jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel7.setText("Centro de Atención:");
-
     cbAreas.setBackground(new java.awt.Color(102, 102, 102));
     cbAreas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     cbAreas.setForeground(new java.awt.Color(255, 255, 255));
-
-    cbCentroAtencion.setBackground(new java.awt.Color(102, 102, 102));
-    cbCentroAtencion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    cbCentroAtencion.setForeground(new java.awt.Color(255, 255, 255));
 
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
     jPanel3.setLayout(jPanel3Layout);
@@ -126,11 +106,9 @@ public class RegistroEnfermero extends javax.swing.JFrame {
         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel3)
           .addComponent(jLabel4)
-          .addComponent(jLabel6)
-          .addComponent(jLabel7))
-        .addGap(0, 162, Short.MAX_VALUE))
+          .addComponent(jLabel6))
+        .addGap(0, 171, Short.MAX_VALUE))
       .addComponent(cbAreas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(cbCentroAtencion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     jPanel3Layout.setVerticalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,22 +124,14 @@ public class RegistroEnfermero extends javax.swing.JFrame {
         .addComponent(jLabel6)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(cbAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(jLabel7)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(cbCentroAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(0, 14, Short.MAX_VALUE))
+        .addGap(0, 10, Short.MAX_VALUE))
     );
 
     jPanel1.add(jPanel3);
-    jPanel3.setBounds(30, 80, 320, 290);
+    jPanel3.setBounds(30, 80, 320, 210);
 
     jPanel4.setOpaque(false);
     jPanel4.setPreferredSize(new java.awt.Dimension(320, 346));
-
-    jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-    jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel8.setText("¿Ha tenido personas a su cargo?");
 
     jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,88 +146,50 @@ public class RegistroEnfermero extends javax.swing.JFrame {
     btnRegistrarEnfermero.setForeground(new java.awt.Color(0, 0, 0));
     btnRegistrarEnfermero.setText("Registrar");
 
-    jPanel5.setBackground(new java.awt.Color(102, 102, 102));
-    jPanel5.setOpaque(false);
-    jPanel5.setLayout(null);
+    jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+    jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel7.setText("Centro de Atención:");
 
-    rbOpcionSi.setBackground(new java.awt.Color(102, 102, 102));
-    rbOpcionSi.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    rbOpcionSi.setForeground(new java.awt.Color(255, 255, 255));
-    rbOpcionSi.setText("Si");
-    jPanel5.add(rbOpcionSi);
-    rbOpcionSi.setBounds(0, 0, 130, 20);
-
-    rbOpcionNo.setBackground(new java.awt.Color(102, 102, 102));
-    rbOpcionNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    rbOpcionNo.setForeground(new java.awt.Color(255, 255, 255));
-    rbOpcionNo.setText("No");
-    jPanel5.add(rbOpcionNo);
-    rbOpcionNo.setBounds(130, 0, 140, 20);
-
-    jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-    jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel10.setText("¿Tiene experiencia en capacitaciones?");
-
-    jPanel6.setBackground(new java.awt.Color(102, 102, 102));
-    jPanel6.setOpaque(false);
-    jPanel6.setLayout(null);
-
-    rbOpcionSi1.setBackground(new java.awt.Color(102, 102, 102));
-    rbOpcionSi1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    rbOpcionSi1.setForeground(new java.awt.Color(255, 255, 255));
-    rbOpcionSi1.setText("Si");
-    jPanel6.add(rbOpcionSi1);
-    rbOpcionSi1.setBounds(0, 0, 130, 20);
-
-    rbOpcionNo1.setBackground(new java.awt.Color(102, 102, 102));
-    rbOpcionNo1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    rbOpcionNo1.setForeground(new java.awt.Color(255, 255, 255));
-    rbOpcionNo1.setText("No");
-    jPanel6.add(rbOpcionNo1);
-    rbOpcionNo1.setBounds(130, 0, 140, 20);
+    cbCentroAtencion.setBackground(new java.awt.Color(102, 102, 102));
+    cbCentroAtencion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    cbCentroAtencion.setForeground(new java.awt.Color(255, 255, 255));
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
       jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addComponent(btnRegistrarEnfermero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addGroup(jPanel4Layout.createSequentialGroup()
-        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-          .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGap(0, 8, Short.MAX_VALUE))
       .addComponent(passContrasena)
+      .addComponent(cbCentroAtencion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addGroup(jPanel4Layout.createSequentialGroup()
+        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(jLabel7)
+          .addComponent(jLabel9))
+        .addGap(0, 162, Short.MAX_VALUE))
     );
     jPanel4Layout.setVerticalGroup(
       jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-        .addComponent(jLabel8)
+        .addComponent(jLabel7)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(jLabel10)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(cbCentroAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(jLabel9)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(passContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(29, 29, 29)
+        .addGap(18, 18, 18)
         .addComponent(btnRegistrarEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     jPanel1.add(jPanel4);
-    jPanel4.setBounds(390, 80, 320, 280);
+    jPanel4.setBounds(390, 80, 320, 210);
 
     jPanel2.setOpaque(false);
 
     jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel1.setText("<html>Registro de Enfermeros</html>");
+    jLabel1.setText("<html>Registro de Secretarios</html>");
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -278,21 +210,17 @@ public class RegistroEnfermero extends javax.swing.JFrame {
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
-      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addContainerGap(501, Short.MAX_VALUE)
-        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap())
-      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+      .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
-        .addContainerGap()
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(18, 18, 18)
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(31, Short.MAX_VALUE))
     );
 
     pack();
@@ -319,58 +247,48 @@ public class RegistroEnfermero extends javax.swing.JFrame {
       }
     } catch (ClassNotFoundException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroSecretario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroSecretario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroSecretario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex)
     {
-      java.util.logging.Logger.getLogger(RegistroEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(RegistroSecretario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
 
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new RegistroEnfermero().setVisible(true);
+        new RegistroSecretario().setVisible(true);
       }
     });
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnRegistrarEnfermero;
-  public javax.swing.ButtonGroup buttonGroup1;
-  public javax.swing.ButtonGroup buttonGroup2;
   public javax.swing.JComboBox<String> cbAreas;
   public javax.swing.JComboBox<String> cbCentroAtencion;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
-  private javax.swing.JLabel jLabel8;
   private javax.swing.JLabel jLabel9;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel4;
-  private javax.swing.JPanel jPanel5;
-  private javax.swing.JPanel jPanel6;
   public javax.swing.JPasswordField passContrasena;
-  public javax.swing.JRadioButton rbOpcionNo;
-  public javax.swing.JRadioButton rbOpcionNo1;
-  public javax.swing.JRadioButton rbOpcionSi;
-  public javax.swing.JRadioButton rbOpcionSi1;
   public javax.swing.JTextField txtCedulaEnfermero;
   public javax.swing.JTextField txtNombreEnfermero;
   // End of variables declaration//GEN-END:variables
 
-class FondoPanel extends JPanel{
+  class FondoPanel extends JPanel{
     private Image imagen;
     
     @Override

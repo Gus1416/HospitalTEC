@@ -2,6 +2,7 @@ package controlador;
 
 import controlador.controladores_registros.CtrlRegistroDoctor;
 import controlador.controladores_registros.CtrlRegistroEnfermero;
+import controlador.controladores_registros.CtrlRegistroSecretario;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
 import vista.Inicio;
 import vista.registros.RegistroDoctor;
 import vista.registros.RegistroEnfermero;
+import vista.registros.RegistroSecretario;
 
 /**
  *
@@ -56,8 +58,13 @@ public class CtrlInicio implements ActionListener {
           ctrlRegistroEnfermero.iniciar();
           registroEnfermero.setVisible(true);
         }
+        if (opcion2 == 2){
+          RegistroSecretario registroSecretario = new RegistroSecretario();
+          CtrlRegistroSecretario ctrlRegistroSecretario = new CtrlRegistroSecretario(registroSecretario);
+          ctrlRegistroSecretario.iniciar();
+          registroSecretario.setVisible(true);
+        }
       }
     }
   }
- 
 }
