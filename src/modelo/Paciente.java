@@ -27,6 +27,22 @@ public class Paciente extends Usuario {
       this.lugarResidencia = lugarResidencia;
       this.telefono = telefono;
     }
+    
+
+    public Paciente(String id, String nombre, LocalDate fechaNacimiento, String tipoSangre, String lugarResidencia, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoSangre = tipoSangre;
+        this.lugarResidencia = lugarResidencia;
+        this.telefono = telefono;
+    }
+
+    public Paciente() {
+    }
+
+    
+    
 
     public String getId() {
         return id;

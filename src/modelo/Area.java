@@ -6,9 +6,23 @@ package modelo;
  */
 public class Area {
   private String nombreArea;
-  
-  public Area(){}
-  
+  private int iDArea;
+
+    public Area(String nombreArea, int iDArea) {
+        this.nombreArea = nombreArea;
+        this.iDArea = iDArea;
+    }
+ 
+    public Area(){}
+
+    public int getiDArea() {
+        return iDArea;
+    }
+    
+    public void setiDArea(int iDArea) {
+        this.iDArea = iDArea;
+    }
+    
   public Area(String pNombreArea){
     this.nombreArea = pNombreArea;
   }

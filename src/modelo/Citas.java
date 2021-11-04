@@ -15,18 +15,51 @@ import java.time.LocalDate;
 
 public class Citas {
     private int iDCita;
+    private int iDArea;
     private String especialidad;
     private LocalDate fechaCita;
     private String observacionAdicional; 
     private EstadoCita Estado;
+    private String cedulaPaciente;
 
-    public Citas(int iDCita, String especialidad, LocalDate fechaCita, String observacionAdicional, String iD, String Nombre, LocalDate FechaIngreso, String Area) {
-
+    public Citas(int iDCita, int iDArea, String especialidad, LocalDate fechaCita, String observacionAdicional, EstadoCita Estado, String cedulaPaciente) {
         this.iDCita = iDCita;
+        this.iDArea = iDArea;
         this.especialidad = especialidad;
         this.fechaCita = fechaCita;
         this.observacionAdicional = observacionAdicional;
+        this.Estado = Estado;
+        this.cedulaPaciente = cedulaPaciente;
     }
+
+    public Citas(int iDCita) {
+        this.iDCita = iDCita;
+    }
+
+
+
+    public Citas() {
+    }
+
+    public String getCedulaPaciente() {
+        return cedulaPaciente;
+    }
+
+    public void setCedulaPaciente(String cedulaPaciente) {
+        this.cedulaPaciente = cedulaPaciente;
+    }
+   
+    
+    
+    public int getiDArea() {
+        return iDArea;
+    }
+
+    public void setiDArea(int iDArea) {
+        this.iDArea = iDArea;
+    }
+
+    
 
   
     public int getiDCita() {
