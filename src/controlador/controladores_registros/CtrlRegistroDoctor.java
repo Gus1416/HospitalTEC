@@ -73,7 +73,6 @@ public class CtrlRegistroDoctor implements ActionListener {
       String password = Hash.sha1(registroDoctor.passContrasena.getText());
       String nombre = registroDoctor.txtNombreDoctor.getText();
       String tipoFuncionario = "Doctor";
-      System.out.println(tipoFuncionario);
       LocalDate fechaIngreso = LocalDate.now();
       Area area = areaCrud.buscarArea((String)registroDoctor.cbAreas.getSelectedItem());
       CentroAtencion centro = centroCrud.buscarCentro((String)registroDoctor.cbCentroAtencion.getSelectedItem());

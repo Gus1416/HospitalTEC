@@ -19,8 +19,6 @@ public class DoctorCRUD extends Conexion{
     
     String sql = "CALL registrar_doctor(?,?,?,?,?,?,?,?)";
     
-    System.out.println(pDoctor.getTipoFuncionario());
-    
     try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pDoctor.getCedula());

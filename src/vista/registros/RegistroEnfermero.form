@@ -107,8 +107,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtNombreDoctor" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtCedulaDoctor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtNombreEnfermero" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtCedulaEnfermero" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -127,11 +127,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtNombreDoctor" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNombreEnfermero" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtCedulaDoctor" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCedulaEnfermero" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -157,7 +157,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre Completo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNombreDoctor">
+            <Component class="javax.swing.JTextField" name="txtNombreEnfermero">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
@@ -187,7 +187,7 @@
                 <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCedulaDoctor">
+            <Component class="javax.swing.JTextField" name="txtCedulaEnfermero">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
@@ -283,7 +283,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnRegistrarDoctor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnRegistrarEnfermero" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
@@ -312,7 +312,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="passContrasena" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="btnRegistrarDoctor" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="btnRegistrarEnfermero" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -357,7 +357,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btnRegistrarDoctor">
+            <Component class="javax.swing.JButton" name="btnRegistrarEnfermero">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
