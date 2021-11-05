@@ -38,22 +38,21 @@ public class RegistroSecretario extends javax.swing.JFrame {
     jLabel2 = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
     jLabel3 = new javax.swing.JLabel();
-    txtNombreEnfermero = new javax.swing.JTextField();
+    txtNombreSecretario = new javax.swing.JTextField();
     jLabel4 = new javax.swing.JLabel();
-    txtCedulaEnfermero = new javax.swing.JTextField();
+    txtCedulaSecretario = new javax.swing.JTextField();
     jLabel6 = new javax.swing.JLabel();
     cbAreas = new javax.swing.JComboBox<>();
     jPanel4 = new javax.swing.JPanel();
     jLabel9 = new javax.swing.JLabel();
     passContrasena = new javax.swing.JPasswordField();
-    btnRegistrarEnfermero = new javax.swing.JButton();
+    btnRegistrarSecretario = new javax.swing.JButton();
     jLabel7 = new javax.swing.JLabel();
     cbCentroAtencion = new javax.swing.JComboBox<>();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setMaximumSize(new java.awt.Dimension(750, 480));
     setMinimumSize(new java.awt.Dimension(750, 480));
     setResizable(false);
 
@@ -75,18 +74,18 @@ public class RegistroSecretario extends javax.swing.JFrame {
     jLabel3.setForeground(new java.awt.Color(255, 255, 255));
     jLabel3.setText("Nombre Completo:");
 
-    txtNombreEnfermero.setBackground(new java.awt.Color(102, 102, 102));
-    txtNombreEnfermero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    txtNombreEnfermero.setForeground(new java.awt.Color(255, 255, 255));
-    txtNombreEnfermero.setCaretColor(new java.awt.Color(51, 51, 51));
+    txtNombreSecretario.setBackground(new java.awt.Color(102, 102, 102));
+    txtNombreSecretario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    txtNombreSecretario.setForeground(new java.awt.Color(255, 255, 255));
+    txtNombreSecretario.setCaretColor(new java.awt.Color(51, 51, 51));
 
     jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel4.setForeground(new java.awt.Color(255, 255, 255));
     jLabel4.setText("Cédula:");
 
-    txtCedulaEnfermero.setBackground(new java.awt.Color(102, 102, 102));
-    txtCedulaEnfermero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    txtCedulaEnfermero.setForeground(new java.awt.Color(255, 255, 255));
+    txtCedulaSecretario.setBackground(new java.awt.Color(102, 102, 102));
+    txtCedulaSecretario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    txtCedulaSecretario.setForeground(new java.awt.Color(255, 255, 255));
 
     jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,8 +99,8 @@ public class RegistroSecretario extends javax.swing.JFrame {
     jPanel3.setLayout(jPanel3Layout);
     jPanel3Layout.setHorizontalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(txtNombreEnfermero)
-      .addComponent(txtCedulaEnfermero)
+      .addComponent(txtNombreSecretario)
+      .addComponent(txtCedulaSecretario)
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel3)
@@ -115,11 +114,11 @@ public class RegistroSecretario extends javax.swing.JFrame {
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addComponent(jLabel3)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(txtNombreEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(txtNombreSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(jLabel4)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(txtCedulaEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(txtCedulaSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(jLabel6)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,10 +140,10 @@ public class RegistroSecretario extends javax.swing.JFrame {
     passContrasena.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     passContrasena.setForeground(new java.awt.Color(255, 255, 255));
 
-    btnRegistrarEnfermero.setBackground(new java.awt.Color(255, 255, 255));
-    btnRegistrarEnfermero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-    btnRegistrarEnfermero.setForeground(new java.awt.Color(0, 0, 0));
-    btnRegistrarEnfermero.setText("Registrar");
+    btnRegistrarSecretario.setBackground(new java.awt.Color(255, 255, 255));
+    btnRegistrarSecretario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+    btnRegistrarSecretario.setForeground(new java.awt.Color(0, 0, 0));
+    btnRegistrarSecretario.setText("Registrar");
 
     jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,7 +157,7 @@ public class RegistroSecretario extends javax.swing.JFrame {
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
       jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(btnRegistrarEnfermero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(btnRegistrarSecretario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(passContrasena)
       .addComponent(cbCentroAtencion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addGroup(jPanel4Layout.createSequentialGroup()
@@ -178,7 +177,7 @@ public class RegistroSecretario extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(passContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
-        .addComponent(btnRegistrarEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(btnRegistrarSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
@@ -269,7 +268,7 @@ public class RegistroSecretario extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  public javax.swing.JButton btnRegistrarEnfermero;
+  public javax.swing.JButton btnRegistrarSecretario;
   public javax.swing.JComboBox<String> cbAreas;
   public javax.swing.JComboBox<String> cbCentroAtencion;
   private javax.swing.JLabel jLabel1;
@@ -284,8 +283,8 @@ public class RegistroSecretario extends javax.swing.JFrame {
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel4;
   public javax.swing.JPasswordField passContrasena;
-  public javax.swing.JTextField txtCedulaEnfermero;
-  public javax.swing.JTextField txtNombreEnfermero;
+  public javax.swing.JTextField txtCedulaSecretario;
+  public javax.swing.JTextField txtNombreSecretario;
   // End of variables declaration//GEN-END:variables
 
   class FondoPanel extends JPanel{
