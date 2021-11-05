@@ -2,6 +2,7 @@ package controlador;
 
 import controlador.controladores_registros.CtrlRegistroDoctor;
 import controlador.controladores_registros.CtrlRegistroEnfermero;
+import controlador.controladores_registros.CtrlRegistroPaciente;
 import controlador.controladores_registros.CtrlRegistroSecretario;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import javax.swing.JOptionPane;
 import vista.Inicio;
 import vista.registros.RegistroDoctor;
 import vista.registros.RegistroEnfermero;
+import vista.registros.RegistroPaciente;
 import vista.registros.RegistroSecretario;
 
 /**
@@ -40,6 +42,13 @@ public class CtrlInicio implements ActionListener {
       int opcion = JOptionPane.showOptionDialog(null, "Indique el tipo de usuario", 
               "Registro de usuarios", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, 
               null, botonesUsuario, botonesUsuario[0]);
+      
+      if (opcion == 0){
+        RegistroPaciente registroPaciente = new RegistroPaciente();
+        CtrlRegistroPaciente ctrlRegistroPaciente = new CtrlRegistroPaciente(registroPaciente);
+        ctrlRegistroPaciente.iniciar();
+        registroPaciente.setVisible(true);
+      }
       
       if (opcion == 1){
         String[] botonesFuncionario = {"Doctor", "Enfermero", "Secretario"};

@@ -7,81 +7,69 @@ import java.time.LocalDate;
  * @author Maria Laura
  */
 public class Paciente extends Usuario {
-    
-    private String id;
-    private String nombre;
-    private LocalDate fechaNacimiento;
-    private String tipoSangre;
-    private String nacionalidad;
-    private String lugarResidencia;
-    private String telefono;
+  private String nombre;
+  private LocalDate fechaNacimiento;
+  private String tipoSangre;
+  private String nacionalidad;
+  private String lugarResidencia;
+  private ArrayList<String> telefonos;
 
-    public Paciente(String pCedula, String pPassword,String id, String nombre, LocalDate fechaNacimiento, String tipoSangre, 
-            String nacionalidad, String lugarResidencia, String telefono) {
-      super(pCedula, pPassword);
-      this.id = id;
-      this.nombre = nombre;
-      this.fechaNacimiento = fechaNacimiento;
-      this.tipoSangre = tipoSangre;
-      this.nacionalidad = nacionalidad;
-      this.lugarResidencia = lugarResidencia;
-      this.telefono = telefono;
-    }
+  public Paciente(String pCedula, String pPassword, String pNombre, LocalDate pFechaNacimiento, String pTipoSangre,
+          String pNacionalidad, String pLugarResidencia, ArrayList<String> pTelefonos) {
+    super(pCedula, pPassword);
+    this.nombre = pNombre;
+    this.fechaNacimiento = pFechaNacimiento;
+    this.tipoSangre = pTipoSangre;
+    this.nacionalidad = pNacionalidad;
+    this.lugarResidencia = pLugarResidencia;
+    this.telefonos = pTelefonos;
+  }
 
-    public String getId() {
-        return id;
-    }
+  public String getNombre() {
+    return nombre;
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-    public String getNombre() {
-        return nombre;
-    }
+  public LocalDate getFechaNacimiento() {
+    return fechaNacimiento;
+  }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+  public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
+  public String getTipoSangre() {
+    return tipoSangre;
+  }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
+  public void setTipoSangre(String tipoSangre) {
+    this.tipoSangre = tipoSangre;
+  }
 
-    public String getTipoSangre() {
-        return tipoSangre;
-    }
+  public String getNacionalidad() {
+    return nacionalidad;
+  }
 
-    public void setTipoSangre(String tipoSangre) {
-        this.tipoSangre = tipoSangre;
-    }
+  public void setNacionalidad(String nacionalidad) {
+    this.nacionalidad = nacionalidad;
+  }
 
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
+  public String getLugarResidencia() {
+    return lugarResidencia;
+  }
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
+  public void setLugarResidencia(String lugarResidencia) {
+    this.lugarResidencia = lugarResidencia;
+  }
 
-    public String getLugarResidencia() {
-        return lugarResidencia;
-    }
+  public ArrayList getTelefono() {
+    return telefonos;
+  }
 
-    public void setLugarResidencia(String lugarResidencia) {
-        this.lugarResidencia = lugarResidencia;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-  
+  public void setTelefono(ArrayList<String> telefono) {
+    this.telefonos = telefono;
+  }
 }
