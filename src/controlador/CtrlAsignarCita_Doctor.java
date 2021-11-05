@@ -8,6 +8,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.AreaCRUD;
@@ -96,7 +98,8 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
             }
         
             cita.setiDArea(IDAREA);  // Implementar método para traerlo de la lista de áreas
-            cita.setFechaCita(LocalDate.EPOCH);
+            Date input = vistaAsignar.JDateChooser.getCalendar().getTime();
+            cita.setFechaCita(input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             cita.setCedulaPaciente(IDPACIENTE);   // Implementar método para traerlo de lista de pacientes  
             cita.setObservacionAdicional(vistaAsignar.TFObservaciones.getText());
             cita.setEstado(EstadoCita.ASIGNADA);

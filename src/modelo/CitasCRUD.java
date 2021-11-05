@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
 
 
 /**
@@ -98,6 +99,11 @@ public class CitasCRUD extends Conexion {
         Citas cita = new Citas();
         cita.setiDCita(rs.getInt("id_cita"));
         cita.setCedulaPaciente(rs.getString("cedula_paciente"));
+        cita.setAuxdate(rs.getDate("fecha_hora"));
+        
+        System.out.println("Esta es la cita que me llega mae:  "  + cita.getAuxdate());
+        
+        
         citas.add(cita);
         
         

@@ -7,6 +7,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 import modelo.ArrayList;
 import modelo.Citas;
@@ -14,6 +16,8 @@ import modelo.CitasCRUD;
 import modelo.Paciente;
 import modelo.PacienteCRUD;
 import vista.Cancelar_Cita_Doctor;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -25,6 +29,11 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
     private  CitasCRUD CRUDcita;
     private Cancelar_Cita_Doctor vistaCancelar;
 
+    public static ArrayList<Citas> citas;
+    public static Date firstDate;
+    public static Date secondDate;
+    public static Citas auxdate;
+    
     public CtrlCancelarCita_Doctor(PacienteCRUD CRUDPaciente, Citas cita, CitasCRUD CRUDcita, Cancelar_Cita_Doctor vistaCancelar) {
         this.CRUDPaciente = CRUDPaciente;
         this.cita = cita;
@@ -73,7 +82,7 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
                 }    
                     
                 if(flag == 1){
-                    ArrayList<Citas> citas= CRUDcita.consultarCitas(pacientes.get(counter-1).getCedula());
+                    citas= CRUDcita.consultarCitas(pacientes.get(counter-1).getCedula());
                      for (int z = 0; z < citas.size(); z++) {  
                         vistaCancelar.CBCita.addItem(Integer.toString(citas.get(z).getiDCita()));
                      }
@@ -81,18 +90,39 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
                 
             }
         
+     
         
         if(e.getSource() == vistaCancelar.btnCancelar){
-            cita.setiDCita(Integer.parseInt((String) vistaCancelar.CBCita.getSelectedItem()));
-            
+            int IDCITA = Integer.parseInt((String) vistaCancelar.CBCita.getSelectedItem());
+
+            for (int i = 0; i < citas.size(); i++) {
+                if(citas.get(i).getiDCita() == IDCITA ){
+                    auxdate= citas.get(i);
+                    System.out.println("Lo encontre bro: " + citas.get(i).getAuxdate());
+                }
+              System.out.println("ID NO COINCIDE CON EL DE LA LISTA");  
+            }
+           
             /// VALIDAR LA FECHA DE LA CITA SEA UN DIA ANTES COMO MINIMO PARA CANCELARLA
+            LocalDate hoy = LocalDate.now();
+            Date  fechacita = auxdate.getAuxdate();
+            ZoneId defaultZoneId = ZoneId.systemDefault();
+            Date today = Date.from(hoy.atStartOfDay(defaultZoneId).toInstant());
             
-            if (CRUDcita.CancelarCita(cita)){
+            long diffInMillies = Math.abs(fechacita.getTime() - today.getTime());
+            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            
+            System.out.println("Diferencia entre fechas: " +  diff);
+            
+            if(diff>= 1){
+                if (CRUDcita.CancelarCita(auxdate)){
                 JOptionPane.showMessageDialog(null, "Cita Cancelada");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al cancelar la cita la cita");
             }
                 
+            }
+                         
         }
         
         

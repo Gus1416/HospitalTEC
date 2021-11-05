@@ -6,6 +6,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Citas {
     private String observacionAdicional; 
     private EstadoCita Estado;
     private String cedulaPaciente;
+    private Date auxdate;
 
     public Citas(int iDCita, int iDArea, String especialidad, LocalDate fechaCita, String observacionAdicional, EstadoCita Estado, String cedulaPaciente) {
         this.iDCita = iDCita;
@@ -34,6 +36,14 @@ public class Citas {
 
     public Citas(int iDCita) {
         this.iDCita = iDCita;
+    }
+
+    public Date getAuxdate() {
+        return auxdate;
+    }
+
+    public void setAuxdate(Date auxdate) {
+        this.auxdate = auxdate;
     }
 
 
