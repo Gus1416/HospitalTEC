@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -10,8 +11,14 @@ import java.sql.SQLException;
  * @author Gustavo
  */
 public class PacienteCRUD extends Conexion{
+  public static ArrayList<Paciente> listaPacientes = new  ArrayList<Paciente> ();
+  
   public PacienteCRUD(){}
   
+  public static ArrayList<Paciente> getListaPacientes() {
+    return listaPacientes;
+  }
+
   public boolean registrarPaciente(Paciente pPaciente){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -76,5 +83,39 @@ public class PacienteCRUD extends Conexion{
       }
     }
     return query;
+  }
+
+  public ArrayList consultarPacientes(){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Paciente> pacientes = new ArrayList<>();
+    
+    String sql = "SELECT * FROM paciente";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      rs = ps.executeQuery();
+      
+      while (rs.next()){ 
+        Paciente contenedor = new Paciente();
+        contenedor.setCedula(rs.getString("cedula_paciente"));
+        contenedor.setNombre(rs.getString("nombre"));
+        pacientes.add(contenedor);
+        listaPacientes.add(contenedor);
+      }
+      return pacientes;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return pacientes;
+      
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+      }
+    }
   }
 }

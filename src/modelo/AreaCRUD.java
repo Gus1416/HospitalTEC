@@ -13,6 +13,12 @@ public class AreaCRUD extends Conexion{
   
   public AreaCRUD(){}
   
+  public static ArrayList<Area> LISTAAREAS = new  ArrayList<Area> ();
+
+    public static ArrayList<Area> getLISTAAREAS() {
+        return LISTAAREAS;
+    }
+  
   public ArrayList consultarAreas(){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -24,10 +30,21 @@ public class AreaCRUD extends Conexion{
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
       
+      
       while (rs.next()){
+          
+        Area contenedor = new Area(rs.getString("nombre"),rs.getInt("id_area"));  
+          
+          
         Area area = new Area();
         area.setNombreArea(rs.getString("nombre"));
+        area.setIdArea(rs.getInt("id_area"));
         areas.add(area);
+        
+        System.out.println("Estos son los nombres de las áreas que tiene la lista" + area.getNombreArea());
+        
+        LISTAAREAS.add(contenedor);
+        
       }
       return areas;
       

@@ -14,6 +14,8 @@ public class Paciente extends Usuario {
   private String lugarResidencia;
   private ArrayList<String> telefonos;
 
+  public Paciente(){}
+  
   public Paciente(String pCedula, String pPassword, String pNombre, LocalDate pFechaNacimiento, String pTipoSangre,
           String pNacionalidad, String pLugarResidencia, ArrayList<String> pTelefonos) {
     super(pCedula, pPassword);
