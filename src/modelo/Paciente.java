@@ -65,11 +65,11 @@ public class Paciente extends Usuario {
     this.lugarResidencia = lugarResidencia;
   }
 
-  public ArrayList getTelefono() {
+  public ArrayList getTelefonos() {
     return telefonos;
   }
 
-  public void setTelefono(ArrayList<String> telefono) {
-    this.telefonos = telefono;
+  public void setTelefonos(ArrayList<String> telefonos) {
+    this.telefonos = telefonos;
   }
 }

@@ -55,7 +55,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
     btnRegistrarPaciente = new javax.swing.JButton();
     jLabel8 = new javax.swing.JLabel();
     txtTelefono = new javax.swing.JTextField();
-    btnAgregarEspecialidad = new javax.swing.JButton();
+    btnAgregarTelefono = new javax.swing.JButton();
     jScrollPane1 = new javax.swing.JScrollPane();
     listTelefonos = new javax.swing.JList<>();
     jLabel10 = new javax.swing.JLabel();
@@ -206,19 +206,19 @@ public class RegistroPaciente extends javax.swing.JFrame {
 
     jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
     jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel8.setText("Indique sus especialidades");
+    jLabel8.setText("Teléfonos:");
 
     txtTelefono.setBackground(new java.awt.Color(102, 102, 102));
     txtTelefono.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
 
-    btnAgregarEspecialidad.setBackground(new java.awt.Color(51, 51, 51));
-    btnAgregarEspecialidad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    btnAgregarEspecialidad.setForeground(new java.awt.Color(0, 255, 0));
-    btnAgregarEspecialidad.setText("✔");
-    btnAgregarEspecialidad.addActionListener(new java.awt.event.ActionListener() {
+    btnAgregarTelefono.setBackground(new java.awt.Color(51, 51, 51));
+    btnAgregarTelefono.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    btnAgregarTelefono.setForeground(new java.awt.Color(0, 255, 0));
+    btnAgregarTelefono.setText("✔");
+    btnAgregarTelefono.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnAgregarEspecialidadActionPerformed(evt);
+        btnAgregarTelefonoActionPerformed(evt);
       }
     });
 
@@ -248,7 +248,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
               .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAgregarEspecialidad))
+                .addComponent(btnAgregarTelefono))
               .addComponent(jLabel9)
               .addComponent(jLabel8)
               .addComponent(jLabel10))
@@ -264,7 +264,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnAgregarEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(btnAgregarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
@@ -298,7 +298,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap())
     );
@@ -306,9 +306,9 @@ public class RegistroPaciente extends javax.swing.JFrame {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void btnAgregarEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEspecialidadActionPerformed
+  private void btnAgregarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTelefonoActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_btnAgregarEspecialidadActionPerformed
+  }//GEN-LAST:event_btnAgregarTelefonoActionPerformed
 
   /**
    * @param args the command line arguments
@@ -353,7 +353,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  public javax.swing.JButton btnAgregarEspecialidad;
+  public javax.swing.JButton btnAgregarTelefono;
   public javax.swing.JButton btnRegistrarPaciente;
   public javax.swing.JComboBox<String> cbSangre;
   public com.toedter.calendar.JDateChooser dcFechaNacimiento;

@@ -60,7 +60,7 @@ public class CtrlRegistroSecretario implements ActionListener{
       String cedula = registroSecretario.txtCedulaSecretario.getText();
       String password = Hash.sha1(registroSecretario.passContrasena.getText());
       String nombre = registroSecretario.txtNombreSecretario.getText();
-      String tipoFuncionario = "Enfermero";
+      String tipoFuncionario = "Secretario";
       LocalDate fechaIngreso = LocalDate.now();
       Area area = areaCrud.buscarArea((String)registroSecretario.cbAreas.getSelectedItem());
       CentroAtencion centro = centroCrud.buscarCentro((String)registroSecretario.cbCentroAtencion.getSelectedItem());
