@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import vista.Inicio;
+import vista.InicioSesion;
 import vista.registros.RegistroDoctor;
 import vista.registros.RegistroEnfermero;
 import vista.registros.RegistroPaciente;
@@ -74,6 +75,13 @@ public class CtrlInicio implements ActionListener {
           registroSecretario.setVisible(true);
         }
       }
+    }
+    
+    if (e.getSource() == this.inicio.btnIniciarSesion){
+      InicioSesion inicioSesion = new InicioSesion();
+      CtrlInicioSesion ctrlInicioSesion = new CtrlInicioSesion(inicioSesion);
+      ctrlInicioSesion.iniciar();
+      inicioSesion.setVisible(true);
     }
   }
 }

@@ -71,6 +71,7 @@ public class CtrlRegistroDoctor implements ActionListener {
     if (e.getSource() == this.registroDoctor.btnRegistrarDoctor){
       String cedula = registroDoctor.txtCedulaDoctor.getText();
       String password = Hash.sha1(registroDoctor.passContrasena.getText());
+      String tipoUsuario = "Funcionario";
       String nombre = registroDoctor.txtNombreDoctor.getText();
       String tipoFuncionario = "Doctor";
       LocalDate fechaIngreso = LocalDate.now();
@@ -78,7 +79,7 @@ public class CtrlRegistroDoctor implements ActionListener {
       CentroAtencion centro = centroCrud.buscarCentro((String)registroDoctor.cbCentroAtencion.getSelectedItem());
       int codigoMedico = Integer.parseInt(registroDoctor.txtCodigoMedico.getText());
       ArrayList<String> especialidades = recorrerLista();
-      Doctor nuevoDoctor = new Doctor(cedula, password, nombre, tipoFuncionario, fechaIngreso, area, 
+      Doctor nuevoDoctor = new Doctor(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, 
               centro, codigoMedico, especialidades);
       if (doctorCrud.registrarDoctor(nuevoDoctor) && doctorCrud.registrarEspecialidades(nuevoDoctor)){
         JOptionPane.showMessageDialog(null, "Nuevo doctor registrado");

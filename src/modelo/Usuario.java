@@ -7,12 +7,19 @@ package modelo;
 public class Usuario {
   private String cedula;
   private String password;
+  private String tipoUsuario;
   
   public Usuario(){}
   
-  public Usuario (String pCedula, String pPassword){
+  public Usuario(String pCedula, String pPassword){
     this.cedula = pCedula;
     this.password = pPassword;
+  }
+  
+  public Usuario (String pCedula, String pPassword, String pTipoUsuario){
+    this.cedula = pCedula;
+    this.password = pPassword;
+    this.tipoUsuario = pTipoUsuario;
   }
 
   /**
@@ -42,4 +49,18 @@ public class Usuario {
   public void setPassword(String pPassword) {
     this.password = pPassword;
   } 
+
+  /**
+   * @return the tipoUsuario
+   */
+  public String getTipoUsuario() {
+    return tipoUsuario;
+  }
+
+  /**
+   * @param tipoUsuario the tipoUsuario to set
+   */
+  public void setTipoUsuario(String tipoUsuario) {
+    this.tipoUsuario = tipoUsuario;
+  }
 }

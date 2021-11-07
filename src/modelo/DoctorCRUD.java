@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Date;
@@ -17,18 +18,19 @@ public class DoctorCRUD extends Conexion{
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-    String sql = "CALL registrar_doctor(?,?,?,?,?,?,?,?)";
+    String sql = "CALL registrar_doctor(?,?,?,?,?,?,?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pDoctor.getCedula());
       ps.setString(2, pDoctor.getPassword());
-      ps.setString(3, pDoctor.getNombre());
-      ps.setString(4, pDoctor.getTipoFuncionario());
-      ps.setDate(5, Date.valueOf(pDoctor.getFechaIngreso()));
-      ps.setString(6, pDoctor.getArea().getNombreArea());
-      ps.setInt(7, pDoctor.getCentro().getId());
-      ps.setInt(8, pDoctor.getCodigoMedico());
+      ps.setString(3, pDoctor.getTipoUsuario());
+      ps.setString(4, pDoctor.getNombre());
+      ps.setString(5, pDoctor.getTipoFuncionario());
+      ps.setDate(6, Date.valueOf(pDoctor.getFechaIngreso()));
+      ps.setString(7, pDoctor.getArea().getNombreArea());
+      ps.setInt(8, pDoctor.getCentro().getId());
+      ps.setInt(9, pDoctor.getCodigoMedico());
       ps.execute();
       return true;
       
@@ -78,5 +80,74 @@ public class DoctorCRUD extends Conexion{
       }
     }
     return query;
+  }
+  
+  public Doctor buscarDoctor(String pCedula){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Doctor doctor = new Doctor();
+    
+    String sql = "SELECT * FROM doctor INNER JOIN funcionario INNER JOIN funcionario_centro_atencion WHERE funcionario.cedula_funcionario = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCedula);
+      rs = ps.executeQuery();
+      
+      if (rs.next()){
+        doctor.setCedula(pCedula);
+        doctor.setCodigoMedico(rs.getInt("codigo_medico"));
+        doctor.setNombre("nombre");
+        doctor.setTipoFuncionario("tipo_funcionario");
+        doctor.setFechaIngreso(rs.getDate("fecha_ingreso").toLocalDate());
+        doctor.setArea(new AreaCRUD().buscarArea(rs.getInt("id_area")));
+        doctor.setCentro(new CentroAtencionCRUD().buscarCentro(rs.getInt("codigo_centro")));
+        doctor.setEspecialidades(obtenerEspecialidades(doctor.getCodigoMedico()));
+        return doctor;
+      } else {
+        return null;
+      }
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
+  
+  private ArrayList<String> obtenerEspecialidades (int pCodigoMedico){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<String> especialidades = new ArrayList();
+    
+    String sql = "SELECT * FROM doctor_especialidades WHERE codigo_medico = ?";
+    
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setInt(1, pCodigoMedico);
+      rs = ps.executeQuery();
+      
+      while (rs.next()){
+        especialidades.add(rs.getString("especialidad"));
+      }
+      return especialidades;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
   }
 }

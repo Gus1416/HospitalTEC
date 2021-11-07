@@ -16,9 +16,9 @@ public class Paciente extends Usuario {
 
   public Paciente(){}
   
-  public Paciente(String pCedula, String pPassword, String pNombre, LocalDate pFechaNacimiento, String pTipoSangre,
+  public Paciente(String pCedula, String pPassword, String pTipoUsuario, String pNombre, LocalDate pFechaNacimiento, String pTipoSangre,
           String pNacionalidad, String pLugarResidencia, ArrayList<String> pTelefonos) {
-    super(pCedula, pPassword);
+    super(pCedula, pPassword, pTipoUsuario);
     this.nombre = pNombre;
     this.fechaNacimiento = pFechaNacimiento;
     this.tipoSangre = pTipoSangre;

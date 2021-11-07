@@ -16,9 +16,9 @@ public class Funcionario extends Usuario {
   
   public Funcionario(){}
 
-  public Funcionario(String pCedula, String pPassword, String pNombre, String pTipoFuncionario, 
+  public Funcionario(String pCedula, String pPassword, String pTipoUsuario, String pNombre, String pTipoFuncionario, 
           LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro) {
-    super(pCedula, pPassword);
+    super(pCedula, pPassword, pTipoUsuario);
     this.nombre = pNombre;
     this.tipoFuncionario = pTipoFuncionario;
     this.fechaIngreso = pFechaIngreso;

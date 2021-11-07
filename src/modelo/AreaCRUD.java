@@ -75,6 +75,32 @@ public class AreaCRUD extends Conexion{
       rs = ps.executeQuery();
       
       while(rs.next()){
+        area.setIdArea(rs.getInt("id_area"));
+        area.setNombreArea(rs.getString("nombre"));
+      }
+      return area;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    }
+  }
+  
+  public Area buscarArea(int pIdArea){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Area area = new Area();
+    
+    String sql = "SELECT * FROM area WHERE id_area = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setInt(1, pIdArea);
+      rs = ps.executeQuery();
+      
+      while(rs.next()){
+        area.setIdArea(rs.getInt("id_area"));
         area.setNombreArea(rs.getString("nombre"));
       }
       return area;

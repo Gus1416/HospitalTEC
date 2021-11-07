@@ -59,12 +59,13 @@ public class CtrlRegistroSecretario implements ActionListener{
     if (e.getSource() == this.registroSecretario.btnRegistrarSecretario){
       String cedula = registroSecretario.txtCedulaSecretario.getText();
       String password = Hash.sha1(registroSecretario.passContrasena.getText());
+      String tipoUsuario = "Funcionario";
       String nombre = registroSecretario.txtNombreSecretario.getText();
       String tipoFuncionario = "Secretario";
       LocalDate fechaIngreso = LocalDate.now();
       Area area = areaCrud.buscarArea((String)registroSecretario.cbAreas.getSelectedItem());
       CentroAtencion centro = centroCrud.buscarCentro((String)registroSecretario.cbCentroAtencion.getSelectedItem());
-      Secretario nuevoSecretario = new Secretario(cedula, password, nombre, tipoFuncionario, fechaIngreso, area, centro);
+      Secretario nuevoSecretario = new Secretario(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, centro);
       if (this.secretarioCrud.registrarSecretario(nuevoSecretario)){
         JOptionPane.showMessageDialog(null, "Nuevo secretario registrado");
         limpiar();

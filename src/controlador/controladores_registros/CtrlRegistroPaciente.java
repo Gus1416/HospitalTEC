@@ -47,6 +47,7 @@ public class CtrlRegistroPaciente implements ActionListener{
     if (e.getSource() == this.registroPaciente.btnRegistrarPaciente){
       String cedula = registroPaciente.txtCedulaPaciente.getText();
       String password = Hash.sha1(registroPaciente.passContrasena.getText());
+      String tipoUsuario = "Paciente";
       String nombre = registroPaciente.txtNombrePaciente.getText();
       LocalDate fechaNacimiento = this.registroPaciente.dcFechaNacimiento.getCalendar().getTime().toInstant().
               atZone(ZoneId.systemDefault()).toLocalDate();
@@ -54,7 +55,7 @@ public class CtrlRegistroPaciente implements ActionListener{
       String nacionalidad = this.registroPaciente.txtNacionalidad.getText();
       String residencia = this.registroPaciente.txtResidencia.getText();
       ArrayList<String> telefonos = recorrerLista();
-      Paciente nuevoPaciente = new Paciente(cedula, password, nombre, fechaNacimiento, sangre, nacionalidad,
+      Paciente nuevoPaciente = new Paciente(cedula, password, tipoUsuario, nombre, fechaNacimiento, sangre, nacionalidad,
               residencia, telefonos);
       if (pacienteCrud.registrarPaciente(nuevoPaciente) && pacienteCrud.registrarTelefonos(nuevoPaciente)) {
         JOptionPane.showMessageDialog(null, "Nuevo paciente registrado");

@@ -23,17 +23,18 @@ public class PacienteCRUD extends Conexion{
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-    String sql = "CALL registrar_paciente(?,?,?,?,?,?,?)";
+    String sql = "CALL registrar_paciente(?,?,?,?,?,?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pPaciente.getCedula());
       ps.setString(2, pPaciente.getPassword());
-      ps.setString(3, pPaciente.getNombre());
-      ps.setDate(4, Date.valueOf(pPaciente.getFechaNacimiento()));
-      ps.setString(5, pPaciente.getTipoSangre());
-      ps.setString(6, pPaciente.getNacionalidad());
-      ps.setString(7, pPaciente.getLugarResidencia());
+      ps.setString(3, pPaciente.getTipoUsuario());
+      ps.setString(4, pPaciente.getNombre());
+      ps.setDate(5, Date.valueOf(pPaciente.getFechaNacimiento()));
+      ps.setString(6, pPaciente.getTipoSangre());
+      ps.setString(7, pPaciente.getNacionalidad());
+      ps.setString(8, pPaciente.getLugarResidencia());
       ps.execute();
       return true;
       

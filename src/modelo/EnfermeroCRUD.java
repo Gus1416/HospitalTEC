@@ -17,19 +17,20 @@ public class EnfermeroCRUD extends Conexion{
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-    String sql = "CALL registrar_enfermero(?,?,?,?,?,?,?,?,?)";
+    String sql = "CALL registrar_enfermero(?,?,?,?,?,?,?,?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pEnfermero.getCedula());
       ps.setString(2, pEnfermero.getPassword());
-      ps.setString(3, pEnfermero.getNombre());
-      ps.setString(4, pEnfermero.getTipoFuncionario());
-      ps.setDate(5, Date.valueOf(pEnfermero.getFechaIngreso()));
-      ps.setString(6, pEnfermero.getArea().getNombreArea());
-      ps.setInt(7, pEnfermero.getCentro().getId());
-      ps.setBoolean(8, pEnfermero.isPersonalCargo());
-      ps.setBoolean(9, pEnfermero.isExperienciaCapacitaciones());
+      ps.setString(3, pEnfermero.getTipoUsuario());
+      ps.setString(4, pEnfermero.getNombre());
+      ps.setString(5, pEnfermero.getTipoFuncionario());
+      ps.setDate(6, Date.valueOf(pEnfermero.getFechaIngreso()));
+      ps.setString(7, pEnfermero.getArea().getNombreArea());
+      ps.setInt(8, pEnfermero.getCentro().getId());
+      ps.setBoolean(9, pEnfermero.isPersonalCargo());
+      ps.setBoolean(10, pEnfermero.isExperienciaCapacitaciones());
       ps.execute();
       return true;
       

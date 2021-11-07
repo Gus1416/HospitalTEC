@@ -59,6 +59,7 @@ public class CtrlRegistroEnfermero implements ActionListener{
     if (e.getSource() == this.registroEnfermero.btnRegistrarEnfermero){
       String cedula = registroEnfermero.txtCedulaEnfermero.getText();
       String password = Hash.sha1(registroEnfermero.passContrasena.getText());
+      String tipoUsuario = "Funcionario";
       String nombre = registroEnfermero.txtNombreEnfermero.getText();
       String tipoFuncionario = "Enfermero";
       LocalDate fechaIngreso = LocalDate.now();
@@ -66,7 +67,7 @@ public class CtrlRegistroEnfermero implements ActionListener{
       CentroAtencion centro = centroCrud.buscarCentro((String)registroEnfermero.cbCentroAtencion.getSelectedItem());
       boolean personasACargo = this.registroEnfermero.rbOpcionSi.isSelected();
       boolean experienciaCapacitaciones = this.registroEnfermero.rbOpcionSi1.isSelected();
-      Enfermero nuevoEnfermero = new Enfermero(cedula, password, nombre, tipoFuncionario, fechaIngreso, area, 
+      Enfermero nuevoEnfermero = new Enfermero(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, 
               centro, personasACargo, experienciaCapacitaciones);
       if (this.enfermeroCrud.registrarEnfermero(nuevoEnfermero)){
         JOptionPane.showMessageDialog(null, "Nuevo enfermero registrado");

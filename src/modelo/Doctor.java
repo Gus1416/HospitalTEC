@@ -10,11 +10,13 @@ public class Doctor extends Funcionario {
 
   private int codigoMedico;
   private ArrayList especialidades;
+  
+  public Doctor(){}
 
-  public Doctor(String pCedula, String pPassword, String pNombre, String pTipoFuncionario, 
+  public Doctor(String pCedula, String pPassword, String pTipoUsuario, String pNombre, String pTipoFuncionario, 
           LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro, int pCodigoMedico, 
           ArrayList<String> pEspecialidades ) {
-    super (pCedula, pPassword, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
+    super (pCedula, pPassword, pTipoUsuario, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
     this.codigoMedico = pCodigoMedico;
     this.especialidades = pEspecialidades;
   }
@@ -49,7 +51,7 @@ public class Doctor extends Funcionario {
   /**
    * @param especialidades the especialidades to set
    */
-  public void setEspecialidades(ArrayList especialidades) {
+  public void setEspecialidades(ArrayList<String> especialidades) {
     this.especialidades = especialidades;
   }
 }

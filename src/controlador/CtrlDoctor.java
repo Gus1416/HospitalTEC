@@ -7,6 +7,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.Doctor;
 import vista.Asignar_Cita_Doctor;
 import vista.Atender_Cita_Doctor;
 import vista.Cancelar_Cita_Doctor;
@@ -18,10 +19,12 @@ import vista.ModuloDoctor;
  */
 public class CtrlDoctor implements ActionListener {
     private ModuloDoctor vistaDoc;
+    private Doctor doctor;
 
 
-    public CtrlDoctor(ModuloDoctor pVistaDoc) {
+    public CtrlDoctor(ModuloDoctor pVistaDoc, Doctor pDoctor) {
         this.vistaDoc = pVistaDoc;
+        this.doctor = pDoctor;
         this.vistaDoc.btnAsignarCita.addActionListener(this);
         this.vistaDoc.btnAtenderCita.addActionListener(this);
         this.vistaDoc.btnCancelarCita.addActionListener(this);
