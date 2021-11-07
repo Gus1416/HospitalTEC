@@ -104,14 +104,14 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
             cita.setObservacionAdicional(vistaAsignar.TFObservaciones.getText());
             cita.setEstado(EstadoCita.ASIGNADA);
       
-        if (CRUDcita.registrarCita(cita)){
-          JOptionPane.showMessageDialog(null, "Cita Registrada");
-          limpiar();
-        } else {
-          JOptionPane.showMessageDialog(null, "Error al registrar la cita");
-          limpiar();
+            if (CRUDcita.registrarCita(cita)) {
+                JOptionPane.showMessageDialog(null, "Cita Registrada");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al registrar la cita");
+                limpiar();
+            }
         }
-      }
 
         if (e.getSource() == vistaAsignar.btnVolver){
           vistaAsignar.setVisible(false);

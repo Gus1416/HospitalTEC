@@ -10,17 +10,31 @@ package modelo;
  * @author Maria Laura
  */
 public class Diagnostico {
+   private int id;
    private String nombre;
    private String nivel;
    private ArrayList observaciones;
 
+    public Diagnostico() {
+    }
+
+    
+   
+   
     public Diagnostico(String nombre, String nivel) {
         this.nombre = nombre;
         this.nivel = nivel;
         
     }
-            
-            
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+                 
             
     public String getNombre() {
         return nombre;

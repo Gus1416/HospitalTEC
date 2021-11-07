@@ -13,12 +13,25 @@ package modelo;
 public class Tratamiento {
     private String Nombre;
     private String Dosis;
+    private int Id;
 
+    public Tratamiento() {
+    } 
+    
     public Tratamiento(String Nombre, String Dosis) {
         this.Nombre = Nombre;
         this.Dosis = Dosis;
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+        
     /**
      * @return the Nombre
      */
