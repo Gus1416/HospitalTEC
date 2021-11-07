@@ -13,35 +13,43 @@ import modelo.CitasCRUD;
 import modelo.EstadoCita;
 import modelo.Paciente;
 import modelo.PacienteCRUD;
-import vista.Asignar_Cita_Doctor;
+import vista.AsignarCitaDoctor;
 
 /**
  * @author sebcor "Vencer sin peligro es ganar sin gloria"- Séneca
  */
-public class CtrlAsignarCita_Doctor implements ActionListener {
+public class CtrlAsignarCitaDoctor implements ActionListener {
   private AreaCRUD CRUDarea;
   private PacienteCRUD CRUDPaciente;
   private Citas cita;
   private CitasCRUD CRUDcita;
-  private Asignar_Cita_Doctor vistaAsignar;
+  private AsignarCitaDoctor vistaAsignar;
   
-  public CtrlAsignarCita_Doctor() {}
+  public CtrlAsignarCitaDoctor() {}
 
-  public CtrlAsignarCita_Doctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita,
-          CitasCRUD CRUDcita, Asignar_Cita_Doctor vistaAsignar) {
+  public CtrlAsignarCitaDoctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita,
+          CitasCRUD CRUDcita, AsignarCitaDoctor vistaAsignar) {
     this.CRUDarea = pAREACRUD;
     this.CRUDPaciente = CRUDPaciente;
     this.cita = cita;
     this.CRUDcita = CRUDcita;
     this.vistaAsignar = vistaAsignar;
     this.vistaAsignar.btnAsignarCita.addActionListener(this);
-    this.vistaAsignar.btnVolver.addActionListener(this);
+  }
+  
+  public CtrlAsignarCitaDoctor (AsignarCitaDoctor pAsignarCita){
+    this.vistaAsignar = pAsignarCita;
+    this.CRUDarea = new AreaCRUD();
+    this.CRUDcita = new CitasCRUD();
+    this.CRUDPaciente = new PacienteCRUD();
+    this.cita = new Citas();
+    this.vistaAsignar.btnAsignarCita.addActionListener(this);
   }
 
   public void iniciar() {
     cargarAreaEspecialidad();
     cargarPacientes();
-    vistaAsignar.setTitle("Gestor de Planes de Estudio");
+    vistaAsignar.setTitle("Asignar Cita");
     vistaAsignar.setLocationRelativeTo(null);
   }
 
@@ -95,10 +103,6 @@ public class CtrlAsignarCita_Doctor implements ActionListener {
         JOptionPane.showMessageDialog(null, "Error al registrar la cita");
         limpiar();
       }
-    }
-
-    if (e.getSource() == vistaAsignar.btnVolver){
-      vistaAsignar.setVisible(false);
     }
   }
 

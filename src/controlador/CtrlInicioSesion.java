@@ -83,6 +83,7 @@ public class CtrlInicioSesion implements ActionListener{
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error con este usuario");
             break;
         }
+        this.inicioSesion.dispose();
       } else {
         JOptionPane.showMessageDialog(null, "Cédula o contraseña incorrecta");
         limpiar();
