@@ -3,6 +3,7 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 
 /**
@@ -10,15 +11,80 @@ import java.sql.SQLException;
  * @author Gustavo
  */
 public class PacienteCRUD extends Conexion{
+  public static ArrayList<Paciente> listaPacientes = new  ArrayList<Paciente> ();
   
   public PacienteCRUD(){}
   
-  public static ArrayList<Paciente> LISTAPACIENTES = new  ArrayList<Paciente> ();
+  public static ArrayList<Paciente> getListaPacientes() {
+    return listaPacientes;
+  }
 
-    public static ArrayList<Paciente> getLISTAPACIENTES() {
-        return LISTAPACIENTES;
+  public boolean registrarPaciente(Paciente pPaciente){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "CALL registrar_paciente(?,?,?,?,?,?,?,?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pPaciente.getCedula());
+      ps.setString(2, pPaciente.getPassword());
+      ps.setString(3, pPaciente.getTipoUsuario());
+      ps.setString(4, pPaciente.getNombre());
+      ps.setDate(5, Date.valueOf(pPaciente.getFechaNacimiento()));
+      ps.setString(6, pPaciente.getTipoSangre());
+      ps.setString(7, pPaciente.getNacionalidad());
+      ps.setString(8, pPaciente.getLugarResidencia());
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
     }
-
+  }
+  
+  public boolean registrarTelefonos(Paciente pPaciente){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "INSERT INTO paciente_telefonos (cedula_paciente, telefono) VALUES " 
+            + completarQuery(pPaciente); 
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.execute();
+      return true;
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
+  
+  private String completarQuery(Paciente pPaciente) {
+    String query = "";
+    for (int i = 0; i < pPaciente.getTelefonos().size(); i++){
+      query += "(" + pPaciente.getCedula() + ", '" + pPaciente.getTelefonos().get(i) + "')";
+      if (i == pPaciente.getTelefonos().size() - 1){
+        query += ";";
+      } else {
+        query += ",";
+      }
+    }
+    return query;
+  }
 
   public ArrayList consultarPacientes(){
     PreparedStatement ps = null;
@@ -27,35 +93,29 @@ public class PacienteCRUD extends Conexion{
     ArrayList<Paciente> pacientes = new ArrayList<>();
     
     String sql = "SELECT * FROM paciente";
+    
     try{
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
       
-      while (rs.next()){
-          
+      while (rs.next()){ 
         Paciente contenedor = new Paciente();
         contenedor.setCedula(rs.getString("cedula_paciente"));
         contenedor.setNombre(rs.getString("nombre"));
-        
-        
-        System.out.println("este es el id del contenedor pa: " + contenedor.getCedula() );
-        System.out.println("este es el nombre del contenedor pa: " + contenedor.getNombre());
         pacientes.add(contenedor);
-        
-        LISTAPACIENTES.add(contenedor);
-        
+        listaPacientes.add(contenedor);
       }
       return pacientes;
       
     } catch (SQLException ex){
-      System.err.println(ex);
+      System.err.println(ex.getMessage());
       return pacientes;
       
     } finally {
       try {
         con.close();
       } catch (SQLException ex) {
-        System.err.println(ex);
+        System.err.println(ex.getMessage());
       }
     }
   }

@@ -10,8 +10,8 @@ public class Secretario extends Funcionario {
 
   public Secretario(){}
   
-  public Secretario(String pCedula, String pPassword, String pNombre, String pTipoFuncionario,
+  public Secretario(String pCedula, String pPassword, String pTipoUsuario, String pNombre, String pTipoFuncionario,
           LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro) {
-    super(pCedula, pPassword, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
+    super(pCedula, pPassword, pTipoUsuario, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
   }
 }

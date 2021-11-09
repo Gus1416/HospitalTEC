@@ -12,10 +12,10 @@ public class Enfermero extends Funcionario {
 
   public Enfermero(){}
   
-  public Enfermero(String pCedula, String pPassword, String pNombre, String pTipoFuncionario, 
+  public Enfermero(String pCedula, String pPassword, String pTipoUsuario, String pNombre, String pTipoFuncionario, 
           LocalDate pFechaIngreso, Area pArea, CentroAtencion pCentro, boolean pPersonasACargo, 
           boolean pExpCapacitaciones) {
-    super (pCedula, pPassword, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
+    super (pCedula, pPassword, pTipoUsuario, pNombre, pTipoFuncionario, pFechaIngreso, pArea, pCentro);
     this.personalCargo = pPersonasACargo;
     this.experienciaCapacitaciones = pExpCapacitaciones;
   }

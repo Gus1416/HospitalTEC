@@ -1,5 +1,6 @@
 package hospitaltec;
 
+<<<<<<< HEAD
 import controlador.CtrlAsignarCita_Doctor;
 import controlador.CtrlAtenderCita_Doctor;
 import controlador.CtrlCancelarCita_Doctor;
@@ -14,8 +15,10 @@ import modelo.TratamientoCRUD;
 import vista.Asignar_Cita_Doctor;
 import vista.Atender_Cita_Doctor;
 import vista.Cancelar_Cita_Doctor;
+=======
+import controlador.CtrlInicio;
+>>>>>>> aa9273cc06811785665f0b24a6f366dbb97b2f7b
 import vista.Inicio;
-import vista.ModuloDoctor;
 
 /**
  *
@@ -23,11 +26,19 @@ import vista.ModuloDoctor;
  */
 public class HospitalTEC {
 
+<<<<<<< HEAD
     public static void main(String[] args) {
 //    Inicio inicio = new Inicio();
 //    CtrlInicio ctrlInicio = new CtrlInicio(inicio);
 //    ctrlInicio.iniciar();
 //    inicio.setVisible(true);
+=======
+  public static void main(String[] args) {
+    Inicio inicio = new Inicio();
+    CtrlInicio ctrlInicio = new CtrlInicio(inicio);
+    ctrlInicio.iniciar();
+    inicio.setVisible(true);
+>>>>>>> aa9273cc06811785665f0b24a6f366dbb97b2f7b
 //    
 //    ModuloDoctor doc = new ModuloDoctor();
 //    CtrlDoctor ctrlDoctor = new CtrlDoctor(doc);
@@ -55,6 +66,7 @@ public class HospitalTEC {
 
 
 
+<<<<<<< HEAD
         CitasCRUD CRUDcita = new CitasCRUD();
         TratamientoCRUD CRUDtratamiento = new TratamientoCRUD();
         PacienteCRUD CRUDPaciente = new PacienteCRUD();
@@ -68,3 +80,16 @@ public class HospitalTEC {
     }
 
 }
+=======
+        
+      /*  Cancelar_Cita_Doctor cancelarcita = new Cancelar_Cita_Doctor();
+        PacienteCRUD CRUDPaciente = new PacienteCRUD();
+        Citas cita = new Citas() ;
+        CitasCRUD CRUDcita = new CitasCRUD();
+        
+        CtrlCancelarCita_Doctor ctrlcancelar = new CtrlCancelarCita_Doctor(CRUDPaciente,cita,CRUDcita,cancelarcita);
+        ctrlcancelar.iniciar();
+        cancelarcita.setVisible(true);*/
+        }
+   }
+>>>>>>> aa9273cc06811785665f0b24a6f366dbb97b2f7b

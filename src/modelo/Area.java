@@ -6,24 +6,25 @@ package modelo;
  */
 public class Area {
   private String nombreArea;
-  private int iDArea;
+  private int idArea;
 
-    public Area(String nombreArea, int iDArea) {
-        this.nombreArea = nombreArea;
-        this.iDArea = iDArea;
-    }
- 
-    public Area(){}
+  public Area() {
+  }
 
-    public int getiDArea() {
-        return iDArea;
-    }
-    
-    public void setiDArea(int iDArea) {
-        this.iDArea = iDArea;
-    }
-    
-  public Area(String pNombreArea){
+  public Area(String pNombreArea, int pIdArea) {
+    this.nombreArea = pNombreArea;
+    this.idArea = pIdArea;
+  }
+
+  public int getIdArea() {
+    return idArea;
+  }
+
+  public void setIdArea(int idArea) {
+    this.idArea = idArea;
+  }
+
+  public Area(String pNombreArea) {
     this.nombreArea = pNombreArea;
   }
 
@@ -39,5 +40,5 @@ public class Area {
    */
   public void setNombreArea(String nombreArea) {
     this.nombreArea = nombreArea;
-  }  
+  }
 }

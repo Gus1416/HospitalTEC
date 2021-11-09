@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.time.LocalDate;
@@ -24,6 +19,9 @@ public class Citas {
     private String cedulaPaciente;
     private Date auxdate;
 
+    public Citas() {
+    }
+    
     public Citas(int iDCita, int iDArea, String especialidad, LocalDate fechaCita, String observacionAdicional, EstadoCita Estado, String cedulaPaciente) {
         this.iDCita = iDCita;
         this.iDArea = iDArea;
@@ -44,11 +42,6 @@ public class Citas {
 
     public void setAuxdate(Date auxdate) {
         this.auxdate = auxdate;
-    }
-
-
-
-    public Citas() {
     }
 
     public String getCedulaPaciente() {

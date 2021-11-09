@@ -26,22 +26,19 @@ public class AreaCRUD extends Conexion{
     ArrayList<Area> areas = new ArrayList<>();
     
     String sql = "SELECT * FROM area";
+    
     try{
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
-      
       
       while (rs.next()){
           
         Area contenedor = new Area(rs.getString("nombre"),rs.getInt("id_area"));  
           
-          
         Area area = new Area();
         area.setNombreArea(rs.getString("nombre"));
-        area.setiDArea(rs.getInt("id_area"));
+        area.setIdArea(rs.getInt("id_area"));
         areas.add(area);
-        
-        System.out.println("Estos son los nombres de las áreas que tiene la lista" + area.getNombreArea());
         
         LISTAAREAS.add(contenedor);
         
@@ -58,6 +55,56 @@ public class AreaCRUD extends Conexion{
       } catch (SQLException ex) {
         System.err.println(ex);
       }
+    }
+  }
+  
+  public Area buscarArea(String pNombreArea){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Area area = new Area();
+    
+    String sql = "SELECT * FROM area WHERE nombre = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pNombreArea);
+      rs = ps.executeQuery();
+      
+      while(rs.next()){
+        area.setIdArea(rs.getInt("id_area"));
+        area.setNombreArea(rs.getString("nombre"));
+      }
+      return area;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    }
+  }
+  
+  public Area buscarArea(int pIdArea){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Area area = new Area();
+    
+    String sql = "SELECT * FROM area WHERE id_area = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setInt(1, pIdArea);
+      rs = ps.executeQuery();
+      
+      while(rs.next()){
+        area.setIdArea(rs.getInt("id_area"));
+        area.setNombreArea(rs.getString("nombre"));
+      }
+      return area;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
     }
   }
 }
