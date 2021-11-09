@@ -52,6 +52,7 @@ public class Atender_Cita_Doctor extends javax.swing.JFrame {
         btnCargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel1.setText("Atender Cita Médica ");
