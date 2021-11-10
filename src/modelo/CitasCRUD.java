@@ -19,7 +19,7 @@ import java.time.ZoneId;
 public class CitasCRUD extends Conexion {
     
 
-    public boolean registrarCita(Citas cita){
+    public boolean registrarCita(Citas cita , int codigoMed){
     PreparedStatement ps = null;
     Connection con = getConexion();
     
@@ -31,6 +31,7 @@ public class CitasCRUD extends Conexion {
           ps.setString(3,cita.getObservacionAdicional());
           ps.setString(4,cita.getEstado().toString());
           ps.setString(5,cita.getCedulaPaciente());
+          ps.setInt(6, codigoMed);
           ps.execute();
           return true;
 
