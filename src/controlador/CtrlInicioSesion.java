@@ -8,10 +8,14 @@ import modelo.DoctorCRUD;
 import modelo.Funcionario;
 import modelo.FuncionarioCRUD;
 import modelo.Hash;
+import modelo.Secretario;
+import modelo.SecretarioCRUD;
 import modelo.Usuario;
 import modelo.UsuarioCRUD;
 import vista.InicioSesion;
+import vista.ModuloAdministrador;
 import vista.ModuloDoctor;
+import vista.ModuloSecretario;
 
 /**
  *
@@ -22,12 +26,14 @@ public class CtrlInicioSesion implements ActionListener{
   private UsuarioCRUD usuarioCrud;
   private FuncionarioCRUD funcionarioCrud;
   private DoctorCRUD doctorCrud;
+  private SecretarioCRUD secretarioCrud;
   
   public CtrlInicioSesion(InicioSesion pInicioSesion){
     this.inicioSesion = pInicioSesion;
     this.usuarioCrud = new UsuarioCRUD();
     this.funcionarioCrud = new FuncionarioCRUD();
     this.doctorCrud = new DoctorCRUD();
+    this.secretarioCrud = new SecretarioCRUD();
     this.inicioSesion.btnIngresar.addActionListener(this);
   }
   
@@ -50,6 +56,13 @@ public class CtrlInicioSesion implements ActionListener{
             Funcionario funcionario = funcionarioCrud.buscarFuncionario(usuario.getCedula());
             
             switch (funcionario.getTipoFuncionario()){
+              case "Administrador":
+                ModuloAdministrador moduloAdmin = new ModuloAdministrador();
+                CtrlModuloAdministrador ctrlModuloAdmin = new CtrlModuloAdministrador(moduloAdmin);
+                ctrlModuloAdmin.iniciar();
+                moduloAdmin.setVisible(true);
+                break;
+                
               case "Doctor":
                 ModuloDoctor moduloDoctor = new ModuloDoctor();
                 Doctor doctor = doctorCrud.buscarDoctor(usuario.getCedula());
@@ -59,13 +72,14 @@ public class CtrlInicioSesion implements ActionListener{
                 break;
                 
               case "Enfermero":
-                System.out.println("Módulo de enfermeros");
-                //Abre módulo de enfermeros
                 break;
                 
               case "Secretario":
-                System.out.println("Módulo de secretarios");
-                //Abre módulo de secretarios
+                ModuloSecretario moduloSecretario = new ModuloSecretario();
+                Secretario secretario = secretarioCrud.buscarSecretario(cedula);
+                CtrlSecretario ctrlSecretario = new CtrlSecretario(moduloSecretario, secretario);
+                ctrlSecretario.iniciar();
+                moduloSecretario.setVisible(true);
                 break;
                 
               default:

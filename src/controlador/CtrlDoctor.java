@@ -21,7 +21,6 @@ public class CtrlDoctor implements ActionListener {
     private ModuloDoctor vistaDoc;
     private Doctor doctor;
 
-
     public CtrlDoctor(ModuloDoctor pVistaDoc, Doctor pDoctor) {
         this.vistaDoc = pVistaDoc;
         this.doctor = pDoctor;
@@ -29,7 +28,6 @@ public class CtrlDoctor implements ActionListener {
         this.vistaDoc.btnAtenderCita.addActionListener(this);
         this.vistaDoc.btnCancelarCita.addActionListener(this);
         this.vistaDoc.btnConsultasDoctor.addActionListener(this);
-        
     }
 
     public void iniciar(){  

@@ -88,7 +88,8 @@ public class DoctorCRUD extends Conexion{
     Connection con = getConexion();
     Doctor doctor = new Doctor();
     
-    String sql = "SELECT * FROM doctor INNER JOIN funcionario INNER JOIN funcionario_centro_atencion WHERE funcionario.cedula_funcionario = ?";
+    String sql = "SELECT * FROM doctor INNER JOIN funcionario INNER JOIN funcionario_centro_atencion "
+            + "WHERE funcionario.cedula_funcionario = ?";
     
     try{
       ps = con.prepareStatement(sql);
