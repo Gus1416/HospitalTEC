@@ -40,15 +40,15 @@ public class CtrlSecretario implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e){
- 
-        if (e.getSource() == vistaSecre.btnAsignarCita){
-            AsignarCitaDoctor asignar = new AsignarCitaDoctor();
-            CtrlAsignarCitaDoctor ctrlAsignacionCita = new CtrlAsignarCitaDoctor(asignar);
-            ctrlAsignacionCita.iniciar();
-            asignar.setVisible(true);
-        }
 
-      
+//        if (e.getSource() == vistaSecre.btnAsignarCita){
+//            AsignarCitaDoctor asignar = new AsignarCitaDoctor();
+//            CtrlAsignarCita_Doctor ctrlAsignacionCita = new CtrlAsignarCita_Doctor(asignar);
+//            ctrlAsignacionCita.iniciar();
+//            asignar.setVisible(true);
+//        }
+
+     
 
         if (e.getSource() == vistaSecre.btnCancelarCita){
             Cancelar_Cita_Doctor cancelar = new Cancelar_Cita_Doctor();

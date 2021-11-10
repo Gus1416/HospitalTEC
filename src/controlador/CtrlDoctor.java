@@ -54,7 +54,7 @@ public class CtrlDoctor implements ActionListener {
             Citas cita = new Citas ();
             CitasCRUD CRUDcita = new CitasCRUD();
             
-            CtrlAsignarCitaDoctor ctrlAsignacionCita = new CtrlAsignarCitaDoctor(CRUDarea,CRUDPaciente,
+            CtrlAsignarCita_Doctor ctrlAsignacionCita = new CtrlAsignarCita_Doctor(CRUDarea,CRUDPaciente,
             cita, CRUDcita,asignar);
             ctrlAsignacionCita.iniciar();
             asignar.setVisible(true);

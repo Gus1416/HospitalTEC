@@ -13,6 +13,7 @@ import modelo.CentroAtencion;
 import modelo.CentroAtencionCRUD;
 import modelo.Doctor;
 import modelo.DoctorCRUD;
+import modelo.Funcionario;
 import modelo.Hash;
 import vista.registros.RegistroDoctor;
 
@@ -26,6 +27,8 @@ public class CtrlRegistroDoctor implements ActionListener {
   private CentroAtencionCRUD centroCrud;
   private DoctorCRUD doctorCrud;
   private DefaultListModel modelo;
+  
+  public static ArrayList<Doctor> auxFuncionario= new ArrayList <Doctor>();
   
   public CtrlRegistroDoctor(RegistroDoctor pRegistroDoctor){
     this.registroDoctor = pRegistroDoctor;
@@ -81,6 +84,7 @@ public class CtrlRegistroDoctor implements ActionListener {
       ArrayList<String> especialidades = recorrerLista();
       Doctor nuevoDoctor = new Doctor(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, 
               centro, codigoMedico, especialidades);
+             auxFuncionario.add(nuevoDoctor);
       if (doctorCrud.registrarDoctor(nuevoDoctor) && doctorCrud.registrarEspecialidades(nuevoDoctor)){
         JOptionPane.showMessageDialog(null, "Nuevo doctor registrado");
         limpiar();
@@ -89,6 +93,10 @@ public class CtrlRegistroDoctor implements ActionListener {
       }
     }
   }
+
+    public  ArrayList<Doctor> getAuxFuncionario() {
+        return auxFuncionario;
+    }
   
   private ArrayList<String> recorrerLista(){
     ArrayList<String> especialidades = new ArrayList<>();

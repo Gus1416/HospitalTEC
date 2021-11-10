@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import modelo.ArrayList;
 import modelo.Doctor;
 import modelo.DoctorCRUD;
 import modelo.Funcionario;
@@ -22,6 +23,8 @@ public class CtrlInicioSesion implements ActionListener{
   private UsuarioCRUD usuarioCrud;
   private FuncionarioCRUD funcionarioCrud;
   private DoctorCRUD doctorCrud;
+  
+  private static ArrayList<Funcionario> tempUser= new ArrayList<Funcionario>();
   
   public CtrlInicioSesion(InicioSesion pInicioSesion){
     this.inicioSesion = pInicioSesion;
@@ -53,6 +56,7 @@ public class CtrlInicioSesion implements ActionListener{
               case "Doctor":
                 ModuloDoctor moduloDoctor = new ModuloDoctor();
                 Doctor doctor = doctorCrud.buscarDoctor(usuario.getCedula());
+                tempUser.add(doctor);
                 CtrlDoctor ctrlDoctor = new CtrlDoctor(moduloDoctor, doctor);
                 ctrlDoctor.iniciar();
                 moduloDoctor.setVisible(true);
