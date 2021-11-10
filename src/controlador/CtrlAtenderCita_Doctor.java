@@ -40,10 +40,12 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
         this.vistatender.btnCargar.addActionListener(this);
         this.vistatender.btnCargarTrata.addActionListener(this);
         this.vistatender.btnAsignarTrata.addActionListener(this);
+        this.vistatender.btnFinalizar.addActionListener(this);
     }
 
     public void iniciar() {
         cargarPacientes();
+        //cargarDiagnosticos();
         vistatender.setTitle("Gestor de Planes de Estudio");
         vistatender.setLocationRelativeTo(null);
     }
@@ -63,7 +65,6 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
 
     public void cargarTratamientos(String Nombre) {      // Llenar los CB de Pacientes
-        vistatender.TFObservaciones.setText(null);
         vistatender.CBTratamiento.removeAllItems();
         ArrayList<Tratamiento> tratamientos = CRUDTratamiento.consultarTratamientos(Nombre);
         for (int i = 0; i < tratamientos.size(); i++) {
@@ -118,16 +119,21 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
             if (CRUDTratamiento.registrarAtencion(nombrePaciente, IDCITA, nombreDiagnostico,
                     lvl, Observacion, Tratamiento, DOSIS, TipoTratamiento)) {
                 JOptionPane.showMessageDialog(null, "Tratamiento y diagnostico registrados correctamente");
+                
                 //limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al registrar los datos");
                 //limpiar();
             }
         }
-
-        if (e.getSource() == vistatender.btnVolver) {
+        
+        if (e.getSource() == vistatender.btnFinalizar){
             vistatender.setVisible(false);
+            
         }
+        
+        
+
 
     }
 

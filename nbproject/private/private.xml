@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/vista/Atender_Cita_Doctor.java</file>
+            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/controlador/CtrlInicioSesion.java</file>
+            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/controlador/CtrlDoctor.java</file>
             <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/hospitaltec/HospitalTEC.java</file>
-=======
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/Atender_Cita_Doctor.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/AsignarCitaDoctor.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/registros/RegistroDoctor.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlDoctor.java</file>
->>>>>>> aa9273cc06811785665f0b24a6f366dbb97b2f7b
         </group>
     </open-files>
 </project-private>

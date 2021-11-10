@@ -19,7 +19,7 @@ import modelo.CitasCRUD;
 import modelo.EstadoCita;
 import modelo.Paciente;
 import modelo.PacienteCRUD;
-import vista.Asignar_Cita_Doctor;
+import vista.AsignarCitaDoctor;
 
 /**
  *
@@ -32,17 +32,17 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
     private  PacienteCRUD CRUDPaciente;
     private Citas cita;
     private  CitasCRUD CRUDcita;
-    private Asignar_Cita_Doctor vistaAsignar;
+    private AsignarCitaDoctor vistaAsignar;
 
 
-    public CtrlAsignarCita_Doctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita, CitasCRUD CRUDcita, Asignar_Cita_Doctor vistaAsignar) {
+    public CtrlAsignarCita_Doctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita, CitasCRUD CRUDcita, AsignarCitaDoctor vistaAsignar) {
         this.CRUDarea = pAREACRUD;
         this.CRUDPaciente = CRUDPaciente;
         this.cita = cita;
         this.CRUDcita = CRUDcita;
         this.vistaAsignar = vistaAsignar;
         this.vistaAsignar.btnAsignarCita.addActionListener(this);
-        this.vistaAsignar.btnVolver.addActionListener(this);
+
     }
     
     public CtrlAsignarCita_Doctor() {
@@ -85,7 +85,7 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
             ArrayList<Area> areas = CRUDarea.consultarAreas();
             for (int i = 0; i < areas.size(); i++) {
                 if(areas.get(i).getNombreArea().matches(nombreArea) == true){
-                 IDAREA= areas.get(i).getiDArea();
+                 IDAREA= areas.get(i).getIdArea();
                 }
             }
             
@@ -113,9 +113,6 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
             }
         }
 
-        if (e.getSource() == vistaAsignar.btnVolver){
-          vistaAsignar.setVisible(false);
-        }
         
   }
     

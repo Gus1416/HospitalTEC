@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.sql.Date;
 
 /**
  *
@@ -71,13 +75,16 @@ public class TratamientoCRUD extends Conexion{
     
     
   public boolean registrarAtencion(String Paciente,int Cita, String Diagnostico, String Nivel,String Observaciones
-          , String Tratamiento,int Dosis, String TipoTratamiento  ){
+          , String Tratamiento,int Dosis, String TipoTratamiento){
       
       
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-        String sql = "CALL registrar_atencion(?,?,?,?,?,?,?,?)";
+        LocalDate now= LocalDate.now();
+        Date pdate = Date.valueOf(now);
+    
+        String sql = "CALL registrar_atencion(?,?,?,?,?,?,?,?,?)";
         try{
           ps = con.prepareStatement(sql);
           ps.setString(1,Paciente);
@@ -88,6 +95,7 @@ public class TratamientoCRUD extends Conexion{
           ps.setString(6,Tratamiento);
           ps.setInt(7, Dosis);
           ps.setString(8, TipoTratamiento);
+          ps.setDate(9, pdate);
           ps.execute();
           return true;
 
