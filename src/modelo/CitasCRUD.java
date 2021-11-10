@@ -78,7 +78,7 @@ public class CitasCRUD extends Conexion {
     
 
     
-     public ArrayList consultarCitas(String cedula){
+    public ArrayList consultarCitas(String cedula){
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
@@ -105,7 +105,7 @@ public class CitasCRUD extends Conexion {
         
         
         citas.add(cita);
-        
+          System.out.println("");
         
       }
       return citas;
