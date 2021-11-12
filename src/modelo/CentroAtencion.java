@@ -11,8 +11,7 @@ public class CentroAtencion {
   private int capacidadPacientes;
   private String tipo;
 
-  public CentroAtencion(int pId, String pNombre, String pLugar, int pCapacidadPacientes, String pTipo) {
-    this.id = pId;
+  public CentroAtencion(String pNombre, String pLugar, int pCapacidadPacientes, String pTipo) {
     this.nombre = pNombre;
     this.lugar = pLugar;
     this.capacidadPacientes = pCapacidadPacientes;

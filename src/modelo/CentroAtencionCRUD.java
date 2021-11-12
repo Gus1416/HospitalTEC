@@ -13,6 +13,35 @@ public class CentroAtencionCRUD extends Conexion {
   
   public CentroAtencionCRUD(){}
   
+  public boolean registrarCentro(CentroAtencion pCentro){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "CALL registrar_centro(?,?,?,?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCentro.getNombre());
+      ps.setString(2, pCentro.getLugar());
+      ps.setInt(3, pCentro.getCapacidadPacientes());
+      ps.setString(4, pCentro.getTipo());
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+      
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+        return false;
+      }
+    }
+  }
+  
   public ArrayList<CentroAtencion> consultarCentros(){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -105,5 +134,6 @@ public class CentroAtencionCRUD extends Conexion {
     }
   }  
     
+  
   
 }
