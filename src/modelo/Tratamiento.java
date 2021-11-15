@@ -1,52 +1,58 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 /**
  *
  * @author sebcor
  */
-
 public class Tratamiento {
-    private String Nombre;
-    private String Dosis;
+  private int id;
+  private String nombre;
+  private int dosis;
+  private String tipo;
+  
+  public Tratamiento(){}
 
-    public Tratamiento(String Nombre, String Dosis) {
-        this.Nombre = Nombre;
-        this.Dosis = Dosis;
-    }
+  public Tratamiento(String pNombre, int pDosis, String pTipo) {
+    this.nombre = pNombre;
+    this.dosis = pDosis;
+    this.tipo = pTipo;
+  }
 
-    /**
-     * @return the Nombre
-     */
-    public String getNombre() {
-        return Nombre;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
+  
+  public int getId() {
+    return id;
+  }
 
-    /**
-     * @param Nombre the Nombre to set
-     */
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
+  public String getTipo() {
+    return tipo;
+  }
 
-    /**
-     * @return the Dosis
-     */
-    public String getDosis() {
-        return Dosis;
-    }
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
 
-    /**
-     * @param Dosis the Dosis to set
-     */
-    public void setDosis(String Dosis) {
-        this.Dosis = Dosis;
-    }
-    
-    
-    
+  /**
+   * @return the nombre
+   */
+  public String getNombre() {
+    return nombre;
+  }
+
+  /**
+   * @param Nombre the nombre to set
+   */
+  public void setNombre(String Nombre) {
+    this.nombre = Nombre;
+  }
+
+  public int getDosis() {
+    return dosis;
+  }
+
+  public void setDosis(int dosis) {
+    this.dosis = dosis;
+  }
 }
