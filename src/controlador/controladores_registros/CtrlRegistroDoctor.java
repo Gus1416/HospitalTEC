@@ -33,6 +33,9 @@ public class CtrlRegistroDoctor implements ActionListener {
     public ArrayList<Doctor> getAuxFuncionario() {
         return auxFuncionario;
     }
+
+    public CtrlRegistroDoctor() {
+    }
   
   public CtrlRegistroDoctor(RegistroDoctor pRegistroDoctor){
     this.registroDoctor = pRegistroDoctor;
@@ -89,7 +92,12 @@ public class CtrlRegistroDoctor implements ActionListener {
       Doctor nuevoDoctor = new Doctor(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, 
               centro, codigoMedico, especialidades);
       
-      auxFuncionario.add(nuevoDoctor);
+      Doctor auxDoc=doctorCrud.buscarDoctor(cedula);
+      
+      auxFuncionario.add(auxDoc);
+      System.out.println("After add: " + auxFuncionario.size());
+      
+      
       
       
       

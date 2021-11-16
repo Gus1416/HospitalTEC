@@ -18,6 +18,7 @@ public class CitasCRUD extends Conexion {
 
     String sql = "CALL registrar_cita(?,?,?,?,?)";
     
+
     try{
       ps = con.prepareStatement(sql);
       ps.setInt(1, cita.getiDArea());

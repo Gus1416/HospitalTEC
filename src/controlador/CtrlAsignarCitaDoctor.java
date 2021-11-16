@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.controladores_registros.CtrlRegistroDoctor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.ZoneId;
@@ -24,8 +25,11 @@ public class CtrlAsignarCitaDoctor implements ActionListener {
   private Citas cita;
   private CitasCRUD CRUDcita;
   private AsignarCitaDoctor vistaAsignar;
+  private CtrlRegistroDoctor ctrldoc;
   
   public CtrlAsignarCitaDoctor() {}
+  
+  
 
   public CtrlAsignarCitaDoctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita,
           CitasCRUD CRUDcita, AsignarCitaDoctor vistaAsignar) {
@@ -96,6 +100,8 @@ public class CtrlAsignarCitaDoctor implements ActionListener {
       cita.setCedulaPaciente(cedulaPaciente);   // Implementar método para traerlo de lista de pacientes  
       cita.setObservacionAdicional(vistaAsignar.TFObservaciones.getText());
       cita.setEstado(EstadoCita.ASIGNADA);
+      
+      //if (CRUDcita.registrarCita(cita, ctrldoc.getAuxFuncionario().get(0).getCodigoMedico())){
       if (CRUDcita.registrarCita(cita)){
         JOptionPane.showMessageDialog(null, "Cita Registrada");
         limpiar();
