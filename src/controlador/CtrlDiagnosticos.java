@@ -18,11 +18,13 @@ import vista.CatalogoDiagnosticos;
  */
 public class CtrlDiagnosticos implements ActionListener{
   private CatalogoDiagnosticos vistaDiagnosticos;
+  private DefaultListModel modeloLista;
   private DiagnosticoCRUD diagnosticoCrud;
   private TratamientoCRUD tratamientoCrud;
   
   public CtrlDiagnosticos (CatalogoDiagnosticos pDiagnosticos){
     this.vistaDiagnosticos = pDiagnosticos;
+    this.modeloLista = new DefaultListModel();
     this.diagnosticoCrud = new DiagnosticoCRUD();
     this.tratamientoCrud = new TratamientoCRUD();
     this.vistaDiagnosticos.btnVerTratamientosAsociados.addActionListener(this);
@@ -34,7 +36,7 @@ public class CtrlDiagnosticos implements ActionListener{
     this.vistaDiagnosticos.setLocationRelativeTo(null);
   }
   
-    private void cargarDiagnosticos(){
+  private void cargarDiagnosticos(){
     ArrayList<Object[]> diagnosticos = crearFilas(this.diagnosticoCrud.consultarDiagnosticos());
     DefaultTableModel modelo = new DefaultTableModel();
     this.vistaDiagnosticos.tbDiagnosticosRegistrados.setModel(modelo);
@@ -46,6 +48,11 @@ public class CtrlDiagnosticos implements ActionListener{
       modelo.addRow(diagnosticos.get(i));
     }
   }
+    
+//  private void cargarTratamientos(){
+//    ArrayList<Tratamiento> tratamientos = tratamientoCrud.consultarTratamientos();
+//    for (int i = 0; i < tratamientos.size(); i++)
+//  }
   
   private ArrayList<Object[]> crearFilas(ArrayList<Diagnostico> pTratamientos){
     ArrayList<Object[]> filas = new ArrayList();
@@ -73,6 +80,10 @@ public class CtrlDiagnosticos implements ActionListener{
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == this.vistaDiagnosticos.btnAgregarTratamientos){
+      //String tratamiento = this.vistaDiagnosticos.
+    }
+    
     if (e.getSource() == this.vistaDiagnosticos.btnVerTratamientosAsociados){
       DefaultTableModel tm = (DefaultTableModel) this.vistaDiagnosticos.tbDiagnosticosRegistrados.getModel();
       String idDiagnostico = String.valueOf(tm.getValueAt(this.vistaDiagnosticos.tbDiagnosticosRegistrados.getSelectedRow(), 0));
