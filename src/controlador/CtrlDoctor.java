@@ -7,7 +7,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.AreaCRUD;
+import modelo.Citas;
+import modelo.CitasCRUD;
+import modelo.DiagnosticoCRUD;
 import modelo.Doctor;
+import modelo.PacienteCRUD;
+import modelo.TratamientoCRUD;
+import controlador.CtrlInicioSesion;
+import controlador.CtrlAsignarCita_Doctor;
 import vista.AsignarCitaDoctor;
 import vista.Atender_Cita_Doctor;
 import vista.Cancelar_Cita_Doctor;
@@ -41,18 +49,39 @@ public class CtrlDoctor implements ActionListener {
  
         if (e.getSource() == vistaDoc.btnAsignarCita){
             AsignarCitaDoctor asignar = new AsignarCitaDoctor();
-            CtrlAsignarCitaDoctor ctrlAsignacionCita = new CtrlAsignarCitaDoctor(asignar);
+            AreaCRUD CRUDarea = new AreaCRUD();
+            PacienteCRUD CRUDPaciente = new PacienteCRUD();
+            Citas cita = new Citas ();
+            CitasCRUD CRUDcita = new CitasCRUD();
+            
+            
+            CtrlAsignarCita_Doctor ctrlAsignacionCita = new CtrlAsignarCita_Doctor(CRUDarea,CRUDPaciente,
+            cita, CRUDcita,asignar);
             ctrlAsignacionCita.iniciar();
             asignar.setVisible(true);
         }
 
         if (e.getSource() == vistaDoc.btnAtenderCita){
             Atender_Cita_Doctor atender = new Atender_Cita_Doctor();
+            TratamientoCRUD CRUDTratamiento = new TratamientoCRUD();
+            PacienteCRUD CRUDPaciente = new PacienteCRUD ();       
+            DiagnosticoCRUD CRUDDiagnostico = new  DiagnosticoCRUD(); 
+            CitasCRUD CRUDcita = new CitasCRUD();
+            
+            CtrlAtenderCita_Doctor ctrlAtenderCita = new CtrlAtenderCita_Doctor(CRUDTratamiento,CRUDPaciente,
+            CRUDDiagnostico,atender,CRUDcita);
+            ctrlAtenderCita.iniciar();
             atender.setVisible(true);
+            
         }
 
         if (e.getSource() == vistaDoc.btnCancelarCita){
             Cancelar_Cita_Doctor cancelar = new Cancelar_Cita_Doctor();
+            PacienteCRUD CRUDPaciente = new PacienteCRUD();
+            Citas cita = new  Citas ();
+            CitasCRUD CRUDcita = new CitasCRUD();
+            CtrlCancelarCita_Doctor ctrlCancelarCita = new CtrlCancelarCita_Doctor(CRUDPaciente,cita,CRUDcita,cancelar); 
+            ctrlCancelarCita.iniciar();
             cancelar.setVisible(true);
         }
 
