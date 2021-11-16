@@ -34,9 +34,6 @@ public class CtrlRegistroDoctor implements ActionListener {
         return auxFuncionario;
     }
   
-  
-  
-  
   public CtrlRegistroDoctor(RegistroDoctor pRegistroDoctor){
     this.registroDoctor = pRegistroDoctor;
     this.areaCrud = new AreaCRUD();
