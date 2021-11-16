@@ -94,7 +94,7 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
         System.out.println("ALOOOOO");
         for (int i = 0; i < diagnosticosT.size(); i++) {
             System.out.println("Este es el size de la lista de diagnosticos: " + diagnosticosT.size());
-            this.internar.CBDiagnosticosPaciente.addItem(diagnosticosT.get(i).getNombre());
+            this.internar.CBDiagnoPaciente.addItem(diagnosticosT.get(i).getNombre());
         }
     }
     
@@ -181,19 +181,26 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
             
         }
         
+        
+        
+        
         if (e.getSource() == vistatender.btnHospitalizar){
-            cargarAreas();
-            cargarCentros();
-            DiagnosticosPaciente();
-            internar.TFNombrePaciente.setText(vistatender.CBPaciente.getSelectedItem().toString());
-           
-                      
+            
             ArrayList<Paciente> pacientes = CRUDPaciente.consultarPacientes();
             for (int i = 0; i < pacientes.size(); i++) {
             if(pacientes.get(i).getNombre().equals(vistatender.CBPaciente.getSelectedItem().toString()) == true){
                 internar.TFIdentificacion.setText(pacientes.get(i).getCedula()); 
                 }
             }
+            
+            cargarAreas();
+            cargarCentros();
+            DiagnosticosPaciente();
+
+            
+            internar.TFNombrePaciente.setText(vistatender.CBPaciente.getSelectedItem().toString());
+                    
+            
             
             
             Doctor auxDoc=doctorCrud.buscarDoctor(session.getCedula());
@@ -209,6 +216,13 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
             
 
         }
+        
+        
+        
+        
+        
+        
+        
             
             
     }

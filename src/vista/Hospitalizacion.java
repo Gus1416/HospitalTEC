@@ -37,7 +37,7 @@ public class Hospitalizacion extends javax.swing.JFrame {
         CBServicioMed = new javax.swing.JComboBox<>();
         TFIdentificacion = new javax.swing.JTextField();
         TFNombrePaciente = new javax.swing.JTextField();
-        CBDiagnosticosPaciente = new javax.swing.JComboBox<>();
+        CBDiagnoPaciente = new javax.swing.JComboBox<>();
         TFDoctor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +68,7 @@ public class Hospitalizacion extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CBDiagnosticosPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CBDiagnoPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 1, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +101,7 @@ public class Hospitalizacion extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(CBDiagnosticosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CBDiagnoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -153,7 +153,7 @@ public class Hospitalizacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> CBCentroAtencion;
-    public javax.swing.JComboBox<String> CBDiagnosticosPaciente;
+    public javax.swing.JComboBox<String> CBDiagnoPaciente;
     public javax.swing.JComboBox<String> CBServicioMed;
     public javax.swing.JTextField TFDoctor;
     public javax.swing.JTextField TFIdentificacion;
