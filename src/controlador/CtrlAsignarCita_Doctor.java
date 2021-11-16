@@ -34,14 +34,15 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
     private Citas cita;
     private  CitasCRUD CRUDcita;
     private AsignarCitaDoctor vistaAsignar;
-    
     private  CtrlRegistroDoctor auxMed;
 
-    public CtrlAsignarCita_Doctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita, CitasCRUD CRUDcita, AsignarCitaDoctor vistaAsignar) {
+    public CtrlAsignarCita_Doctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita, CitasCRUD CRUDcita, AsignarCitaDoctor vistaAsignar,
+            CtrlRegistroDoctor auxMed) {
         this.CRUDarea = pAREACRUD;
         this.CRUDPaciente = CRUDPaciente;
         this.cita = cita;
         this.CRUDcita = CRUDcita;
+        this.auxMed = auxMed;
         this.vistaAsignar = vistaAsignar;
         this.vistaAsignar.btnAsignarCita.addActionListener(this);
 
