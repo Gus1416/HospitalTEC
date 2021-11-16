@@ -73,4 +73,40 @@ public class TratamientoCRUD extends Conexion{
       }
     }
   }
+  
+  public ArrayList<Tratamiento> consultarTratamientos(int pIdDiagnostico){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+    
+    String sql = "CALL consultar_tratamientos(?)";
+    
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setInt(1, pIdDiagnostico);
+      rs = ps.executeQuery();
+      
+      while (rs.next()){
+        Tratamiento tratamiento = new Tratamiento();
+        tratamiento.setId(rs.getInt("id_tratamiento"));
+        tratamiento.setNombre(rs.getString("nombre"));
+        tratamiento.setDosis(rs.getInt("cantidad_dosis"));
+        tratamiento.setTipo(rs.getString("tipo"));
+        tratamientos.add(tratamiento);
+      }
+      return tratamientos;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+      
+    } finally {
+      try {
+        con.close();
+      } catch(SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
 }

@@ -4,10 +4,10 @@ import controlador.controladores_registros.CtrlRegistroDoctor;
 import controlador.controladores_registros.CtrlRegistroEnfermero;
 import controlador.controladores_registros.CtrlRegistroPaciente;
 import controlador.controladores_registros.CtrlRegistroSecretario;
-import controlador.CtrlTratamientos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import vista.CatalogoDiagnosticos;
 import vista.CatalogoTratamientos;
 import vista.ModuloAdministrador;
 import vista.VistaCentrosAtencion;
@@ -28,6 +28,7 @@ public class CtrlModuloAdministrador implements ActionListener{
     this.moduloAdmin.btnUsuarios.addActionListener(this);
     this.moduloAdmin.btnCentrosMedicos.addActionListener(this);
     this.moduloAdmin.btnTratamientos.addActionListener(this);
+    this.moduloAdmin.btnDiagnosticos.addActionListener(this);
   }
   
   public void iniciar(){
@@ -89,6 +90,13 @@ public class CtrlModuloAdministrador implements ActionListener{
       CtrlTratamientos ctrlTratamientos = new CtrlTratamientos(tratamientos);
       ctrlTratamientos.iniciar();
       tratamientos.setVisible(true);
+    }
+    
+    if (e.getSource() == this.moduloAdmin.btnDiagnosticos){
+      CatalogoDiagnosticos diagnosticos = new CatalogoDiagnosticos();
+      CtrlDiagnosticos ctrlDiagnosticos = new CtrlDiagnosticos(diagnosticos);
+      ctrlDiagnosticos.iniciar();
+      diagnosticos.setVisible(true);
     }
   }
   
