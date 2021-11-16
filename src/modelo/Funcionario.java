@@ -96,3 +96,4 @@ public class Funcionario extends Usuario {
     this.tipoFuncionario = tipoFuncionario;
   }
 }
+
