@@ -27,6 +27,12 @@ public class CtrlInicioSesion implements ActionListener{
   private FuncionarioCRUD funcionarioCrud;
   private DoctorCRUD doctorCrud;
   private SecretarioCRUD secretarioCrud;
+  public static String cedula;
+
+  public CtrlInicioSesion() {
+    }
+  
+
   
   public CtrlInicioSesion(InicioSesion pInicioSesion){
     this.inicioSesion = pInicioSesion;
@@ -42,10 +48,17 @@ public class CtrlInicioSesion implements ActionListener{
     this.inicioSesion.setLocationRelativeTo(null);
   }
 
+    public String getCedula() {
+        return cedula;
+    }
+
+  
+  
+  
   @Override
   public void actionPerformed(ActionEvent e) {
     if(e.getSource() == this.inicioSesion.btnIngresar){
-      String cedula = this.inicioSesion.txtCedulaUsuario.getText();
+      cedula = this.inicioSesion.txtCedulaUsuario.getText();
       String password = Hash.sha1(this.inicioSesion.passContrasena.getText());
       Usuario usuario = new Usuario(cedula, password);
       

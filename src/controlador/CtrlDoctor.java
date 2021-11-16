@@ -16,9 +16,13 @@ import modelo.PacienteCRUD;
 import modelo.TratamientoCRUD;
 import controlador.CtrlInicioSesion;
 import controlador.CtrlAsignarCita_Doctor;
+import controlador.controladores_registros.CtrlRegistroDoctor;
+import modelo.CentroAtencionCRUD;
+import modelo.DoctorCRUD;
 import vista.AsignarCitaDoctor;
 import vista.Atender_Cita_Doctor;
 import vista.Cancelar_Cita_Doctor;
+import vista.Hospitalizacion;
 import vista.ModuloDoctor;
 
 /**
@@ -53,10 +57,11 @@ public class CtrlDoctor implements ActionListener {
             PacienteCRUD CRUDPaciente = new PacienteCRUD();
             Citas cita = new Citas ();
             CitasCRUD CRUDcita = new CitasCRUD();
+            CtrlRegistroDoctor auxMed = new CtrlRegistroDoctor();
             
             
             CtrlAsignarCita_Doctor ctrlAsignacionCita = new CtrlAsignarCita_Doctor(CRUDarea,CRUDPaciente,
-            cita, CRUDcita,asignar);
+            cita, CRUDcita,asignar, auxMed);
             ctrlAsignacionCita.iniciar();
             asignar.setVisible(true);
         }
@@ -67,9 +72,15 @@ public class CtrlDoctor implements ActionListener {
             PacienteCRUD CRUDPaciente = new PacienteCRUD ();       
             DiagnosticoCRUD CRUDDiagnostico = new  DiagnosticoCRUD(); 
             CitasCRUD CRUDcita = new CitasCRUD();
+            Hospitalizacion internar = new Hospitalizacion(); 
+            AreaCRUD areaCrud = new AreaCRUD();
+            CentroAtencionCRUD centroCrud = new CentroAtencionCRUD();
+            CtrlRegistroDoctor auxMedi = new CtrlRegistroDoctor ();
+            DoctorCRUD doctorCrud = new DoctorCRUD();
+            CtrlInicioSesion session = new CtrlInicioSesion ();
             
             CtrlAtenderCita_Doctor ctrlAtenderCita = new CtrlAtenderCita_Doctor(CRUDTratamiento,CRUDPaciente,
-            CRUDDiagnostico,atender,CRUDcita);
+            CRUDDiagnostico,atender,CRUDcita,internar,areaCrud,centroCrud,auxMedi,doctorCrud,session);
             ctrlAtenderCita.iniciar();
             atender.setVisible(true);
             

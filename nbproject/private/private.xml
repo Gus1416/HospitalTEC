@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
 <<<<<<< HEAD
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlTratamientos.java</file>
@@ -14,5 +15,8 @@
             <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/hospitaltec/HospitalTEC.java</file>
 >>>>>>> c3547fb160f0a51c0a5244c840308086f5ea5442
         </group>
+=======
+        <group/>
+>>>>>>> 256279e5a41e4315750e739df27c43968ab45b0a
     </open-files>
 </project-private>
