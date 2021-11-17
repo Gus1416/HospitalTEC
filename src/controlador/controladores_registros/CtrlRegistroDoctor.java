@@ -96,11 +96,7 @@ public class CtrlRegistroDoctor implements ActionListener {
       
       auxFuncionario.add(auxDoc);
       System.out.println("After add: " + auxFuncionario.size());
-      
-      
-      
-      
-      
+
       if (doctorCrud.registrarDoctor(nuevoDoctor) && doctorCrud.registrarEspecialidades(nuevoDoctor)){
         JOptionPane.showMessageDialog(null, "Nuevo doctor registrado");
         limpiar();

@@ -24,13 +24,16 @@ public class CtrlDiagnosticos implements ActionListener{
   
   public CtrlDiagnosticos (CatalogoDiagnosticos pDiagnosticos){
     this.vistaDiagnosticos = pDiagnosticos;
-    this.modeloLista = new DefaultListModel();
     this.diagnosticoCrud = new DiagnosticoCRUD();
     this.tratamientoCrud = new TratamientoCRUD();
+    this.modeloLista = new DefaultListModel();
+    this.vistaDiagnosticos.btnAgregarTratamientos.addActionListener(this);
     this.vistaDiagnosticos.btnVerTratamientosAsociados.addActionListener(this);
+    this.vistaDiagnosticos.btnRegistrarDiagnostico.addActionListener(this);
   }
   
   public void iniciar(){
+    cargarTratamientos();
     cargarDiagnosticos();
     this.vistaDiagnosticos.setTitle("Catálogo de Diagnósticos");
     this.vistaDiagnosticos.setLocationRelativeTo(null);
@@ -49,10 +52,12 @@ public class CtrlDiagnosticos implements ActionListener{
     }
   }
     
-//  private void cargarTratamientos(){
-//    ArrayList<Tratamiento> tratamientos = tratamientoCrud.consultarTratamientos();
-//    for (int i = 0; i < tratamientos.size(); i++)
-//  }
+  private void cargarTratamientos(){
+    ArrayList<Tratamiento> tratamientos = tratamientoCrud.consultarTratamientos();
+    for (int i = 0; i < tratamientos.size(); i++){
+      this.vistaDiagnosticos.cbTratamientos.addItem(tratamientos.get(i).getNombre());
+    }
+  }
   
   private ArrayList<Object[]> crearFilas(ArrayList<Diagnostico> pTratamientos){
     ArrayList<Object[]> filas = new ArrayList();
@@ -81,7 +86,9 @@ public class CtrlDiagnosticos implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.vistaDiagnosticos.btnAgregarTratamientos){
-      //String tratamiento = this.vistaDiagnosticos.
+      String tratamiento = (String)this.vistaDiagnosticos.cbTratamientos.getSelectedItem();
+      modeloLista.addElement(tratamiento);
+      this.vistaDiagnosticos.listTratamientos.setModel(modeloLista);
     }
     
     if (e.getSource() == this.vistaDiagnosticos.btnVerTratamientosAsociados){
@@ -89,5 +96,41 @@ public class CtrlDiagnosticos implements ActionListener{
       String idDiagnostico = String.valueOf(tm.getValueAt(this.vistaDiagnosticos.tbDiagnosticosRegistrados.getSelectedRow(), 0));
       JOptionPane.showMessageDialog(null, mostrarTratamientosAsociados(Integer.parseInt(idDiagnostico)));
     }
+    
+    if (e.getSource() == this.vistaDiagnosticos.btnRegistrarDiagnostico){
+      Diagnostico nuevoDiagnostico = new Diagnostico();
+      String nombre = this.vistaDiagnosticos.txtNombreDiagnostico.getText();
+      ArrayList<Tratamiento> tratamientos = recorrerLista();
+      nuevoDiagnostico.setNombre(nombre);
+      nuevoDiagnostico.setTratamientos(tratamientos);
+      
+      if (diagnosticoCrud.registrarDiagnostico(nuevoDiagnostico)){
+        nuevoDiagnostico.setId(diagnosticoCrud.consultarUnDiagnostico(nombre).getId());
+        if (diagnosticoCrud.registrarTratamientosAsociados(nuevoDiagnostico)){
+          JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo diagnóstico");
+          cargarDiagnosticos();
+          limpiar();
+        } else{
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
+      } else{
+        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+      }
+    }
+  }
+  
+  private ArrayList<Tratamiento> recorrerLista(){
+    ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+    for (int i = 0; i < this.modeloLista.getSize(); i++){
+      tratamientos.add(tratamientoCrud.consultarUnTratamiento((String)this.modeloLista.getElementAt(i)));
+    }
+    return tratamientos;
+  }
+  
+  private void limpiar(){
+    this.vistaDiagnosticos.txtNombreDiagnostico.setText("");
+    this.modeloLista.clear();
+    this.vistaDiagnosticos.listTratamientos.setModel(modeloLista);
+    this.vistaDiagnosticos.cbTratamientos.setSelectedIndex(0);
   }
 }

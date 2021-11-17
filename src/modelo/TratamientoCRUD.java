@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
-
 /**
  *
  * @author Gustavo
@@ -144,6 +143,42 @@ public class TratamientoCRUD extends Conexion{
         con.close();
       } catch (SQLException ex) {
         System.err.println(ex);
+      }
+    }
+  }
+  
+  public Tratamiento consultarUnTratamiento(String pNombre){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    
+    String sql = "SELECT * FROM catalogo_tratamientos WHERE nombre = ?";
+    
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pNombre);
+      rs = ps.executeQuery();
+      
+      if (rs.next()){
+        Tratamiento tratamiento = new Tratamiento();
+        tratamiento.setId(rs.getInt("id_tratamiento"));
+        tratamiento.setNombre(rs.getString("nombre"));
+        tratamiento.setDosis(rs.getInt("cantidad_dosis"));
+        tratamiento.setTipo(rs.getString("tipo"));
+        return tratamiento;
+      } else {
+        return null;
+      }
+      
+    } catch (SQLException ex) {
+      System.err.println(ex.getMessage());
+      return null;
+      
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
       }
     }
   }
