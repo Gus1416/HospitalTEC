@@ -3,6 +3,7 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.time.ZoneId;
 
@@ -117,6 +118,36 @@ public class CitasCRUD extends Conexion {
       {
         System.err.println(ex);
       }
+    }
+  }
+  
+  public ArrayList<Object[]> consultarBitacoraCitas(){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Object[]> objFilas = new ArrayList<>();
+    
+    String sql = "SELECT * FROM bitacora_citas";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      rs = ps.executeQuery();
+      ResultSetMetaData rsMd = rs.getMetaData();  
+      int cantidadColumnas = rsMd.getColumnCount();
+      
+      while (rs.next()){
+        Object[] filas = new Object[cantidadColumnas];
+        
+        for (int i = 0; i < cantidadColumnas; i++){
+          filas[i] = rs.getObject(i + 1);
+        }
+        objFilas.add(filas);
+      }
+      return objFilas;
+      
+    } catch (SQLException ex){
+      System.err.println(ex);
+      return objFilas;
     }
   }
 }

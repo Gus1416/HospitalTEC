@@ -7,6 +7,7 @@ import controlador.controladores_registros.CtrlRegistroSecretario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import vista.BitacoraCitas;
 import vista.CatalogoDiagnosticos;
 import vista.CatalogoTratamientos;
 import vista.ModuloAdministrador;
@@ -29,6 +30,7 @@ public class CtrlModuloAdministrador implements ActionListener{
     this.moduloAdmin.btnCentrosMedicos.addActionListener(this);
     this.moduloAdmin.btnTratamientos.addActionListener(this);
     this.moduloAdmin.btnDiagnosticos.addActionListener(this);
+    this.moduloAdmin.btnBitacoraCitas.addActionListener(this);
   }
   
   public void iniciar(){
@@ -98,6 +100,12 @@ public class CtrlModuloAdministrador implements ActionListener{
       ctrlDiagnosticos.iniciar();
       diagnosticos.setVisible(true);
     }
+    
+    if (e.getSource() == this.moduloAdmin.btnBitacoraCitas){
+      BitacoraCitas bitacora = new BitacoraCitas();
+      CtrlBitacoraCitas ctrlBitacora = new CtrlBitacoraCitas(bitacora);
+      ctrlBitacora.iniciar();
+      bitacora.setVisible(true);
+    }
   }
-  
 }
