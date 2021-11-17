@@ -88,9 +88,8 @@ public class DoctorCRUD extends Conexion{
     Connection con = getConexion();
     Doctor doctor = new Doctor();
     
-    String sql = """
-                 SELECT *, nombre as Namf FROM db_hospitaltec.doctor INNER JOIN db_hospitaltec.funcionario INNER JOIN db_hospitaltec.funcionario_centro_atencion WHERE funcionario.cedula_funcionario= funcionario_centro_atencion.cedula_funcionario
-                 AND doctor.cedula_funcionario = funcionario_centro_atencion.cedula_funcionario AND  funcionario_centro_atencion.cedula_funcionario = ?;""";
+    String sql = "SELECT * FROM doctor INNER JOIN funcionario INNER JOIN funcionario_centro_atencion "
+            + "WHERE funcionario.cedula_funcionario = ?";
     
     try{
       ps = con.prepareStatement(sql);
@@ -98,10 +97,9 @@ public class DoctorCRUD extends Conexion{
       rs = ps.executeQuery();
       
       if (rs.next()){
-          
         doctor.setCedula(pCedula);
         doctor.setCodigoMedico(rs.getInt("codigo_medico"));
-        doctor.setNombre(rs.getString("Namf"));
+        doctor.setNombre("nombre");
         doctor.setTipoFuncionario("tipo_funcionario");
         doctor.setFechaIngreso(rs.getDate("fecha_ingreso").toLocalDate());
         doctor.setArea(new AreaCRUD().buscarArea(rs.getInt("id_area")));

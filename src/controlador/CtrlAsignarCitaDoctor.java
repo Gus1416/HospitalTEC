@@ -101,7 +101,8 @@ public class CtrlAsignarCitaDoctor implements ActionListener {
       cita.setObservacionAdicional(vistaAsignar.TFObservaciones.getText());
       cita.setEstado(EstadoCita.ASIGNADA);
       
-      if (CRUDcita.registrarCita(cita, ctrldoc.getAuxFuncionario().get(0).getCodigoMedico())){
+      //if (CRUDcita.registrarCita(cita, ctrldoc.getAuxFuncionario().get(0).getCodigoMedico())){
+      if (CRUDcita.registrarCita(cita)){
         JOptionPane.showMessageDialog(null, "Cita Registrada");
         limpiar();
       } else {

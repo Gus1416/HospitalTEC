@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.ResultSet;
 
 /**
  *
@@ -41,5 +42,41 @@ public class SecretarioCRUD extends Conexion {
         System.err.println(ex.getMessage());
       }
     } 
+  }
+  
+    public Secretario buscarSecretario(String pCedula){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Secretario secretario = new Secretario();
+    
+    String sql = "CALL buscar_secretario(?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCedula);
+      rs = ps.executeQuery();
+      
+      if (rs.next()){
+        secretario.setCedula(pCedula);
+        secretario.setNombre(rs.getString("nombre"));
+        secretario.setFechaIngreso(rs.getDate("fecha_ingreso").toLocalDate());
+        secretario.setArea(new AreaCRUD().buscarArea(rs.getInt("id_area")));
+        secretario.setCentro(new CentroAtencionCRUD().buscarCentro(rs.getInt("codigo_centro")));
+        return secretario;
+      } else {
+        return null;
+      }
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
   }
 }

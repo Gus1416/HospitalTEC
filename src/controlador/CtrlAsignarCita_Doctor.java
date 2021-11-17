@@ -109,7 +109,8 @@ public class CtrlAsignarCita_Doctor implements ActionListener{
       
             
             
-            if (CRUDcita.registrarCita(cita,auxMed.getAuxFuncionario().get(0).getCodigoMedico())) {
+            //if (CRUDcita.registrarCita(cita,auxMed.getAuxFuncionario().get(0).getCodigoMedico())) {
+            if (CRUDcita.registrarCita(cita)){
                 JOptionPane.showMessageDialog(null, "Cita Registrada");          
                 limpiar();
             } else {
