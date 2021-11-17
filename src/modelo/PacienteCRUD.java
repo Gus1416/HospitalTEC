@@ -119,4 +119,40 @@ public class PacienteCRUD extends Conexion{
       }
     }
   }
+  
+  
+  
+  public boolean registrarHospitalizacion(HospitalizacionP pHospi){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "CALL registrar_hospitalizacion(?,?,?,?,?,?,?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pHospi.getCentroAtencion());
+      ps.setString(5, pHospi.getIdentificacion());
+      ps.setString(2, pHospi.getDiagnostico());
+      ps.setString(3, pHospi.getServicio());
+      ps.setString(4, pHospi.getFuncionario()); 
+      java.sql.Date sqlInicialDate = new java.sql.Date(pHospi.getFechaInicio().getTime());
+      java.sql.Date sqlFinalDate = new java.sql.Date(pHospi.getFechaFinal().getTime());
+      ps.setDate(6, sqlInicialDate);
+      ps.setDate(7, sqlFinalDate);
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
+  
+  
 }

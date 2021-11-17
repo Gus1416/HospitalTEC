@@ -9,6 +9,7 @@ import static controlador.CtrlCancelarCita_Doctor.citas;
 import controlador.controladores_registros.CtrlRegistroDoctor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.AreaCRUD;
@@ -20,6 +21,7 @@ import modelo.Diagnostico;
 import modelo.DiagnosticoCRUD;
 import modelo.Doctor;
 import modelo.DoctorCRUD;
+import modelo.HospitalizacionP;
 import modelo.Paciente;
 import modelo.PacienteCRUD;
 import modelo.Tratamiento;
@@ -45,6 +47,8 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     private DoctorCRUD doctorCrud;
     private CtrlInicioSesion session;
     
+    
+    
 
     public CtrlAtenderCita_Doctor(TratamientoCRUD CRUDTratamiento, PacienteCRUD CRUDPaciente, DiagnosticoCRUD CRUDDiagnostico, Atender_Cita_Doctor vistatender, 
             CitasCRUD CRUDcita,Hospitalizacion internar,AreaCRUD areaCrud,CentroAtencionCRUD centroCrud,CtrlRegistroDoctor auxMed,
@@ -66,6 +70,7 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
         this.vistatender.btnAsignarTrata.addActionListener(this);
         this.vistatender.btnFinalizar.addActionListener(this);
         this.vistatender.btnHospitalizar.addActionListener(this);
+        this.internar.btnRegHosp.addActionListener(this);
     }
 
     public void iniciar() {
@@ -181,8 +186,7 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
             
         }
         
-        
-        
+
         
         if (e.getSource() == vistatender.btnHospitalizar){
             
@@ -213,9 +217,36 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
 
             internar.setVisible(true);
             
-            
 
         }
+        
+        if (e.getSource() == internar.btnRegHosp){
+            
+            String CENTRO =internar.CBCentroAtencion.getSelectedItem().toString() ;
+            String IDPACI= internar.TFIdentificacion.getText();
+            String NAMEPACI= internar.TFNombrePaciente.getText() ;
+            String DIAGNO= internar.CBDiagnoPaciente.getSelectedItem().toString();
+            String SERVHOSP=internar.CBServicioMed.getSelectedItem().toString() ;
+            String NAMEFUNC =internar.TFDoctor.getText(); 
+            Date FechaInicial=internar.FechaInicialH.getDate() ;
+            Date FechaFinal=internar.FechaFinalH.getDate() ;
+            
+            HospitalizacionP newhosp = new HospitalizacionP(CENTRO,IDPACI,NAMEPACI,DIAGNO,SERVHOSP,NAMEFUNC,FechaInicial,FechaFinal);
+            
+            if(CRUDPaciente.registrarHospitalizacion(newhosp)){
+                JOptionPane.showMessageDialog(null, "Hospitalización registrada correctamente");
+                
+            }
+            else{
+               JOptionPane.showMessageDialog(null, "Error al registrar hospitalización"); 
+            }
+            
+            
+            
+            
+        }
+        
+       
         
         
         
