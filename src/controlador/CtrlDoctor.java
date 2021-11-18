@@ -17,13 +17,21 @@ import modelo.TratamientoCRUD;
 import controlador.CtrlInicioSesion;
 import controlador.CtrlAsignarCita_Doctor;
 import controlador.controladores_registros.CtrlRegistroDoctor;
+import java.util.ArrayList;
 import modelo.CentroAtencionCRUD;
+import modelo.ConsultasDocCRUD;
 import modelo.DoctorCRUD;
 import vista.AsignarCitaDoctor;
 import vista.Atender_Cita_Doctor;
 import vista.Cancelar_Cita_Doctor;
+import vista.Consultas_Doc;
 import vista.Hospitalizacion;
 import vista.ModuloDoctor;
+import vistasConsultaDoc.VIEWPacienteNivel;
+import vistasConsultaDoc.VIEWPacienteNombreD;
+import vistasConsultaDoc.VIEWPacienteRangoFechas;
+import vistasConsultaDoc.VIEWPacienteTratamientoNombre;
+import vistasConsultaDoc.VIEWPacienteTratamientoTipo;
 
 /**
  *
@@ -95,6 +103,33 @@ public class CtrlDoctor implements ActionListener {
             ctrlCancelarCita.iniciar();
             cancelar.setVisible(true);
         }
+        
+        
+        if (e.getSource() == vistaDoc.btnConsultasDoctor){
+            
+            Consultas_Doc vistaConsultaDoc = new Consultas_Doc();
+            ArrayList<Object[]> filas = new ArrayList<Object[]> ();
+            ConsultasDocCRUD CRUDConsultaDOC = new ConsultasDocCRUD();
+            VIEWPacienteNivel dataNivel = new VIEWPacienteNivel();
+            VIEWPacienteNombreD dataNombreD = new  VIEWPacienteNombreD();
+            VIEWPacienteRangoFechas datarangoDateD = new VIEWPacienteRangoFechas();
+            VIEWPacienteTratamientoNombre dataTrataName = new VIEWPacienteTratamientoNombre();
+            VIEWPacienteTratamientoTipo dataTrataType = new VIEWPacienteTratamientoTipo();
+            
+            CtrlConsultasDoc ctrlconsultadoc = new CtrlConsultasDoc (vistaConsultaDoc,filas,
+            dataNivel,CRUDConsultaDOC,dataNombreD,datarangoDateD,dataTrataName,dataTrataType);
+            
+            ctrlconsultadoc.iniciar();
+            vistaConsultaDoc.setVisible(true);
+
+
+        }
+        
+        
+        
+        
+        
+        
 
    
     }
