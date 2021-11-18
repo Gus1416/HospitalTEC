@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.time.ZoneId;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,7 +21,6 @@ public class CitasCRUD extends Conexion {
 
     String sql = "CALL registrar_cita(?,?,?,?,?)";
     
-
     try{
       ps = con.prepareStatement(sql);
       ps.setInt(1, cita.getiDArea());
@@ -150,10 +151,72 @@ public class CitasCRUD extends Conexion {
       return objFilas;
     }
   }
-}
-
-
-
-
+  
+  public ArrayList<Object[]> consultarCitasRegistradas(String pCedulaPaciente){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Object[]> objFilas = new ArrayList<>();
     
-
+    String sql = "SELECT * FROM cita WHERE cedula_paciente = ? AND estado_actual = 'REGISTRADA'";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCedulaPaciente);
+      rs = ps.executeQuery();
+      ResultSetMetaData rsMd = rs.getMetaData();  
+      int cantidadColumnas = rsMd.getColumnCount();
+      
+      while (rs.next()){
+        Object[] filas = new Object[cantidadColumnas];
+        
+        for (int i = 0; i < cantidadColumnas; i++){
+          filas[i] = rs.getObject(i + 1);
+        }
+        objFilas.add(filas);
+      }
+      return objFilas;
+      
+    } catch (SQLException ex){
+      System.err.println(ex);
+      return objFilas;
+    }
+  }
+  
+  public Citas buscarCita(int pIdCita){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    
+    String sql = "SELECT * FROM cita WHERE id_cita = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setInt(1, pIdCita);
+      rs = ps.executeQuery();
+      
+      if (rs.next()){
+        Citas cita = new Citas();
+        cita.setiDCita(rs.getInt("id_cita"));
+        cita.setiDArea(rs.getInt("id_area"));
+        cita.setFechaCita(rs.getDate("fecha_hora").toLocalDate());
+        cita.setObservacionAdicional(rs.getString("observacion"));
+        cita.setCedulaPaciente(rs.getString("cedula_paciente"));
+        return cita;
+      } else {
+        return null;
+      }
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+      
+     } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex);
+      }
+    }
+  }
+}

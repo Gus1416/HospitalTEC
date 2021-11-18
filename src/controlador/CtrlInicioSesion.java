@@ -8,6 +8,8 @@ import modelo.DoctorCRUD;
 import modelo.Funcionario;
 import modelo.FuncionarioCRUD;
 import modelo.Hash;
+import modelo.Paciente;
+import modelo.PacienteCRUD;
 import modelo.Secretario;
 import modelo.SecretarioCRUD;
 import modelo.Usuario;
@@ -15,6 +17,7 @@ import modelo.UsuarioCRUD;
 import vista.InicioSesion;
 import vista.ModuloAdministrador;
 import vista.ModuloDoctor;
+import vista.ModuloPaciente;
 import vista.ModuloSecretario;
 
 /**
@@ -27,6 +30,7 @@ public class CtrlInicioSesion implements ActionListener{
   private FuncionarioCRUD funcionarioCrud;
   private DoctorCRUD doctorCrud;
   private SecretarioCRUD secretarioCrud;
+  private PacienteCRUD pacienteCrud;
   public static String cedula;
 
   public CtrlInicioSesion() {
@@ -40,6 +44,7 @@ public class CtrlInicioSesion implements ActionListener{
     this.funcionarioCrud = new FuncionarioCRUD();
     this.doctorCrud = new DoctorCRUD();
     this.secretarioCrud = new SecretarioCRUD();
+    this.pacienteCrud = new PacienteCRUD();
     this.inicioSesion.btnIngresar.addActionListener(this);
   }
   
@@ -102,8 +107,11 @@ public class CtrlInicioSesion implements ActionListener{
           break;
             
           case "Paciente":
-            System.out.println("Módulo de pacientes");
-            //Abre módulo de pacientes
+            ModuloPaciente moduloPaciente = new ModuloPaciente();
+            Paciente paciente = pacienteCrud.buscarPaciente(cedula);
+            CtrlPaciente ctrlPaciente = new CtrlPaciente(moduloPaciente, paciente);
+            ctrlPaciente.iniciar();
+            moduloPaciente.setVisible(true);
             break;
             
           default:

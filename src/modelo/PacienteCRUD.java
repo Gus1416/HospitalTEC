@@ -119,4 +119,41 @@ public class PacienteCRUD extends Conexion{
       }
     }
   }
+  
+  public Paciente buscarPaciente(String pCedula){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Paciente paciente = new Paciente();
+    
+    String sql = "SELECT * FROM paciente WHERE cedula_paciente = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCedula);
+      rs = ps.executeQuery();
+      
+      if (rs.next()){
+        paciente.setCedula(rs.getString("cedula_paciente"));
+        paciente.setNombre(rs.getString("nombre"));
+        paciente.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+        paciente.setTipoSangre(rs.getString("tipo_sangre"));
+        paciente.setNacionalidad(rs.getString("nacionalidad"));
+        paciente.setLugarResidencia(rs.getString("residencia"));
+        return paciente;
+      } else {
+        return null;
+      }
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
 }
