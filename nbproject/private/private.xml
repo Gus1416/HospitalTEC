@@ -4,9 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/ModuloPaciente.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/SolicitarCitaPaciente.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlPaciente.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlSolicitarCitaPaciente.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/modelo/CitasCRUD.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlDiagnosticos.java</file>
         </group>
     </open-files>
 </project-private>
