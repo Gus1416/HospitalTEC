@@ -7,27 +7,40 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import modelo.ConsultasSecretarioCRUD;
 import modelo.Doctor;
 import modelo.Secretario;
 import vista.AsignarCitaDoctor;
 import vista.Atender_Cita_Doctor;
+import vista.AuxVistasConsultas.Estado;
 import vista.Cancelar_Cita_Doctor;
+import vista.Consultas_Secretario;
 import vista.ModuloSecretario;
+import controlador.CtrlConsultasSecre;
+import vista.AuxVistasConsultas.Especialidad;
+import vista.AuxVistasConsultas.Rango_Fechas;
+import vista.AuxVistasConsultas.Paciente;
+import controlador.CtrlCancelarCita_Doctor;
+import modelo.Citas;
+import modelo.CitasCRUD;
+import modelo.PacienteCRUD;
 
-/**
- *
- * @author sebcor
- */
 public class CtrlSecretario implements ActionListener {
     private ModuloSecretario vistaSecre;
     private Secretario secretario;
+    private Consultas_Secretario vista_consulta;
+   
 
 
     public CtrlSecretario(ModuloSecretario pvistaSecre, Secretario pSecretario) {
         this.vistaSecre= pvistaSecre;
         this.secretario = pSecretario;
+        this.vista_consulta= vista_consulta;
+      
         this.vistaSecre.btnAsignarCita.addActionListener(this);
         this.vistaSecre.btnCancelarCita.addActionListener(this);
+        this.vistaSecre.btConsultas.addActionListener(this);
     
         
     }
@@ -52,9 +65,26 @@ public class CtrlSecretario implements ActionListener {
 
         if (e.getSource() == vistaSecre.btnCancelarCita){
             Cancelar_Cita_Doctor cancelar = new Cancelar_Cita_Doctor();
+            PacienteCRUD CRUDPaciente = new PacienteCRUD();
+            Citas cita = new  Citas ();
+            CitasCRUD CRUDcita = new CitasCRUD();
+            CtrlCancelarCita_Doctor ctrlCancelarCita = new CtrlCancelarCita_Doctor(CRUDPaciente,cita,CRUDcita,cancelar); 
+            ctrlCancelarCita.iniciar();
             cancelar.setVisible(true);
         }
 
+           if (e.getSource() == vistaSecre.btConsultas){
+            Consultas_Secretario vista = new Consultas_Secretario();
+            ConsultasSecretarioCRUD consultas= new ConsultasSecretarioCRUD();
+            ArrayList<Object[]> filas = new ArrayList <Object[]>();
+            Estado vistaAuxEstado = new Estado();
+            Rango_Fechas vistaAuxFechas= new Rango_Fechas();
+            Paciente vistaAuxPaciente = new Paciente();
+            Especialidad vistaAuxEspecialidad= new  Especialidad();
+            CtrlConsultasSecre ctrlconsultassecre= new CtrlConsultasSecre( vista,filas,consultas,vistaAuxEstado, vistaAuxFechas, vistaAuxPaciente, vistaAuxEspecialidad);
+            vista.setVisible(true);
+            ctrlconsultassecre.iniciar();
+        }
    
     }
     
