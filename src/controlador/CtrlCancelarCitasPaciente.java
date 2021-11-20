@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.ArrayList;
 import modelo.Citas;
 import modelo.CitasCRUD;
+import modelo.EstadoCita;
 import modelo.Paciente;
 import vista.CancelarCitasPaciente;
 
@@ -59,6 +60,7 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
       DefaultTableModel tm = (DefaultTableModel)this.cancelarCitas.tbCitasRegistradas.getModel();
       String idCita = String.valueOf(tm.getValueAt(this.cancelarCitas.tbCitasRegistradas.getSelectedRow(), 0));
       Citas cita = citasCrud.buscarCita(Integer.parseInt(idCita));
+      cita.setEstado(EstadoCita.CANCELADA_POR_PACIENTE);
       
       LocalDate hoy = LocalDate.now();
       ZoneId defaultZoneId = ZoneId.systemDefault();

@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.time.ZoneId;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -49,26 +46,22 @@ public class CitasCRUD extends Conexion {
     PreparedStatement ps = null;
     Connection con = getConexion();
 
-    String sql = "CALL cancelar_cita(?)";
-    try
-    {
+    String sql = "CALL cancelar_cita(?,?)";
+    try{
       ps = con.prepareStatement(sql);
       ps.setInt(1, cita.getiDCita());
+      ps.setString(2, cita.getEstado().toString());
       ps.execute();
       return true;
 
-    } catch (SQLException e)
-    {
+    } catch (SQLException e){
       System.err.println(e);
       return false;
 
-    } finally
-    {
-      try
-      {
+    } finally{
+      try {
         con.close();
-      } catch (SQLException e)
-      {
+      } catch (SQLException e){
         System.err.println(e);
       }
     }

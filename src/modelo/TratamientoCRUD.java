@@ -127,7 +127,7 @@ public class TratamientoCRUD extends Conexion{
       
       while (rs.next()){ 
         Tratamiento tratamiento = new Tratamiento();
-        tratamiento.setNombre(rs.getString("nombreT"));
+        tratamiento.setNombre(rs.getString("NombreTratamiento"));
         tratamiento.setId(rs.getInt("id_tratamiento"));
         tratamientos.add(tratamiento);
       }

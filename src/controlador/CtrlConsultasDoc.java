@@ -248,125 +248,121 @@ public class CtrlConsultasDoc implements ActionListener {
   
     
     
-    @Override
-    public void actionPerformed(ActionEvent e) {
+  @Override
+  public void actionPerformed(ActionEvent e) {
 
-        
-         // Diagnóstico de paciente según tipo de Nivel 
-         if(vistaConsultaDoc.RADIOPACIENTE.isSelected() && 
-                 vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Nivel")){
-             
-         if (e.getSource() == vistaConsultaDoc.btnSHOW){
-            
-            dataNivel.setVisible(true);
-         } 
-                if (e.getSource() == dataNivel.btnConsuLvlPaci) {    
-                    vistaConsultaDoc.DocTable.clearSelection();
-                    TablePacienteNivel();   
-                 }
-         }
-                
-        // Diagnóstico de paciente según Nombre de Diagnóstico
-         if(vistaConsultaDoc.RADIOPACIENTE.isSelected() && 
-                 vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Nombre")){
-             
-         if (e.getSource() == vistaConsultaDoc.btnSHOW){
-            
-            dataNameD.setVisible(true);
-         } 
-                if (e.getSource() == dataNameD.btnConsuNombreD) { 
-                    System.out.println("ESTOY ENTRANDO BRO");    
-                    vistaConsultaDoc.DocTable.clearSelection();
-                    TablePacienteDateRange();
-                 }
-                
-            
-        }
-         
-        
-         
-        // Diagnóstico de paciente según Rango de Fechas 
-         if(vistaConsultaDoc.RADIOPACIENTE.isSelected() && 
-                 vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Rango de Fechas")){
-             
-         if (e.getSource() == vistaConsultaDoc.btnSHOW){
-            
-            dataRangeDateD.setVisible(true);
-         } 
-                if (e.getSource() == dataRangeDateD.btnConsulDateRPacien) {    
-                    vistaConsultaDoc.DocTable.clearSelection();
-                    TablePacienteDateRange();
-                 }
-                
-            
-        } 
-         
-                 
-         
-         // Diagnóstico de paciente según nombre de tratamiento 
-         if(vistaConsultaDoc.RADIOPACIENTE.isSelected() && 
-                 vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Tratamiento según Nombre")){
-             
-         if (e.getSource() == vistaConsultaDoc.btnSHOW){
-            
-            dataTrataName.setVisible(true);
-         } 
-                if (e.getSource() == dataTrataName.btnConsuTrataName) {    
-                    vistaConsultaDoc.DocTable.clearSelection();
-                    TablePacienteTratamientoNombre();
-                 }
-                
-            
-        } 
-         
-         
-         
-         // Diagnóstico de paciente según tipo de tratamiento 
-         if(vistaConsultaDoc.RADIOPACIENTE.isSelected() && 
-                 vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Tratamiento según Tipo")){
-             
-         if (e.getSource() == vistaConsultaDoc.btnSHOW){
-            
-            dataTrataTipo.setVisible(true);
-         } 
-                if (e.getSource() == dataTrataTipo.btnConsuTrataTipo) {    
-                    vistaConsultaDoc.DocTable.clearSelection();
-                    System.out.println("Estoy llegando bien acá");
-                    TablePacienteTratamientoTipo();
-                 }
-                
-            
-        }
-        
-         
-         
-        // Tratamientos de paciente según Rango de Fechas 
-         if(vistaConsultaDoc.RADIOPACIENTE.isSelected() && 
-                 vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Rango de Fechas")){
-             
-         if (e.getSource() == vistaConsultaDoc.btnSHOW){
-            
-            dataRangeDateD.setVisible(true);
-         } 
-                if (e.getSource() == dataRangeDateD.btnConsulDateRPacien) {    
-                    vistaConsultaDoc.DocTable.clearSelection();
-                    TablePacienteDateRange();
-                 }
-                
-            
-        }  
-         
-         
-         
-         
-        
-        
-        
-        
-        
-        }
+    // Diagnóstico de paciente según tipo de Nivel 
+    if (vistaConsultaDoc.RADIOPACIENTE.isSelected()
+            && vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Nivel"))
+    {
 
-     }
+      if (e.getSource() == vistaConsultaDoc.btnSHOW)
+      {
+
+        dataNivel.setVisible(true);
+      }
+      if (e.getSource() == dataNivel.btnConsuLvlPaci)
+      {
+        vistaConsultaDoc.DocTable.clearSelection();
+        TablePacienteNivel();
+      }
+    }
+
+    // Diagnóstico de paciente según Nombre de Diagnóstico
+    if (vistaConsultaDoc.RADIOPACIENTE.isSelected()
+            && vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Nombre"))
+    {
+
+      if (e.getSource() == vistaConsultaDoc.btnSHOW)
+      {
+
+        dataNameD.setVisible(true);
+      }
+      if (e.getSource() == dataNameD.btnConsuNombreD)
+      {
+        System.out.println("ESTOY ENTRANDO BRO");
+        vistaConsultaDoc.DocTable.clearSelection();
+        TablePacienteDateRange();
+      }
+
+    }
+
+    // Diagnóstico de paciente según Rango de Fechas 
+    if (vistaConsultaDoc.RADIOPACIENTE.isSelected()
+            && vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Rango de Fechas"))
+    {
+
+      if (e.getSource() == vistaConsultaDoc.btnSHOW)
+      {
+
+        dataRangeDateD.setVisible(true);
+      }
+      if (e.getSource() == dataRangeDateD.btnConsulDateRPacien)
+      {
+        vistaConsultaDoc.DocTable.clearSelection();
+        TablePacienteDateRange();
+      }
+
+    }
+
+    // Diagnóstico de paciente según nombre de tratamiento 
+    if (vistaConsultaDoc.RADIOPACIENTE.isSelected()
+            && vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Tratamiento según Nombre"))
+    {
+
+      if (e.getSource() == vistaConsultaDoc.btnSHOW)
+      {
+
+        dataTrataName.setVisible(true);
+      }
+      if (e.getSource() == dataTrataName.btnConsuTrataName)
+      {
+        vistaConsultaDoc.DocTable.clearSelection();
+        TablePacienteTratamientoNombre();
+      }
+
+    }
+
+    // Diagnóstico de paciente según tipo de tratamiento 
+    if (vistaConsultaDoc.RADIOPACIENTE.isSelected()
+            && vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Tratamiento según Tipo"))
+    {
+
+      if (e.getSource() == vistaConsultaDoc.btnSHOW)
+      {
+
+        dataTrataTipo.setVisible(true);
+      }
+      if (e.getSource() == dataTrataTipo.btnConsuTrataTipo)
+      {
+        vistaConsultaDoc.DocTable.clearSelection();
+        System.out.println("Estoy llegando bien acá");
+        TablePacienteTratamientoTipo();
+      }
+
+    }
+
+    // Tratamientos de paciente según Rango de Fechas 
+    if (vistaConsultaDoc.RADIOPACIENTE.isSelected()
+            && vistaConsultaDoc.CBPaciente.getSelectedItem().toString().equals("Diagnostico según Rango de Fechas"))
+    {
+
+      if (e.getSource() == vistaConsultaDoc.btnSHOW)
+      {
+
+        dataRangeDateD.setVisible(true);
+      }
+      if (e.getSource() == dataRangeDateD.btnConsulDateRPacien)
+      {
+        vistaConsultaDoc.DocTable.clearSelection();
+        TablePacienteDateRange();
+      }
+
+    }
+
+  }
+
+}
 
 
    

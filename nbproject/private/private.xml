@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/ModuloPaciente.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/modelo/CitasCRUD.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlDiagnosticos.java</file>
-=======
-            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/controlador/CtrlConsultasDoc.java</file>
-            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/controlador/CtrlDoctor.java</file>
-            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/modelo/ConsultasDocCRUD.java</file>
-            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/vista/Consultas_Doc.java</file>
-            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/vistasConsultaDoc/VIEWPacienteNivel.java</file>
->>>>>>> 8a97a3000a0bf829e04d416dcef78ce14c356336
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/vista/ConsultasPaciente.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/modelo/DiagnosticoCRUD.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlConsultasPaciente.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/modelo/ConsultasPacienteCRUD.java</file>
         </group>
     </open-files>
 </project-private>

@@ -18,6 +18,7 @@ import modelo.PacienteCRUD;
 import vista.Cancelar_Cita_Doctor;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import modelo.EstadoCita;
 
 /**
  *
@@ -108,6 +109,7 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
             Date  fechacita = auxdate.getAuxdate();
             ZoneId defaultZoneId = ZoneId.systemDefault();
             Date today = Date.from(hoy.atStartOfDay(defaultZoneId).toInstant());
+            auxdate.setEstado(EstadoCita.CANCELADA_POR_MÉDICO);
             
             long diffInMillies = Math.abs(fechacita.getTime() - today.getTime());
             long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);

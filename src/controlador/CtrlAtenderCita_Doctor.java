@@ -104,6 +104,7 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
 
   public void cargarTratamientos(String Nombre) {      // Llenar los CB de Pacientes
     vistatender.CBTratamiento.removeAllItems();
+    System.out.println(Nombre);
     ArrayList<Tratamiento> tratamientos = CRUDTratamiento.consultarTratamientos(Nombre);
     for (int i = 0; i < tratamientos.size(); i++)
     {
@@ -197,26 +198,26 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
 
     }
 
-        if (e.getSource() == vistatender.btnAsignarTrata) {
-            String nombrePaciente = vistatender.CBPaciente.getSelectedItem().toString();
-            int IDCITA = Integer.parseInt(vistatender.CBCitas.getSelectedItem().toString());
-            String nombreDiagnostico = vistatender.CBDiagnosticos.getSelectedItem().toString();
-            String lvl = vistatender.CBNiveles.getSelectedItem().toString();
-            String Observacion = vistatender.TFObservaciones.getText();
-            String Tratamiento = vistatender.CBTratamiento.getSelectedItem().toString();
-            int DOSIS = Integer.parseInt(vistatender.TFDosis.getText());
-            String TipoTratamiento = vistatender.CBTipoTratamiento.getSelectedItem().toString();
-
-            if (CRUDTratamiento.registrarAtencion(nombrePaciente, IDCITA, nombreDiagnostico,
-                    lvl, Observacion, Tratamiento, DOSIS, TipoTratamiento)) {
-                JOptionPane.showMessageDialog(null, "Tratamiento y diagnostico registrados correctamente");
-                
-                //limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al registrar los datos");
-                //limpiar();
-            }
-        }
+//        if (e.getSource() == vistatender.btnAsignarTrata) {
+//            String nombrePaciente = vistatender.CBPaciente.getSelectedItem().toString();
+//            int IDCITA = Integer.parseInt(vistatender.CBCitas.getSelectedItem().toString());
+//            String nombreDiagnostico = vistatender.CBDiagnosticos.getSelectedItem().toString();
+//            String lvl = vistatender.CBNiveles.getSelectedItem().toString();
+//            String Observacion = vistatender.TFObservaciones.getText();
+//            String Tratamiento = vistatender.CBTratamiento.getSelectedItem().toString();
+//            int DOSIS = Integer.parseInt(vistatender.TFDosis.getText());
+//            String TipoTratamiento = vistatender.CBTipoTratamiento.getSelectedItem().toString();
+//
+//            if (CRUDTratamiento.registrarAtencion(nombrePaciente, IDCITA, nombreDiagnostico,
+//                    lvl, Observacion, Tratamiento, DOSIS, TipoTratamiento)) {
+//                JOptionPane.showMessageDialog(null, "Tratamiento y diagnostico registrados correctamente");
+//                
+//                //limpiar();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Error al registrar los datos");
+//                //limpiar();
+//            }
+//        }
         
         if (e.getSource() == vistatender.btnFinalizar){
             vistatender.setVisible(false);

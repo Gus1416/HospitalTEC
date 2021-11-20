@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.Paciente;
 import vista.CancelarCitasPaciente;
+import vista.ConsultasPaciente;
 import vista.ModuloPaciente;
 import vista.SolicitarCitaPaciente;
 
@@ -20,6 +21,7 @@ public class CtrlPaciente implements ActionListener{
     this.paciente = pPaciente;
     this.moduloPaciente.btnSolicitarCita.addActionListener(this);
     this.moduloPaciente.btnCancelarCita.addActionListener(this);
+    this.moduloPaciente.btnConsultasPaciente.addActionListener(this);
   }
   
   public void iniciar(){
@@ -41,6 +43,13 @@ public class CtrlPaciente implements ActionListener{
       CtrlCancelarCitasPaciente ctrlCancelarCita = new CtrlCancelarCitasPaciente(cancelarCita, this.paciente);
       ctrlCancelarCita.iniciar();
       cancelarCita.setVisible(true);
+    }
+    
+    if (e.getSource() == this.moduloPaciente.btnConsultasPaciente){
+      ConsultasPaciente consultas = new ConsultasPaciente();
+      CtrlConsultasPaciente ctrlConsultas = new CtrlConsultasPaciente(consultas, this.paciente);
+      ctrlConsultas.iniciar();
+      consultas.setVisible(true);
     }
   }
   
