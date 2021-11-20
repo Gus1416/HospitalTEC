@@ -69,6 +69,7 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
         
         if(e.getSource() == vistaCancelar.btnCargar){
             String nombrePaciente= vistaCancelar.CBPaciente.getSelectedItem().toString();
+            System.out.println(nombrePaciente);
             ArrayList<Paciente> pacientes = CRUDPaciente.consultarPacientes();
             int flag= 0;
             int counter=0;
@@ -83,7 +84,8 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
                 }    
                     
                 if(flag == 1){
-                    citas= CRUDcita.consultarCitas(pacientes.get(counter-1).getCedula());
+                    citas= CRUDcita.consultarCitas(pacientes.get(counter).getCedula());
+                      
                      for (int z = 0; z < citas.size(); z++) {  
                         vistaCancelar.CBCita.addItem(Integer.toString(citas.get(z).getiDCita()));
                      }
@@ -94,7 +96,7 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
      
         
         if(e.getSource() == vistaCancelar.btnCancelar){
-            int IDCITA = Integer.parseInt((String) vistaCancelar.CBCita.getSelectedItem());
+             int IDCITA = Integer.parseInt((String) vistaCancelar.CBCita.getSelectedItem());
 
             for (int i = 0; i < citas.size(); i++) {
                 if(citas.get(i).getiDCita() == IDCITA ){
@@ -103,7 +105,6 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
                 }
               System.out.println("ID NO COINCIDE CON EL DE LA LISTA");  
             }
-           
             /// VALIDAR LA FECHA DE LA CITA SEA UN DIA ANTES COMO MINIMO PARA CANCELARLA
             LocalDate hoy = LocalDate.now();
             Date  fechacita = auxdate.getAuxdate();
