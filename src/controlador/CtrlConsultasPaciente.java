@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Area;
 import modelo.AreaCRUD;
@@ -12,6 +13,7 @@ import modelo.Diagnostico;
 import modelo.DiagnosticoCRUD;
 import modelo.EstadoCita;
 import modelo.Paciente;
+import modelo.Reportes;
 import modelo.Tratamiento;
 import modelo.TratamientoCRUD;
 import vista.ConsultasPaciente;
@@ -43,6 +45,7 @@ public class CtrlConsultasPaciente implements ActionListener{
   private VIEWTratamientosNombre tratamientosNombre;
   private ConsultasPacienteCRUD consultasCrud;
   private AreaCRUD areaCrud;
+  private ArrayList<Object[]> filas = new ArrayList<Object[]>();
   
   public CtrlConsultasPaciente(ConsultasPaciente pConsultas, Paciente pPaciente){
     this.consultas = pConsultas;
@@ -70,6 +73,8 @@ public class CtrlConsultasPaciente implements ActionListener{
     
     this.consultas.btnMostrar.addActionListener(this);
     
+    this.consultas.btnExportarPDF.addActionListener(this);
+    
     this.consultasCrud = new ConsultasPacienteCRUD();
     this.areaCrud = new AreaCRUD();
   }
@@ -82,7 +87,7 @@ public class CtrlConsultasPaciente implements ActionListener{
   private void mostrarCitasRangoFechas(){
     Date fecha1 = this.citasRangoFechas.FechaP1.getDate();
     Date fecha2 = this.citasRangoFechas.FechaP2.getDate();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteCitasFechas(this.paciente.getCedula(), fecha1, fecha2);
+    this.filas = this.consultasCrud.pacienteCitasFechas(this.paciente.getCedula(), fecha1, fecha2);
     crearTablaCitas(filas);
   }
   
@@ -91,24 +96,24 @@ public class CtrlConsultasPaciente implements ActionListener{
     ArrayList<Object[]> filas;
     switch (estado){
       case "Registrada" ->{
-        filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.REGISTRADA.toString());
-        crearTablaCitas(filas);
+        this.filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.REGISTRADA.toString());
+        crearTablaCitas(this.filas);
       }
       case "Cancelada por paciente" -> {
-        filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.CANCELADA_POR_PACIENTE.toString());
-        crearTablaCitas(filas);
+        this.filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.CANCELADA_POR_PACIENTE.toString());
+        crearTablaCitas(this.filas);
       }
       case "Cancelada por médico" ->{
-        filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.CANCELADA_POR_MÉDICO.toString());
-        crearTablaCitas(filas);
+        this.filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.CANCELADA_POR_MÉDICO.toString());
+        crearTablaCitas(this.filas);
       }
       case "Asignada" ->{
-        filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.ASIGNADA.toString());
-        crearTablaCitas(filas);
+        this.filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.ASIGNADA.toString());
+        crearTablaCitas(this.filas);
       }
       case "Realizada" ->{
-        filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.REALIZADA.toString());
-        crearTablaCitas(filas);
+        this.filas = this.consultasCrud.pacienteCitasEstado(this.paciente.getCedula(), EstadoCita.REALIZADA.toString());
+        crearTablaCitas(this.filas);
       }
       default -> {}
     }
@@ -117,51 +122,51 @@ public class CtrlConsultasPaciente implements ActionListener{
   private void mostrarCitasEspecialidad(){
     String area = (String)this.citasEspecialidad.cbEspecialidades.getSelectedItem();
     int idArea = this.areaCrud.buscarArea(area).getIdArea();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteCitasEspecialidad(this.paciente.getCedula(), idArea);
+    this.filas = this.consultasCrud.pacienteCitasEspecialidad(this.paciente.getCedula(), idArea);
     crearTablaCitas(filas);
   }
   
   private void mostrarDiagnosticosRangoFechas(){
     Date fecha1 = this.diagnosticosRangoFechas.FechaP1.getDate();
     Date fecha2 = this.diagnosticosRangoFechas.FechaP2.getDate();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteDiagnosticosFechas(
+    this.filas = this.consultasCrud.pacienteDiagnosticosFechas(
             this.paciente.getCedula(), fecha1, fecha2);
     crearTablaDiagnosticos(filas);
   }
   
   private void mostrarDiagnosticosNivel(){
     String nivel = (String)this.diagnosticosNivel.cbDiagnosticoNivel.getSelectedItem();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteDiagnosticoNivel(this.paciente.getCedula(), nivel);
+    this.filas = this.consultasCrud.pacienteDiagnosticoNivel(this.paciente.getCedula(), nivel);
     crearTablaDiagnosticos(filas);
   }
   
   private void mostrarDiagnosticosNombre(){
     String nombreDiagnostico = (String)this.diagnosticosNombre.cbDiagnosticoNombre.getSelectedItem();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteDiagnosticoNombre(this.paciente.getCedula(), nombreDiagnostico);
+    this.filas = this.consultasCrud.pacienteDiagnosticoNombre(this.paciente.getCedula(), nombreDiagnostico);
     crearTablaDiagnosticos(filas);
   }
   
   private void mostrarTratamientosRangoFechas(){
     Date fecha1 = this.tratamientosRangoFechas.FechaP1.getDate();
     Date fecha2 = this.tratamientosRangoFechas.FechaP2.getDate();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteTratamientosFechas(this.paciente.getCedula(), fecha1, fecha2);
+    this.filas = this.consultasCrud.pacienteTratamientosFechas(this.paciente.getCedula(), fecha1, fecha2);
     crearTablaTratamientos(filas);
   }
   
   private void mostrarTratamientosTipo(){
     String tipo = (String)this.tratamientosTipo.cbTratamientoTipo.getSelectedItem();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteTratamientosTipo(this.paciente.getCedula(), tipo);
+    this.filas = this.consultasCrud.pacienteTratamientosTipo(this.paciente.getCedula(), tipo);
     crearTablaTratamientos(filas);
   }
   
   private void mostrarTratamientosNombre(){
     String nombre = (String)this.tratamientosNombre.cbTratamientoNombre.getSelectedItem();
-    ArrayList<Object[]> filas = this.consultasCrud.pacienteTratamientosNombre(this.paciente.getCedula(), nombre);
+    this.filas = this.consultasCrud.pacienteTratamientosNombre(this.paciente.getCedula(), nombre);
     crearTablaTratamientos(filas);
   }
   
   private void mostrarHospitalizaciones(){
-    ArrayList<Object []> filas = this.consultasCrud.pacienteHospitalizaciones(this.paciente.getCedula());
+    this.filas = this.consultasCrud.pacienteHospitalizaciones(this.paciente.getCedula());
     crearTablaHospitalizaciones(filas);
   }
   
@@ -367,6 +372,30 @@ public class CtrlConsultasPaciente implements ActionListener{
       if (e.getSource() == this.consultas.btnMostrar){
         mostrarHospitalizaciones();
       }
+    }
+    
+    if (this.consultas.rbCitas.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
+      Reportes reportes = new Reportes();
+      reportes.exportarPDF(this.filas, "Citas");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    if (this.consultas.rbDiagnosticos.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
+      Reportes reportes = new Reportes();
+      reportes.exportarPDF(this.filas, "Diagnósticos");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    if (this.consultas.rbTratamientos.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
+      Reportes reportes = new Reportes();
+      reportes.exportarPDF(this.filas, "Tratamientos");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    if (this.consultas.rbHospitalizacion.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
+      Reportes reportes = new Reportes();
+      reportes.exportarPDF(this.filas, "Hospitalizaciones");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
     }
   }
   
