@@ -1,4 +1,3 @@
-
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -12,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.ArrayList;
 import modelo.Citas;
 import modelo.CitasCRUD;
+import modelo.Correo;
 import modelo.EstadoCita;
 import modelo.Paciente;
 import vista.CancelarCitasPaciente;
@@ -24,8 +24,10 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
   private CancelarCitasPaciente cancelarCitas;
   private Paciente paciente;
   private CitasCRUD citasCrud;
+  private Correo correo;
   
   public CtrlCancelarCitasPaciente(CancelarCitasPaciente pConsultaCitas, Paciente pPaciente){
+    this.correo = new Correo();
     this.cancelarCitas = pConsultaCitas;
     this.paciente = pPaciente;
     this.citasCrud = new CitasCRUD();
@@ -61,23 +63,37 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
       String idCita = String.valueOf(tm.getValueAt(this.cancelarCitas.tbCitasRegistradas.getSelectedRow(), 0));
       Citas cita = citasCrud.buscarCita(Integer.parseInt(idCita));
       cita.setEstado(EstadoCita.CANCELADA_POR_PACIENTE);
-      
-      LocalDate hoy = LocalDate.now();
+
       ZoneId defaultZoneId = ZoneId.systemDefault();
       Date fechacita = Date.from(cita.getFechaCita().atStartOfDay(defaultZoneId).toInstant());
-      Date today = Date.from(hoy.atStartOfDay(defaultZoneId).toInstant());
 
-      long diffInMillies = Math.abs(fechacita.getTime() - today.getTime());
-      long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-      
-      if (diff >= 1){
-        if (citasCrud.CancelarCita(cita)) {
-          cargarCitasRegistradas();
-          JOptionPane.showMessageDialog(null, "Cita Cancelada");
-        } else{
-          JOptionPane.showMessageDialog(null, "Error al cancelar la cita la cita");
+      if (validarCancelacion(fechacita)){
+        String email = JOptionPane.showInputDialog(null, "Indique un correo electrónico");
+
+        if (!email.equals("")){
+          if (citasCrud.CancelarCita(cita)) {
+            if (this.correo.enviarEmailCancelacion(email, paciente, cita)){
+              cargarCitasRegistradas();
+              JOptionPane.showMessageDialog(null, "La cita ha sido cancelada");
+            }
+          } else{
+            JOptionPane.showMessageDialog(null, "Error al cancelar la cita");
+          }
+        } else {
+          JOptionPane.showMessageDialog(null, "Debe indicar un correo electrónico");
         }
       }
     }
+  }
+  
+  private boolean validarCancelacion(Date pFechaCita){
+    LocalDate hoy = LocalDate.now();
+    ZoneId defaultZoneId = ZoneId.systemDefault();
+    Date today = Date.from(hoy.atStartOfDay(defaultZoneId).toInstant());
+    
+    long diffInMillies = Math.abs(pFechaCita.getTime() - today.getTime());
+    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+    
+    return (diff >= 1);
   }
 }
