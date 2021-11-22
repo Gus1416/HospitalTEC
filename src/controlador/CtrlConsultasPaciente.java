@@ -74,6 +74,8 @@ public class CtrlConsultasPaciente implements ActionListener{
     this.consultas.btnMostrar.addActionListener(this);
     
     this.consultas.btnExportarPDF.addActionListener(this);
+    this.consultas.btnExportarCSV.addActionListener(this);
+    this.consultas.btnExportarHTML.addActionListener(this);
     
     this.consultasCrud = new ConsultasPacienteCRUD();
     this.areaCrud = new AreaCRUD();
@@ -374,27 +376,80 @@ public class CtrlConsultasPaciente implements ActionListener{
       }
     }
     
+    //Exportar reportes a PDF
+    
     if (this.consultas.rbCitas.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
       Reportes reportes = new Reportes();
-      reportes.exportarPDF(this.filas, "Citas");
+      reportes.exportarPDF(this.filas, "PacienteCitas");
       JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
     }
     
     if (this.consultas.rbDiagnosticos.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
       Reportes reportes = new Reportes();
-      reportes.exportarPDF(this.filas, "Diagnósticos");
+      reportes.exportarPDF(this.filas, "PacienteDiagnósticos");
       JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
     }
     
     if (this.consultas.rbTratamientos.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
       Reportes reportes = new Reportes();
-      reportes.exportarPDF(this.filas, "Tratamientos");
+      reportes.exportarPDF(this.filas, "PacienteTratamientos");
       JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
     }
     
     if (this.consultas.rbHospitalizacion.isSelected() && e.getSource() == this.consultas.btnExportarPDF){
       Reportes reportes = new Reportes();
-      reportes.exportarPDF(this.filas, "Hospitalizaciones");
+      reportes.exportarPDF(this.filas, "PacienteHospitalizaciones");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    //Exportar reportes a CSV
+    
+    if (this.consultas.rbCitas.isSelected() && e.getSource() == this.consultas.btnExportarCSV){
+      Reportes reportes = new Reportes();
+      reportes.exportarCSV("PacienteCitas", this.filas);
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    if (this.consultas.rbDiagnosticos.isSelected() && e.getSource() == this.consultas.btnExportarCSV){
+      Reportes reportes = new Reportes();
+      reportes.exportarCSV("PacienteDiagnósticos", this.filas);
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    if (this.consultas.rbTratamientos.isSelected() && e.getSource() == this.consultas.btnExportarCSV){
+      Reportes reportes = new Reportes();
+      reportes.exportarCSV("PacienteTratamientos", this.filas);
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    if (this.consultas.rbHospitalizacion.isSelected() && e.getSource() == this.consultas.btnExportarCSV){
+      Reportes reportes = new Reportes();
+      reportes.exportarCSV("PacienteHospitalizaciones", this.filas);
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+    
+    //Exportar reportes a HTML
+    if (this.consultas.rbCitas.isSelected() && e.getSource() == this.consultas.btnExportarHTML){
+      Reportes reportes = new Reportes();
+      reportes.exportarHTML(filas, "PacienteCitas");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+
+    if (this.consultas.rbDiagnosticos.isSelected() && e.getSource() == this.consultas.btnExportarHTML){
+      Reportes reportes = new Reportes();
+      reportes.exportarHTML(filas, "PacienteDiagnósticos");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+
+    if (this.consultas.rbTratamientos.isSelected() && e.getSource() == this.consultas.btnExportarHTML){
+      Reportes reportes = new Reportes();
+      reportes.exportarHTML(filas, "PacienteTratamientos");
+      JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
+    }
+
+    if (this.consultas.rbHospitalizacion.isSelected() && e.getSource() == this.consultas.btnExportarHTML){
+      Reportes reportes = new Reportes();
+      reportes.exportarHTML(filas, "PacienteHospitalizaciones");
       JOptionPane.showMessageDialog(null, "El reporte ha sido exportado");
     }
   }

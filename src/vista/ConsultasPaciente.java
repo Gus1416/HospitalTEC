@@ -41,6 +41,7 @@ public class ConsultasPaciente extends javax.swing.JFrame {
     jPanel3 = new javax.swing.JPanel();
     btnMostrar = new javax.swing.JButton();
     btnExportarPDF = new javax.swing.JButton();
+    btnExportarHTML = new javax.swing.JButton();
     btnExportarCSV = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -128,7 +129,7 @@ public class ConsultasPaciente extends javax.swing.JFrame {
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(14, Short.MAX_VALUE))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     btnMostrar.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,12 +138,17 @@ public class ConsultasPaciente extends javax.swing.JFrame {
     btnMostrar.setText("Mostrar");
 
     btnExportarPDF.setBackground(new java.awt.Color(255, 255, 255));
-    btnExportarPDF.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+    btnExportarPDF.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
     btnExportarPDF.setForeground(new java.awt.Color(0, 0, 0));
     btnExportarPDF.setText("Exportar a PDF");
 
+    btnExportarHTML.setBackground(new java.awt.Color(255, 255, 255));
+    btnExportarHTML.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+    btnExportarHTML.setForeground(new java.awt.Color(0, 0, 0));
+    btnExportarHTML.setText("Exportar a HTML");
+
     btnExportarCSV.setBackground(new java.awt.Color(255, 255, 255));
-    btnExportarCSV.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+    btnExportarCSV.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
     btnExportarCSV.setForeground(new java.awt.Color(0, 0, 0));
     btnExportarCSV.setText("Exportar a CSV");
 
@@ -153,14 +159,15 @@ public class ConsultasPaciente extends javax.swing.JFrame {
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(jPanel3Layout.createSequentialGroup()
+            .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
             .addGap(0, 0, Short.MAX_VALUE)
-            .addComponent(btnExportarCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(jPanel3Layout.createSequentialGroup()
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-              .addComponent(btnExportarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(0, 0, Short.MAX_VALUE)))
+              .addComponent(btnExportarPDF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(btnExportarCSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(btnExportarHTML, javax.swing.GroupLayout.Alignment.TRAILING))))
         .addContainerGap())
     );
     jPanel3Layout.setVerticalGroup(
@@ -168,11 +175,13 @@ public class ConsultasPaciente extends javax.swing.JFrame {
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addContainerGap()
         .addComponent(btnMostrar)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnExportarPDF)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnExportarCSV)
-        .addContainerGap())
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnExportarHTML)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,6 +257,7 @@ public class ConsultasPaciente extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnExportarCSV;
+  public javax.swing.JButton btnExportarHTML;
   public javax.swing.JButton btnExportarPDF;
   public javax.swing.JButton btnMostrar;
   private javax.swing.ButtonGroup buttonGroup1;

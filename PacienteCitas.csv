@@ -1,0 +1,7 @@
+Número de Cita,Especialidad,Fecha,Observación,Estado Actual
+10,Ginecología,2021-11-22T00:00,Dolores,CANCELADA_POR_PACIENTE
+11,Administrativa,2021-11-25T00:00,Asuntos importantes,CANCELADA_POR_PACIENTE
+12,Ortopedia,2021-11-30T00:00,Hueso roto,ASIGNADA
+13,Dermatología,2021-11-27T00:00,Granos,CANCELADA_POR_PACIENTE
+14,Emergencias,2021-11-29T00:00,Malestar,CANCELADA_POR_PACIENTE
+15,Oncología,2021-11-23T00:00,Bulto en la piel,REALIZADA
