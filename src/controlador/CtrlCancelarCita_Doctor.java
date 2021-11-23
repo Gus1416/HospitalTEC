@@ -120,6 +120,7 @@ public class CtrlCancelarCita_Doctor implements ActionListener {
             if(diff>= 1){
                 if (CRUDcita.CancelarCita(auxdate)){
                 JOptionPane.showMessageDialog(null, "Cita Cancelada");
+               
             } else {
                 JOptionPane.showMessageDialog(null, "Error al cancelar la cita la cita");
             }
