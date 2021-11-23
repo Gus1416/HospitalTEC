@@ -7,12 +7,24 @@ import java.sql.Date;
 import java.sql.ResultSet;
 
 /**
- *
+ * Clase que contiene las operaciones CRUD de los secretarios.
+ * 
  * @author Gustavo
+ * @version  15/11/2021
  */
 public class SecretarioCRUD extends Conexion {
+  
+  /**
+   * Constructor por defecto.
+   */
   public SecretarioCRUD(){}
   
+  /**
+   * Registra un nuevo secretario en la base de datos.
+   * 
+   * @param pSecretario un objeto secretario
+   * @return un booleano que indica si la operación se realizó con éxito.
+   */
   public boolean registrarSecretario(Secretario pSecretario){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -44,7 +56,13 @@ public class SecretarioCRUD extends Conexion {
     } 
   }
   
-    public Secretario buscarSecretario(String pCedula){
+  /**
+   * Busca un secretario según la cédula.
+   * 
+   * @param pCedula la cédula del secretario
+   * @return un objeto Secretario
+   */
+  public Secretario buscarSecretario(String pCedula){
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();

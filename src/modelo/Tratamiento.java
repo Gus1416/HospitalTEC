@@ -1,8 +1,10 @@
 package modelo;
 
 /**
- *
- * @author sebcor
+ * Clase que contiene la información de los tratamientos.
+ * 
+ * @author Sebastián
+ * @version  15/11/2021
  */
 public class Tratamiento {
   private int id;
@@ -10,14 +12,26 @@ public class Tratamiento {
   private int dosis;
   private String tipo;
   
+  /**
+   * Constructor por defecto
+   */
   public Tratamiento(){}
 
+  /**
+   * Constructor con parámetros.
+   * 
+   * @param pNombre el nombre del tratamiento
+   * @param pDosis la cantidad de dosis del tratamiento
+   * @param pTipo el tipo de tratamiento
+   */
   public Tratamiento(String pNombre, int pDosis, String pTipo) {
     this.nombre = pNombre;
     this.dosis = pDosis;
     this.tipo = pTipo;
   }
 
+  //Métodos accesores
+  
   public void setId(int id) {
     this.id = id;
   }
@@ -34,16 +48,10 @@ public class Tratamiento {
     this.tipo = tipo;
   }
 
-  /**
-   * @return the nombre
-   */
   public String getNombre() {
     return nombre;
   }
 
-  /**
-   * @param Nombre the nombre to set
-   */
   public void setNombre(String Nombre) {
     this.nombre = Nombre;
   }

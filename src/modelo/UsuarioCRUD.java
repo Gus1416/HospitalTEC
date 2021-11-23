@@ -6,13 +6,24 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- *
+ * Clase que contienen las operaciones CRUD de los usuarios.
+ * 
  * @author Gustavo
+ * @version  15/11/2021
  */
 public class UsuarioCRUD extends Conexion{
   
+  /**
+   * Constructor por defecto
+   */
   public UsuarioCRUD(){}
   
+  /**
+   * Verifica las credenciales del usuario y permite el inicio de sesión.
+   * 
+   * @param pUsuario un objeto Usuario
+   * @return un booleano que indica si la operación fue exitosa.
+   */
   public boolean login(Usuario pUsuario){
     PreparedStatement ps = null;
     ResultSet rs = null;

@@ -6,14 +6,26 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
+
 /**
- *
+ * Clase que contiene las operaciones CRUD de los tratamientos.
+ * 
  * @author Gustavo
+ * @version  20/11/2021
  */
 public class TratamientoCRUD extends Conexion{
   
+  /**
+   * Constructor de la clase
+   */
   public TratamientoCRUD (){}
   
+  /**
+   * Regista un nuevo tratamiento en la base de datos.
+   * 
+   * @param pTratamiento Un objeto tratamiento
+   * @return un booleano que indica si la operación se dio con éxito
+   */
   public boolean registrarTratamiento(Tratamiento pTratamiento){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -40,6 +52,11 @@ public class TratamientoCRUD extends Conexion{
     }
   }
   
+  /**
+   * Consulta los tratamientos registrados.
+   * 
+   * @return una lista con los resultados de la búsqueda.
+   */
   public ArrayList<Tratamiento> consultarTratamientos(){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -75,6 +92,12 @@ public class TratamientoCRUD extends Conexion{
     }
   }
   
+  /**
+   * Consulta un tratamiento según el diagnóstico.
+   * 
+   * @param pIdDiagnostico el identificador del diagnóstico
+   * @return una lista con los resultados de la búsqueda
+   */
   public ArrayList<Tratamiento> consultarTratamientos(int pIdDiagnostico){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -111,6 +134,12 @@ public class TratamientoCRUD extends Conexion{
     }
   }
   
+  /**
+   * Consulta los tratamientos según el nombre del tratamiento.
+   * 
+   * @param pNombre el nombre del diagnóstico
+   * @return una lista con los resultados de la consulta
+   */
   public ArrayList consultarTratamientos(String pNombre){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -147,6 +176,12 @@ public class TratamientoCRUD extends Conexion{
     }
   }
   
+  /**
+   * Consulta un tratamiento específico según el nombre.
+   * 
+   * @param pNombre el nombre del tratamiento
+   * @return un objeto Tratamiento
+   */
   public Tratamiento consultarUnTratamiento(String pNombre){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -183,6 +218,19 @@ public class TratamientoCRUD extends Conexion{
     }
   }
   
+  /**
+   * Registra una atención brindada a un paciente.
+   * 
+   * @param Paciente el nombre del paciente atendido
+   * @param Cita el identificador de la cita
+   * @param Diagnostico el nombre del diagnóstico
+   * @param Nivel el nivel del diagnóstico
+   * @param Observaciones observaciones anotadas durante la cita
+   * @param Tratamiento el nombre del tratamiento 
+   * @param Dosis la cantidad de dosis
+   * @param TipoTratamiento el tipo de tratamiento
+   * @return un booleano que indica el éxtio de la operación
+   */
   public boolean registrarAtencion(String Paciente, int Cita, String Diagnostico, String Nivel, String Observaciones,
            String Tratamiento, int Dosis, String TipoTratamiento) {
     PreparedStatement ps = null;

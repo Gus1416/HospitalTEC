@@ -3,8 +3,10 @@ package modelo;
 import java.time.LocalDate;
 
 /**
- *
+ * Clase que contiene la información de los pacientes
+ * 
  * @author Maria Laura
+ * @version 15/11/2021
  */
 public class Paciente extends Usuario {
   private String nombre;
@@ -14,8 +16,24 @@ public class Paciente extends Usuario {
   private String lugarResidencia;
   private ArrayList<String> telefonos;
 
+  /**
+   * Constructor por defecto.
+   */
   public Paciente(){}
   
+  /**
+   * Constructor con parámetros.
+   * 
+   * @param pCedula la cédula del paciente
+   * @param pPassword la contraseña del usuario
+   * @param pTipoUsuario el tipo de usuario
+   * @param pNombre el nombre del paciente
+   * @param pFechaNacimiento fecha de nacimiento
+   * @param pTipoSangre tipo de sangre del paciente
+   * @param pNacionalidad nacionalidad
+   * @param pLugarResidencia dirección del paciente
+   * @param pTelefonos lista de teléfonos
+   */
   public Paciente(String pCedula, String pPassword, String pTipoUsuario, String pNombre, LocalDate pFechaNacimiento, String pTipoSangre,
           String pNacionalidad, String pLugarResidencia, ArrayList<String> pTelefonos) {
     super(pCedula, pPassword, pTipoUsuario);
@@ -27,6 +45,8 @@ public class Paciente extends Usuario {
     this.telefonos = pTelefonos;
   }
 
+  //Métodos accesores
+  
   public String getNombre() {
     return nombre;
   }

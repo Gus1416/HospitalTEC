@@ -7,8 +7,10 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 /**
- *
+ * Clase que contiene las operaciones CRUD de los pacientes
+ * 
  * @author Gustavo
+ * @version  
  */
 public class PacienteCRUD extends Conexion{
   public static ArrayList<Paciente> listaPacientes = new  ArrayList<Paciente> ();

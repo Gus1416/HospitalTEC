@@ -16,9 +16,7 @@ import modelo.Paciente;
 import modelo.PacienteCRUD;
 import vista.AsignarCitaDoctor;
 
-/**
- * @author sebcor "Vencer sin peligro es ganar sin gloria"- Séneca
- */
+
 public class CtrlAsignarCitaDoctor implements ActionListener {
   private AreaCRUD CRUDarea;
   private PacienteCRUD CRUDPaciente;
@@ -28,8 +26,6 @@ public class CtrlAsignarCitaDoctor implements ActionListener {
   private CtrlRegistroDoctor ctrldoc;
   
   public CtrlAsignarCitaDoctor() {}
-  
-  
 
   public CtrlAsignarCitaDoctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita,
           CitasCRUD CRUDcita, AsignarCitaDoctor vistaAsignar) {

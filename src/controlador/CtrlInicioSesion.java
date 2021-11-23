@@ -90,6 +90,7 @@ public class CtrlInicioSesion implements ActionListener{
                 break;
                 
               case "Enfermero":
+                
                 break;
                 
               case "Secretario":
