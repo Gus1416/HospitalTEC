@@ -25,7 +25,7 @@ import java.io.IOException;
  *
  * @author Gustavo
  */
-public class Reportes implements Exportable{
+public class Reportes implements exportable{
   private PdfPTable tabla;
 
   @Override
