@@ -17,20 +17,35 @@ import modelo.TratamientoCRUD;
 import controlador.CtrlInicioSesion;
 import controlador.CtrlAsignarCita_Doctor;
 import controlador.controladores_registros.CtrlRegistroDoctor;
-import java.util.ArrayList;
+import modelo.ArrayList;
+//import java.util.ArrayList;
 import modelo.CentroAtencionCRUD;
 import modelo.ConsultasDocCRUD;
 import modelo.DoctorCRUD;
+import modelo.EnfermeroCRUD;
+import modelo.Reportes;
+import vista.AplicarVacuna;
 import vista.AsignarCitaDoctor;
 import vista.Atender_Cita_Doctor;
 import vista.Cancelar_Cita_Doctor;
 import vista.Consultas_Doc;
 import vista.Hospitalizacion;
 import vista.ModuloDoctor;
+import vistasConsultaDoc.VIEWCantCitaEspe;
+import vistasConsultaDoc.VIEWCantCitaEstado;
+import vistasConsultaDoc.VIEWCantCitaRangoFecha;
+import vistasConsultaDoc.VIEWCantDiagNivel;
+import vistasConsultaDoc.VIEWCantDiagPaciente;
+import vistasConsultaDoc.VIEWCantTrataEspe;
+import vistasConsultaDoc.VIEWCantTrataGeneral;
+import vistasConsultaDoc.VIEWCantTrataPaci;
+import vistasConsultaDoc.VIEWCantTrataTipo;
+import vistasConsultaDoc.VIEWHospiPaciente;
 import vistasConsultaDoc.VIEWPacienteNivel;
 import vistasConsultaDoc.VIEWPacienteNombreD;
 import vistasConsultaDoc.VIEWPacienteRangoFechas;
 import vistasConsultaDoc.VIEWPacienteTratamientoNombre;
+import vistasConsultaDoc.VIEWPacienteTratamientoRangoFechas;
 import vistasConsultaDoc.VIEWPacienteTratamientoTipo;
 
 /**
@@ -48,6 +63,7 @@ public class CtrlDoctor implements ActionListener {
         this.vistaDoc.btnAtenderCita.addActionListener(this);
         this.vistaDoc.btnCancelarCita.addActionListener(this);
         this.vistaDoc.btnConsultasDoctor.addActionListener(this);
+        this.vistaDoc.btnAplicarVacuna.addActionListener(this);
     }
 
     public void iniciar(){  
@@ -115,9 +131,24 @@ public class CtrlDoctor implements ActionListener {
             VIEWPacienteRangoFechas datarangoDateD = new VIEWPacienteRangoFechas();
             VIEWPacienteTratamientoNombre dataTrataName = new VIEWPacienteTratamientoNombre();
             VIEWPacienteTratamientoTipo dataTrataType = new VIEWPacienteTratamientoTipo();
-            
+            VIEWPacienteTratamientoRangoFechas dataTrataRangoFecha = new VIEWPacienteTratamientoRangoFechas();
+            VIEWCantCitaEspe dataCitaEspe = new VIEWCantCitaEspe();
+            VIEWCantCitaEstado dataCitaEstate = new VIEWCantCitaEstado ();
+            VIEWCantCitaRangoFecha dataCitaDateR = new  VIEWCantCitaRangoFecha();    
+            VIEWCantDiagNivel dataDiagNivel = new  VIEWCantDiagNivel();
+            VIEWCantDiagPaciente dataDiagPaciente = new VIEWCantDiagPaciente();
+            VIEWCantTrataEspe dataTrataEspe = new VIEWCantTrataEspe();
+            VIEWCantTrataTipo dataTrataGen = new VIEWCantTrataTipo();
+            VIEWCantTrataPaci dataTrataPaci = new VIEWCantTrataPaci();
+            VIEWCantTrataGeneral dataTratamienTipo = new VIEWCantTrataGeneral(); 
+            VIEWHospiPaciente dataHospiPaciente = new VIEWHospiPaciente();
+            Reportes report = new Reportes();
+                    
+                    
             CtrlConsultasDoc ctrlconsultadoc = new CtrlConsultasDoc (vistaConsultaDoc,filas,
-            dataNivel,CRUDConsultaDOC,dataNombreD,datarangoDateD,dataTrataName,dataTrataType);
+            dataNivel,CRUDConsultaDOC,dataNombreD,datarangoDateD,dataTrataName,dataTrataType,
+            dataTrataRangoFecha,dataCitaEspe,dataCitaEstate,dataCitaDateR,dataDiagNivel,dataDiagPaciente,dataTrataEspe,dataTrataGen,
+            dataTrataPaci,dataTratamienTipo,dataHospiPaciente,report);
             
             ctrlconsultadoc.iniciar();
             vistaConsultaDoc.setVisible(true);
@@ -126,12 +157,18 @@ public class CtrlDoctor implements ActionListener {
         }
         
         
+        if (e.getSource() == vistaDoc.btnAplicarVacuna){
+             PacienteCRUD CRUDPaciente = new  PacienteCRUD();
+             AplicarVacuna vistaVacuna = new AplicarVacuna();
+             EnfermeroCRUD CRUDEnfermero = new EnfermeroCRUD(); 
+             CtrlAplicarVacuna ctrlVacuna = new CtrlAplicarVacuna(CRUDPaciente,vistaVacuna,CRUDEnfermero);
+             
+             ctrlVacuna.iniciar();
+             vistaVacuna.setVisible(true);
+            
+        }
         
         
-        
-        
-
-   
     }
     
 
@@ -141,4 +178,4 @@ public class CtrlDoctor implements ActionListener {
     
     
     
-   }
+}

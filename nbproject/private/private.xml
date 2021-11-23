@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlAtenderCita_Doctor.java</file>
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/HospitalTEC/src/controlador/CtrlAsignarCitaDoctor.java</file>
+=======
+            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/modelo/Reportes.java</file>
+            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/controlador/CtrlConsultasDoc.java</file>
+            <file>file:/C:/Users/sebco/Desktop/NetBeansProjects/HospitalTEC/src/vista/Consultas_Doc.java</file>
+>>>>>>> 4e2eb8aa7e0c02fc5a1cc788bb5b2795e454d94b
         </group>
     </open-files>
 </project-private>

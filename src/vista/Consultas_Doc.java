@@ -28,28 +28,32 @@ public class Consultas_Doc extends javax.swing.JFrame {
     private void initComponents() {
 
         RADIOPACIENTE = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        CITASRADIO = new javax.swing.JRadioButton();
+        RADIODIAG = new javax.swing.JRadioButton();
+        RADIOHOSP = new javax.swing.JRadioButton();
         CBDiagnosticos = new javax.swing.JComboBox<>();
         CBCitas = new javax.swing.JComboBox<>();
         CBPaciente = new javax.swing.JComboBox<>();
         CBTratamientos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         DocTable = new javax.swing.JTable();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        RADIOTRATA = new javax.swing.JRadioButton();
         CBHospitalizacion = new javax.swing.JComboBox<>();
         btnSHOW = new javax.swing.JButton();
+        btnCSV = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnPDF = new javax.swing.JButton();
+        btnHTML = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         RADIOPACIENTE.setText("Paciente ");
 
-        jRadioButton2.setText("Citas");
+        CITASRADIO.setText("Citas");
 
-        jRadioButton3.setText("Diagnosticos ");
+        RADIODIAG.setText("Diagnosticos ");
 
-        jRadioButton4.setText("Hospitalización");
+        RADIOHOSP.setText("Hospitalización");
 
         CBDiagnosticos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cantidad según Nivel", "Cantidad según Paciente" }));
 
@@ -57,7 +61,7 @@ public class Consultas_Doc extends javax.swing.JFrame {
 
         CBPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diagnostico según Nivel", "Diagnostico según Rango de Fechas", "Diagnostico según Nombre", "Tratamiento según Nombre", "Tratamiento según Tipo", "Tratamiento según Rango de Fechas" }));
 
-        CBTratamientos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Según Tipo", "Conteo General", "Según Especilidad", "Según Paciente" }));
+        CBTratamientos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Según Tipo", "Conteo General", "Según Especialidad", "Según Paciente" }));
 
         DocTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,11 +76,19 @@ public class Consultas_Doc extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(DocTable);
 
-        jRadioButton5.setText("Tratamientos");
+        RADIOTRATA.setText("Tratamientos");
 
-        CBHospitalizacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Según Nombre de Paciente", "Detalle General de Paciente" }));
+        CBHospitalizacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Detalle General de Paciente" }));
 
         btnSHOW.setText("SHOW");
+
+        btnCSV.setText("CSV");
+
+        jLabel1.setText("Reportes");
+
+        btnPDF.setText("PDF");
+
+        btnHTML.setText("HTML");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,22 +110,32 @@ public class Consultas_Doc extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(CITASRADIO)
+                                        .addGap(163, 163, 163)
+                                        .addComponent(RADIOHOSP)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnSHOW))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(CBTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(334, 334, 334)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnCSV)
+                                            .addComponent(btnPDF)
+                                            .addComponent(btnHTML))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(CBCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(CBHospitalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(CBTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton2)
-                                        .addGap(163, 163, 163)
-                                        .addComponent(jRadioButton4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
-                                        .addComponent(btnSHOW))))
+                                        .addComponent(CBHospitalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel1)
+                                        .addGap(20, 20, 20))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton3)
+                                .addComponent(RADIODIAG)
                                 .addGap(139, 139, 139)
-                                .addComponent(jRadioButton5)
+                                .addComponent(RADIOTRATA)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(34, 34, 34))))
+                        .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,25 +143,35 @@ public class Consultas_Doc extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RADIOPACIENTE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton4)
+                    .addComponent(CITASRADIO)
+                    .addComponent(RADIOHOSP)
                     .addComponent(btnSHOW))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CBPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CBCitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CBHospitalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CBDiagnosticos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CBTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CBPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBCitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBHospitalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RADIODIAG)
+                            .addComponent(RADIOTRATA))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CBDiagnosticos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCSV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPDF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHTML)))
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,13 +218,17 @@ public class Consultas_Doc extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> CBHospitalizacion;
     public javax.swing.JComboBox<String> CBPaciente;
     public javax.swing.JComboBox<String> CBTratamientos;
+    public javax.swing.JRadioButton CITASRADIO;
     public javax.swing.JTable DocTable;
+    public javax.swing.JRadioButton RADIODIAG;
+    public javax.swing.JRadioButton RADIOHOSP;
     public javax.swing.JRadioButton RADIOPACIENTE;
+    public javax.swing.JRadioButton RADIOTRATA;
+    public javax.swing.JButton btnCSV;
+    public javax.swing.JButton btnHTML;
+    public javax.swing.JButton btnPDF;
     public javax.swing.JButton btnSHOW;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
