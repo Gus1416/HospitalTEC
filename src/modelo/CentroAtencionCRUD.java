@@ -6,13 +6,24 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- *
+ * Clase con las operaciones CRUD de los centros de atención.
+ * 
  * @author Gustavo
+ * @version 15/11/2021
  */
 public class CentroAtencionCRUD extends Conexion {
   
+  /**
+   * Constructor por defecto.
+   */
   public CentroAtencionCRUD(){}
   
+  /**
+   * Registra un nuevo centro en la base de datos.
+   * 
+   * @param pCentro un objeto CentroAtencion
+   * @return un booleano para verificar el éxito de la operación
+   */
   public boolean registrarCentro(CentroAtencion pCentro){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -42,6 +53,11 @@ public class CentroAtencionCRUD extends Conexion {
     }
   }
   
+  /**
+   * Consulta los centro de atención registrados en la base de datos.
+   * 
+   * @return una lista con los centros de atención registrados
+   */
   public ArrayList<CentroAtencion> consultarCentros(){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -78,6 +94,12 @@ public class CentroAtencionCRUD extends Conexion {
     }
   }
   
+  /**
+   * Busca un centro específico según el nombre.
+   * 
+   * @param pNombreCentro el nombre del centro a buscar
+   * @return un objeto CentroAtencion
+   */
   public CentroAtencion buscarCentro (String pNombreCentro){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -106,6 +128,12 @@ public class CentroAtencionCRUD extends Conexion {
     }
   }  
   
+  /**
+   * Busca un centro de atención según el identificador.
+   * 
+   * @param pCodigoCentro el identificador del centro
+   * @return un objeto CentroAtencion
+   */
   public CentroAtencion buscarCentro (int pCodigoCentro){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -133,7 +161,4 @@ public class CentroAtencionCRUD extends Conexion {
       return null;
     }
   }  
-    
-  
-  
 }

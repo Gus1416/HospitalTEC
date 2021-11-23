@@ -7,13 +7,24 @@ import java.sql.SQLException;
 import java.sql.Date;
 
 /**
- *
+ * Clase que contiene las operaciones CRUD de los doctores.
+ * 
  * @author Gustavo
+ * @version 15/11/2021
  */
 public class DoctorCRUD extends Conexion{
   
+  /**
+   * Constructor por defecto.
+   */
   public DoctorCRUD(){}
   
+  /**
+   * Registra un nuevo doctor en la base de datos.
+   * 
+   * @param pDoctor un objeto Doctor
+   * @return un booleano para verificar el éxito de la operación
+   */
   public boolean registrarDoctor(Doctor pDoctor){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -46,6 +57,12 @@ public class DoctorCRUD extends Conexion{
     }
   }
   
+  /**
+   * Registra las especialidades del doctor en la base de datos.
+   * 
+   * @param pDoctor un objeto Doctor
+   * @return un booleano para verificar el éxito de la operación
+   */
   public boolean registrarEspecialidades(Doctor pDoctor){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -69,6 +86,12 @@ public class DoctorCRUD extends Conexion{
     }
   }
   
+  /**
+   * Completar un query sql con inserciones múltiples.
+   * 
+   * @param pDiagnostico un objeto Doctor
+   * @return una cadena con el query de inserción múltiple
+   */
   private String completarQuery(Doctor pDoctor){
     String query = "";
     for (int i = 0; i < pDoctor.getEspecialidades().size(); i++){
@@ -82,6 +105,12 @@ public class DoctorCRUD extends Conexion{
     return query;
   }
   
+  /**
+   * Busca un doctor específico según el nombre.
+   * 
+   * @param pCedula la cédula del doctor
+   * @return un objeto Doctor
+   */
   public Doctor buscarDoctor(String pCedula){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -122,6 +151,12 @@ public class DoctorCRUD extends Conexion{
     }
   }
   
+  /**
+   * Consulta las especialidades de un doctor.
+   * 
+   * @param pCodigoMedico cédula del doctor
+   * @return una lista con los resultados de la consulta
+   */
   private ArrayList<String> obtenerEspecialidades (int pCodigoMedico){
     PreparedStatement ps = null;
     ResultSet rs = null;

@@ -31,6 +31,7 @@ public class Conexion {
     }catch(SQLException | ClassNotFoundException e){
       System.err.println(e);
     }
+    
     return con;
   }    
 }

@@ -6,13 +6,24 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- *
+ * Clase que contiene las operaciones CRUD de los funcionarios.
+ * 
  * @author Gustavo
+ * @version 15/11/2021
  */
 public class FuncionarioCRUD extends Conexion{
   
+  /**
+   * Constructor por defecto.
+   */
   public FuncionarioCRUD(){}
   
+  /**
+   * Busca un funcionario según la cédula.
+   * 
+   * @param pCedulaFuncionario la cédula del funcionario
+   * @return un objeto de tipo Funcionario
+   */
   public Funcionario buscarFuncionario(String pCedulaFuncionario){
     PreparedStatement ps = null;
     ResultSet rs = null;

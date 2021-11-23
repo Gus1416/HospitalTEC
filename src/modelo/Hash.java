@@ -3,10 +3,20 @@ package modelo;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *
+ * Clase para la encriptación de las contraseñas de los usuarios.
+ * 
  * @author Gustavo
+ * @version 05/11/2021
  */
 public class Hash {
+  
+  /**
+   * Encripta la conntraseña en Sha1 o MD5 según se requiera.
+   * 
+   * @param txt la contraseña del usuario sin encriptar
+   * @param hashType el tipo de encriptación
+   * @return  la contraseña encriptada
+   */
   public static String getHash(String txt, String hashType){
     try{
       java.security.MessageDigest md = java.security.MessageDigest.getInstance(hashType);
@@ -22,10 +32,22 @@ public class Hash {
     return null;
   }
   
+  /**
+   * Invoca la encriptación en MD5.
+   * 
+   * @param txt la contraseña sin encriptar
+   * @return  la contraseña encriptada en MD5
+   */
   public static String md5(String txt){
     return Hash.getHash(txt, "MD5");
   }
   
+  /**
+   * Invoca la encriptación en Sha1.
+   * 
+   * @param txt la contraseña sin encriptar
+   * @return  la contraseña encriptada
+   */
   public static String sha1(String txt){
     return Hash.getHash(txt, "SHA1");
   }

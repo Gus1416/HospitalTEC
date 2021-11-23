@@ -26,12 +26,13 @@ import java.io.IOException;
  * @author Gustavo
  */
 public class Reportes implements Exportable{
+  private PdfPTable tabla;
 
   @Override
   public void exportarPDF(ArrayList<Object[]> pFilas, String pTipoReporte) {
     Document documento = new Document();
     Paragraph titulo = new Paragraph("Reportes");
-   
+    
     try{
       FileOutputStream archivo = new FileOutputStream("reportes.pdf");
       PdfWriter.getInstance(documento, archivo);
@@ -41,14 +42,14 @@ public class Reportes implements Exportable{
       documento.add(Chunk.NEWLINE);
       documento.add(new Paragraph("Reportes de " + pTipoReporte));
       documento.add(Chunk.NEWLINE);
-      PdfPTable tabla = new PdfPTable(5);
-      tabla.setWidthPercentage(100);
       
       switch (pTipoReporte){
         
         //En cada case se escibren los encabezados de la tabla
         
         case "PacienteCitas":
+          this.tabla = new PdfPTable(5);
+          this.tabla.setWidthPercentage(100);
           PdfPCell idCita = new PdfPCell(new Phrase("Número de Cita"));
           PdfPCell especialidad = new PdfPCell(new Phrase("Especialidad"));
           PdfPCell fecha = new PdfPCell(new Phrase("Fecha"));
@@ -63,6 +64,8 @@ public class Reportes implements Exportable{
           break;
 
         case "PacienteDiagnósticos":
+          this.tabla = new PdfPTable(5);
+          this.tabla.setWidthPercentage(100);
           PdfPCell idCitaDiagnostico = new PdfPCell(new Phrase("Número de Cita"));
           PdfPCell diagnostico = new PdfPCell(new Phrase("Diagnóstico"));
           PdfPCell nivel = new PdfPCell(new Phrase("Nivel"));
@@ -77,6 +80,8 @@ public class Reportes implements Exportable{
           break;
 
         case "PacienteTratamientos":
+          this.tabla = new PdfPTable(5);
+          this.tabla.setWidthPercentage(100);
           PdfPCell idCitaTratamiento = new PdfPCell(new Phrase("Número de Cita"));
           PdfPCell tratamiento = new PdfPCell(new Phrase("Tratamiento"));
           PdfPCell tipo = new PdfPCell(new Phrase("Tipo de Tratamiento"));
@@ -91,6 +96,8 @@ public class Reportes implements Exportable{
           break;
           
         case "PacienteHospitalizaciones":
+          this.tabla = new PdfPTable(10);
+          this.tabla.setWidthPercentage(100);
           PdfPCell numeroInternado = new PdfPCell(new Phrase("Número de Internado"));
           PdfPCell centroAtencion = new PdfPCell(new Phrase("Centro de Atención"));
           PdfPCell diagnosticoHospitalizacion = new PdfPCell(new Phrase("Diagnostico"));

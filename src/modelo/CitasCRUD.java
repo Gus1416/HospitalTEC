@@ -7,17 +7,25 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 /**
- *
- * @author sebcor
+ * Clase que contiene las operaciones CRUD de las citas.
+ * 
+ * @author Sebastián
+ * @version 22/11/2021
  */
 public class CitasCRUD extends Conexion {
 
+  /**
+   * Registra un nuevo centro en la base de datos.
+   *
+   * @param cita un objeto Cita
+   * @return un booleano para verificar el éxito de la operación
+   */
   public boolean registrarCita(Citas cita) {
     PreparedStatement ps = null;
     Connection con = getConexion();
 
     String sql = "CALL registrar_cita(?,?,?,?,?)";
-    
+
     try{
       ps = con.prepareStatement(sql);
       ps.setInt(1, cita.getiDArea());
@@ -29,19 +37,29 @@ public class CitasCRUD extends Conexion {
       ps.execute();
       return true;
 
-    } catch (SQLException e){
+    } catch (SQLException e)
+    {
       System.err.println(e);
       return false;
 
-    } finally{
-      try{
+    } finally
+    {
+      try
+      {
         con.close();
-      } catch (SQLException e) {
+      } catch (SQLException e)
+      {
         System.err.println(e);
       }
     }
   }
 
+  /**
+   * Registra un nuevo centro en la base de datos.
+   *
+   * @param cita Un objeto Cita
+   * @return un booleano para verificar el éxito de la operación
+   */
   public boolean CancelarCita(Citas cita) {
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -67,6 +85,12 @@ public class CitasCRUD extends Conexion {
     }
   }
 
+  /**
+   * Consulta las citas registradas en la base de datos mediante la cédula del paciente.
+   *
+   * @param cedula la cédula del paciente
+   * @return una lista con las citas registradas del paciente
+   */
   public ArrayList consultarCitas(String cedula) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -74,47 +98,41 @@ public class CitasCRUD extends Conexion {
     ArrayList<Citas> citas = new ArrayList<>();
 
     String sql = "SELECT * FROM cita WHERE cedula_paciente=?";
-    try
-    {
+    
+    try{
       ps = con.prepareStatement(sql);
       ps.setString(1, cedula);
       rs = ps.executeQuery();
 
-      while (rs.next())
-      {
-
+      while (rs.next()){
         Citas contenedor = new Citas(rs.getInt("id_cita"));
-
         Citas cita = new Citas();
         cita.setiDCita(rs.getInt("id_cita"));
         cita.setCedulaPaciente(rs.getString("cedula_paciente"));
         cita.setAuxdate(rs.getDate("fecha_hora"));
-
-        System.out.println("Esta es la cita que me llega mae:  " + cita.getAuxdate());
-
         citas.add(cita);
         System.out.println("");
-
       }
       return citas;
 
-    } catch (SQLException ex)
-    {
+    } catch (SQLException ex){
       System.err.println(ex);
       return citas;
 
-    } finally
-    {
-      try
-      {
+    } finally{
+      try{
         con.close();
-      } catch (SQLException ex)
-      {
+      } catch (SQLException ex){
         System.err.println(ex);
       }
     }
   }
   
+  /**
+   * Consulta la bitácora de citas en general.
+   *
+   * @return una lista con la bitácora de citas
+   */
   public ArrayList<Object[]> consultarBitacoraCitas(){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -145,6 +163,12 @@ public class CitasCRUD extends Conexion {
     }
   }
   
+  /**
+   * Consulta las citas registradas en la base de datos mediante la cédula del paciente.
+   *
+   * @param pCedulaPaciente la cédula del paciente
+   * @return una lista con las citas registradas del paciente
+   */
   public ArrayList<Object[]> consultarCitasRegistradas(String pCedulaPaciente){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -176,6 +200,12 @@ public class CitasCRUD extends Conexion {
     }
   }
   
+  /**
+   * Busca una cita en específico mediante el identificador de la cita.
+   *
+   * @param pIdCita el identificador de la cita
+   * @return una lista con las citas registradas del paciente
+   */
   public Citas buscarCita(int pIdCita){
     PreparedStatement ps = null;
     ResultSet rs = null;

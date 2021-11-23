@@ -126,6 +126,7 @@ public class Correo {
   
   private String crearCuerpoConfirmacion(Paciente pPaciente, Citas pCita){
     AreaCRUD areaCrud = new AreaCRUD();
+    
     String cuerpo = "";
     cuerpo += "Se ha registrado una nueva cita médica en el sistema de HospitalTEC + \n";
     cuerpo += "\n";

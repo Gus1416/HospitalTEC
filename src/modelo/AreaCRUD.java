@@ -6,19 +6,34 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- *
+ * Clase con las operaciones CRUD para las áreas.
+ * 
  * @author Gustavo
+ * @version 15/11/2021
  */
 public class AreaCRUD extends Conexion{
-  
-  public AreaCRUD(){}
-  
+  //Atributos de la clase
   public static ArrayList<Area> LISTAAREAS = new  ArrayList<Area> ();
-
-    public static ArrayList<Area> getLISTAAREAS() {
-        return LISTAAREAS;
-    }
   
+  /**
+   * Constructor por defecto.
+   */
+  public AreaCRUD(){}
+
+  /**
+   * Obtiene la lista de áreas registradas.
+   * 
+   * @return una lista con objetos de tipo Area
+   */
+  public static ArrayList<Area> getLISTAAREAS() {
+    return LISTAAREAS;
+  }
+  
+  /**
+   * Consulta las áreas registradas en la base de datos.
+   * 
+   * @return una lista con objetos de tipo Area
+   */
   public ArrayList consultarAreas(){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -31,18 +46,15 @@ public class AreaCRUD extends Conexion{
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
       
-      while (rs.next()){
-          
+      while (rs.next()){       
         Area contenedor = new Area(rs.getString("nombre"),rs.getInt("id_area"));  
-          
         Area area = new Area();
         area.setNombreArea(rs.getString("nombre"));
         area.setIdArea(rs.getInt("id_area"));
         areas.add(area);
-        
-        LISTAAREAS.add(contenedor);
-        
+        LISTAAREAS.add(contenedor); 
       }
+      
       return areas;
       
     } catch (SQLException ex){
@@ -58,6 +70,12 @@ public class AreaCRUD extends Conexion{
     }
   }
   
+  /**
+   * Busca un área en la base de datos mediante el nombre.
+   * 
+   * @param pNombreArea el nombre del área a buscar
+   * @return un objeto de tipo Area
+   */
   public Area buscarArea(String pNombreArea){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -83,6 +101,12 @@ public class AreaCRUD extends Conexion{
     }
   }
   
+  /**
+   * Busca un área en la base de datos mediante el identificador.
+   * 
+   * @param pIdArea el identificador del área a buscar
+   * @return un objeto de tipo Area
+   */
   public Area buscarArea(int pIdArea){
     PreparedStatement ps = null;
     ResultSet rs = null;

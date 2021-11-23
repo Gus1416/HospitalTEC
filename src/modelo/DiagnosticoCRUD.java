@@ -4,15 +4,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
+
 /**
- *
+ * Clase que contiene las operaciones CRUD de los diagnósticos.
+ * 
  * @author Gustavo
+ * @version 20/11/2021
  */
 public class DiagnosticoCRUD extends Conexion {
 
+  /**
+   * Constructor por defecto.
+   */
   public DiagnosticoCRUD() {
   }
   
+  /**
+   * Registra un nuevo centro en la base de datos.
+   * 
+   * @param pDiagnostico un objeto Diagnostico
+   * @return un booleano para verificar el éxito de la operación
+   */ 
   public boolean registrarDiagnostico(Diagnostico pDiagnostico){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -38,12 +50,19 @@ public class DiagnosticoCRUD extends Conexion {
     }
   }
 
+  /**
+   * Registra los tratamientos asociados a un catálogo de diagnósticos.
+   * 
+   * @param pDiagnostico un objeto Diagnostico
+   * @return un booleano para verificar el éxito de la operación
+   */   
   public boolean registrarTratamientosAsociados(Diagnostico pDiagnostico){
     PreparedStatement ps = null;
     Connection con = getConexion();
     
     String sql = "INSERT INTO diagnostico_tratamiento (id_diagnostico, id_tratamiento) VALUES" 
             + completarQuery(pDiagnostico);
+    
     try{
       ps = con.prepareStatement(sql);
       ps.execute();
@@ -52,6 +71,7 @@ public class DiagnosticoCRUD extends Conexion {
     } catch (SQLException ex){
       System.err.println(ex.getMessage());
       return false;
+      
     } finally {
       try {
         con.close();
@@ -61,6 +81,12 @@ public class DiagnosticoCRUD extends Conexion {
     }
   }
   
+  /**
+   * Completar un query sql con inserciones múltiples.
+   * 
+   * @param pDiagnostico un objeto Diagnostico
+   * @return una cadena con el query de inserción múltiple
+   */
   private String completarQuery(Diagnostico pDiagnostico){
     String query = "";
     for (int i = 0; i < pDiagnostico.getTratamientos().size(); i++){
@@ -74,6 +100,11 @@ public class DiagnosticoCRUD extends Conexion {
     return query;
   }
   
+  /**
+   * Consulta los diagnósticos registrados en la base de datos.
+   * 
+   * @return una lista con los diagnósticos registrados
+   */  
   public ArrayList<Diagnostico> consultarDiagnosticos() {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -108,6 +139,12 @@ public class DiagnosticoCRUD extends Conexion {
     }
   }
   
+  /**
+   * Busca un diagnóstico específico según el nombre.
+   * 
+   * @param pNombre el nombre del diagnóstico a buscar
+   * @return un objeto Diagnostico
+   */  
   public Diagnostico consultarUnDiagnostico(String pNombre) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -142,6 +179,12 @@ public class DiagnosticoCRUD extends Conexion {
     }
   }
 
+  /**
+   * Consulta los diagnósticos según el paciente.
+   * 
+   * @param Ced cédula del paciente
+   * @return un objeto CentroAtencion
+   */  
   public ArrayList consultarDiagnosticoPaciente(String Ced) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -180,6 +223,5 @@ public class DiagnosticoCRUD extends Conexion {
       }
     }
   }
-
 }
 

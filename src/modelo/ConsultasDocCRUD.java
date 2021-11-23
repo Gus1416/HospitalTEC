@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.sql.Connection;
@@ -17,17 +11,26 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
- * @author sebcor
+ * Clase que contiene las operaciones CRUD para las consultas del doctor.
+ * 
+ * @author Sebastián
+ * @version 20/11/2021
  */
 public class ConsultasDocCRUD extends Conexion{
     
-    public ArrayList<Object[]> PacienteDiagnosticoNivel(String Ced, String Nivel){
+  /**
+   * Consuta los diagnósitos de un paciente según el nivel.
+   * 
+   * @param Ced la cédula del paciente
+   * @param Nivel el nivel del diagnóstico consultado
+   * @return una lista con los resultados de la consulta
+   */
+  public ArrayList<Object[]> PacienteDiagnosticoNivel(String Ced, String Nivel) {
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
-    
+
     String sql = "CALL Paciente_Diagnostico_Nivel(?,?)";
     
     try{
@@ -54,6 +57,13 @@ public class ConsultasDocCRUD extends Conexion{
     }
   }
     
+  /**
+   * Consulta los diagnósticos de un paciente según el nombre del diagnóstico.
+   * 
+   * @param Ced la cédula del paciente
+   * @param Nombre el nombre del diagnóstico
+   * @return una lista con los resultados de la consulta
+   */
   public ArrayList<Object[]> PacienteDiagnosticoNombreD(String Ced, String Nombre){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -86,8 +96,14 @@ public class ConsultasDocCRUD extends Conexion{
     }
   }
   
-  
-  
+  /**
+   * Consulta los diagnósticos de un paciente según un rango de fechas.
+   * 
+   * @param Ced la cédula del paciente
+   * @param date1 la primera fecha del rango
+   * @param date2 la segunda fecha del rango
+   * @return una lista con los resultados de la consulta
+   */
   public ArrayList<Object[]> PacienteDiagnosticoDateRange(String Ced, Date date1, Date date2){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -95,8 +111,7 @@ public class ConsultasDocCRUD extends Conexion{
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
     String sql = "CALL Paciente_Diagnostico_Fecha(?,?,?)";
-    
-    
+     
     LocalDate dateO = date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     LocalDate dateT = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     
@@ -125,8 +140,14 @@ public class ConsultasDocCRUD extends Conexion{
     }
   }
   
-  
-   public ArrayList<Object[]> PacienteTratamientoNombre(String Ced, String NombreT){
+  /**
+   * Consulta los tratamientos de un paciente según el nombre del tratamiento.
+   * 
+   * @param Ced la cédula del paciente
+   * @param NombreT el nombre del tratamiento
+   * @return una lista con los resultados de la consulta
+   */
+  public ArrayList<Object[]> PacienteTratamientoNombre(String Ced, String NombreT){
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
@@ -158,7 +179,13 @@ public class ConsultasDocCRUD extends Conexion{
     }
   }
    
-   
+  /**
+   * Consulta los tratamientos de un paciente según el tipo de tratamiento.
+   * 
+   * @param Ced la cédula del paciente
+   * @param TipoT el tipo del tratamiento
+   * @return una lista con los resultados de la consulta
+   */ 
   public ArrayList<Object[]> PacienteTratamientoTipo(String Ced, String TipoT){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -189,14 +216,5 @@ public class ConsultasDocCRUD extends Conexion{
       System.err.println(ex);
       return objFilas;
     }
-  } 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  }    
 }
