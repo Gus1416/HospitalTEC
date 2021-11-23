@@ -5,7 +5,7 @@
             <url>src/controlador/CtrlSecretario.java</url>
             <bookmark id="1">
                 <name/>
-                <line>73</line>
+                <line>83</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,8 +13,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/controlador/CtrlConsultasSecre.java</file>
+            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/modelo/PacienteCRUD.java</file>
             <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/controlador/CtrlSecretario.java</file>
-            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/vista/AuxVistasConsultas/Paciente_citas.java</file>
+            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/vista/Cancelar_Cita_Doctor.java</file>
+            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/sms/sms.java</file>
+            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/controlador/CtrlAsignarCita_Doctor.java</file>
+            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/modelo/CitasCRUD.java</file>
+            <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/controlador/CtrlCancelarCita_Doctor.java</file>
             <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/vista/Consultas_Secretario.java</file>
             <file>file:/C:/Users/Maria%20Laura/Desktop/TEC/II%20Semestre%202021/POO/PROYECTO%202/HospitalTEC/src/modelo/ConsultasSecretarioCRUD.java</file>
         </group>

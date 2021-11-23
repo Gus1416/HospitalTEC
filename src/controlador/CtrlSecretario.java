@@ -25,6 +25,7 @@ import controlador.CtrlCancelarCita_Doctor;
 import modelo.Citas;
 import modelo.CitasCRUD;
 import modelo.PacienteCRUD;
+import modelo.Reportes;
 
 public class CtrlSecretario implements ActionListener {
     private ModuloSecretario vistaSecre;
@@ -81,7 +82,8 @@ public class CtrlSecretario implements ActionListener {
             Rango_Fechas vistaAuxFechas= new Rango_Fechas();
             Paciente vistaAuxPaciente = new Paciente();
             Especialidad vistaAuxEspecialidad= new  Especialidad();
-            CtrlConsultasSecre ctrlconsultassecre= new CtrlConsultasSecre( vista,filas,consultas,vistaAuxEstado, vistaAuxFechas, vistaAuxPaciente, vistaAuxEspecialidad);
+            Reportes report= new Reportes();
+            CtrlConsultasSecre ctrlconsultassecre= new CtrlConsultasSecre( vista,filas,consultas,vistaAuxEstado, vistaAuxFechas, vistaAuxPaciente, vistaAuxEspecialidad, report);
             vista.setVisible(true);
             ctrlconsultassecre.iniciar();
         }
