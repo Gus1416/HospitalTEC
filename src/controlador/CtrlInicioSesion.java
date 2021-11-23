@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Doctor;
 import modelo.DoctorCRUD;
+import modelo.EnfermeroCRUD;
 import modelo.Funcionario;
 import modelo.FuncionarioCRUD;
 import modelo.Hash;
@@ -26,6 +27,7 @@ public class CtrlInicioSesion implements ActionListener{
   private UsuarioCRUD usuarioCrud;
   private FuncionarioCRUD funcionarioCrud;
   private DoctorCRUD doctorCrud;
+  private EnfermeroCRUD enfermeroCrud;
   private SecretarioCRUD secretarioCrud;
   public static String cedula;
 
@@ -40,6 +42,7 @@ public class CtrlInicioSesion implements ActionListener{
     this.funcionarioCrud = new FuncionarioCRUD();
     this.doctorCrud = new DoctorCRUD();
     this.secretarioCrud = new SecretarioCRUD();
+    this.enfermeroCrud= new EnfermeroCRUD();
     this.inicioSesion.btnIngresar.addActionListener(this);
   }
   
@@ -81,10 +84,19 @@ public class CtrlInicioSesion implements ActionListener{
                 Doctor doctor = doctorCrud.buscarDoctor(usuario.getCedula());
                 CtrlDoctor ctrlDoctor = new CtrlDoctor(moduloDoctor, doctor);
                 ctrlDoctor.iniciar();
+                moduloDoctor.btnAplicarVacuna.setVisible(false);
                 moduloDoctor.setVisible(true);
                 break;
                 
               case "Enfermero":
+                ModuloDoctor moduloEnfermero = new ModuloDoctor();
+                Doctor enfermero = enfermeroCrud.buscarEnfermero(usuario.getCedula());
+                CtrlDoctor ctrlEnfermero = new CtrlDoctor(moduloEnfermero, enfermero);
+                ctrlEnfermero.iniciar();
+                moduloEnfermero.btnAplicarVacuna.setVisible(true);
+                moduloEnfermero.setVisible(true); 
+                  
+                  
                 break;
                 
               case "Secretario":
