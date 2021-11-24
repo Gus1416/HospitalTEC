@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.ArrayList;
@@ -25,6 +26,7 @@ public class CtrlVistaCentrosAtencion implements ActionListener{
   
   public void iniciar(){
     cargarCentros();
+    cargarTipos();
     this.vistaCentros.setTitle("Registro de Centros de Atención");
     this.vistaCentros.setSize(900, 620);
     this.vistaCentros.setLocationRelativeTo(null);
@@ -45,6 +47,13 @@ public class CtrlVistaCentrosAtencion implements ActionListener{
       modelo.addRow(centros.get(i));
     }
   }
+  
+  private void cargarTipos(){
+    ArrayList<String> tipos = this.centrosCrud.consultarTipos();
+    for (int i = 0; i < tipos.size(); i++){
+      this.vistaCentros.cbTiposCentro.addItem(tipos.get(i));
+    }
+  }  
 
   private ArrayList<Object[]> crearFilas(ArrayList<CentroAtencion> pCentros){
     ArrayList<Object[]> filas = new ArrayList();

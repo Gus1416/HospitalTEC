@@ -35,21 +35,11 @@ public class Inicio extends javax.swing.JFrame {
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
-    btnRegistrarse = new javax.swing.JButton();
     btnIniciarSesion = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     jPanel1.setOpaque(false);
-
-    btnRegistrarse.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-    btnRegistrarse.setText("Registrarse");
-    btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnRegistrarseActionPerformed(evt);
-      }
-    });
-    jPanel1.add(btnRegistrarse);
 
     btnIniciarSesion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
     btnIniciarSesion.setText("Iniciar Sesión");
@@ -71,10 +61,6 @@ public class Inicio extends javax.swing.JFrame {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
-
-  private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_btnRegistrarseActionPerformed
 
   /**
    * @param args the command line arguments
@@ -120,7 +106,6 @@ public class Inicio extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnIniciarSesion;
-  public javax.swing.JButton btnRegistrarse;
   private javax.swing.JPanel jPanel1;
   // End of variables declaration//GEN-END:variables
 

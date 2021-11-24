@@ -14,6 +14,7 @@ import modelo.CitasCRUD;
 import modelo.Correo;
 import modelo.EstadoCita;
 import modelo.Paciente;
+import modelo.Sms;
 import vista.CancelarCitasPaciente;
 
 /**
@@ -25,9 +26,11 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
   private Paciente paciente;
   private CitasCRUD citasCrud;
   private Correo correo;
+  private Sms sms;
   
   public CtrlCancelarCitasPaciente(CancelarCitasPaciente pConsultaCitas, Paciente pPaciente){
     this.correo = new Correo();
+    this.sms = new Sms();
     this.cancelarCitas = pConsultaCitas;
     this.paciente = pPaciente;
     this.citasCrud = new CitasCRUD();
@@ -73,6 +76,7 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
         if (!email.equals("")){
           if (citasCrud.CancelarCita(cita)) {
             if (this.correo.enviarEmailCancelacion(email, paciente, cita)){
+              this.sms.sms("La cita número " + cita.getiDCita() + " ha sido cancelada");
               cargarCitasRegistradas();
               JOptionPane.showMessageDialog(null, "La cita ha sido cancelada");
             }

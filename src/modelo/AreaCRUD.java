@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase con las operaciones CRUD para las áreas.
@@ -129,6 +131,56 @@ public class AreaCRUD extends Conexion{
     } catch (SQLException ex){
       System.err.println(ex.getMessage());
       return null;
+    }
+  }
+  
+  public boolean registrarArea (Area pArea){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "INSERT INTO area SET nombre = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pArea.getNombreArea());
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+      
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){      
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
+  
+  public boolean eliminarArea(Area pArea){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "DELETE FROM area WHERE id_area = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setInt(1, pArea.getIdArea());
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+      
+    } finally {
+      try{
+        con.close();
+      } catch (SQLException ex){      
+        System.err.println(ex.getMessage());
+      }
     }
   }
 }

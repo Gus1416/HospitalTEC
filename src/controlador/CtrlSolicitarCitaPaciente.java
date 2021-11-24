@@ -14,6 +14,7 @@ import modelo.CitasCRUD;
 import modelo.Correo;
 import modelo.EstadoCita;
 import modelo.Paciente;
+import modelo.Sms;
 import vista.SolicitarCitaPaciente;
 
 /**
@@ -26,9 +27,11 @@ public class CtrlSolicitarCitaPaciente implements ActionListener{
   private AreaCRUD areaCrud;
   private CitasCRUD citasCrud;
   private Correo correo;
+  private Sms sms;
   
   public CtrlSolicitarCitaPaciente(SolicitarCitaPaciente pSolicitarCita, Paciente pPaciente){
     this.correo = new Correo();
+    this.sms = new Sms();
     this.solicitarCita = pSolicitarCita;
     this.areaCrud = new AreaCRUD();
     this.paciente = pPaciente;
@@ -71,6 +74,7 @@ public class CtrlSolicitarCitaPaciente implements ActionListener{
 
         if (this.citasCrud.registrarCita(nuevaCita)){
           if (this.correo.enviarEmailConfirmacion(email, paciente, nuevaCita)){
+            this.sms.sms("Se ha registrado una cita en el sistema de Hospital TEC");
             JOptionPane.showMessageDialog(null, "Se ha registrado una nueva cita");
             limpiar();
           } else {

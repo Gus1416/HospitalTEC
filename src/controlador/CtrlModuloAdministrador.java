@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import vista.BitacoraCitas;
 import vista.CatalogoDiagnosticos;
 import vista.CatalogoTratamientos;
+import vista.GestionAreas;
+import vista.GestionTiposCentros;
 import vista.ModuloAdministrador;
 import vista.VistaCentrosAtencion;
 import vista.registros.RegistroDoctor;
@@ -31,6 +33,8 @@ public class CtrlModuloAdministrador implements ActionListener{
     this.moduloAdmin.btnTratamientos.addActionListener(this);
     this.moduloAdmin.btnDiagnosticos.addActionListener(this);
     this.moduloAdmin.btnBitacoraCitas.addActionListener(this);
+    this.moduloAdmin.btnAreas.addActionListener(this);
+    this.moduloAdmin.btnTiposCentros.addActionListener(this);
   }
   
   public void iniciar(){
@@ -106,6 +110,20 @@ public class CtrlModuloAdministrador implements ActionListener{
       CtrlBitacoraCitas ctrlBitacora = new CtrlBitacoraCitas(bitacora);
       ctrlBitacora.iniciar();
       bitacora.setVisible(true);
+    }
+    
+    if (e.getSource() == this.moduloAdmin.btnAreas){
+      GestionAreas gestionAreas = new GestionAreas();
+      CtrlGestionAreas ctrlGestionAreas = new CtrlGestionAreas(gestionAreas);
+      ctrlGestionAreas.iniciar();
+      gestionAreas.setVisible(true);
+    }
+    
+    if (e.getSource() == this.moduloAdmin.btnTiposCentros){
+      GestionTiposCentros gestionTipos = new GestionTiposCentros();
+      CtrlGestionTiposCentros ctrlTipos = new CtrlGestionTiposCentros(gestionTipos);
+      ctrlTipos.iniciar();
+      gestionTipos.setVisible(true);
     }
   }
 }

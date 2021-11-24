@@ -43,6 +43,8 @@ public class ModuloAdministrador extends javax.swing.JFrame {
     btnDiagnosticos = new javax.swing.JButton();
     btnTratamientos = new javax.swing.JButton();
     btnBitacoraCitas = new javax.swing.JButton();
+    btnAreas = new javax.swing.JButton();
+    btnTiposCentros = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     setResizable(false);
@@ -153,25 +155,54 @@ public class ModuloAdministrador extends javax.swing.JFrame {
         .addContainerGap())
     );
 
+    btnAreas.setBackground(new java.awt.Color(255, 255, 255));
+    btnAreas.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+    btnAreas.setForeground(new java.awt.Color(0, 0, 0));
+    btnAreas.setText("Áreas");
+    btnAreas.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAreasActionPerformed(evt);
+      }
+    });
+
+    btnTiposCentros.setBackground(new java.awt.Color(255, 255, 255));
+    btnTiposCentros.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+    btnTiposCentros.setForeground(new java.awt.Color(0, 0, 0));
+    btnTiposCentros.setText("Tipos de CM");
+    btnTiposCentros.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+    btnTiposCentros.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTiposCentrosActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel1Layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap()
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnCentrosMedicos))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(btnCentrosMedicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGap(18, 18, 18)
+          .addComponent(btnTiposCentros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(btnAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(btnCentrosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(btnCentrosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnTiposCentros, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
@@ -181,10 +212,12 @@ public class ModuloAdministrador extends javax.swing.JFrame {
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addContainerGap(210, Short.MAX_VALUE)
+        .addContainerGap()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
     layout.setVerticalGroup(
@@ -219,6 +252,14 @@ public class ModuloAdministrador extends javax.swing.JFrame {
   private void btnBitacoraCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBitacoraCitasActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_btnBitacoraCitasActionPerformed
+
+  private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnAreasActionPerformed
+
+  private void btnTiposCentrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiposCentrosActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnTiposCentrosActionPerformed
 
   /**
    * @param args the command line arguments
@@ -263,9 +304,11 @@ public class ModuloAdministrador extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  public javax.swing.JButton btnAreas;
   public javax.swing.JButton btnBitacoraCitas;
   public javax.swing.JButton btnCentrosMedicos;
   public javax.swing.JButton btnDiagnosticos;
+  public javax.swing.JButton btnTiposCentros;
   public javax.swing.JButton btnTratamientos;
   public javax.swing.JButton btnUsuarios;
   private javax.swing.JLabel jLabel2;

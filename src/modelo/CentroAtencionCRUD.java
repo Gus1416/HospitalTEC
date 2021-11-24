@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase con las operaciones CRUD de los centros de atención.
@@ -160,5 +162,47 @@ public class CentroAtencionCRUD extends Conexion {
       System.err.println(ex.getMessage());
       return null;
     }
-  }  
+  }
+
+  public ArrayList<String> consultarTipos(){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<String> tipos = new ArrayList();
+    
+    String sql = "SELECT * FROM tipos_centros";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      rs = ps.executeQuery();
+      
+      while (rs.next()){
+        tipos.add(rs.getString("nombre"));
+      }
+      
+      return tipos;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    }
+  }
+  
+  public boolean registrarTipo(String pTipo){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "INSERT INTO tipos_centros SET nombre = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pTipo);
+      ps.execute();
+      return true;
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return false;
+    }
+  }
 }

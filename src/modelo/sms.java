@@ -1,3 +1,4 @@
+package modelo;
 
 
 import java.net.*;
@@ -7,17 +8,19 @@ import java.io.*;
  *
  * @author Maria Laura
  */
-public class sms {
+public class Sms {
+    
+    public Sms(){}
     public void sms(String message){
         try{
            String myURI = "https://api.bulksms.com/v1/messages";
 
     // change these values to match your own account
     String myUsername = "malaumocor123";
-    String myPassword = "\"Prueba1234";
+    String myPassword = "Prueba1234";
 
     // the details of the message we want to send
-    String myData = "{to: \"5068143655\", encoding: \"UNICODE\", body: \""+message+"\"}";
+    String myData = "{to: \"50686143655\", encoding: \"UNICODE\", body: \""+message+"\"}";
 
     // if your message does not contain unicode, the "encoding" is not required:
     // String myData = "{to: \"1111111\", body: \"Hello Mr. Smith!\"}";
@@ -68,5 +71,7 @@ public class sms {
         }catch(Exception e){
             System.out.println(e);
         }
+    
     }
 }
+

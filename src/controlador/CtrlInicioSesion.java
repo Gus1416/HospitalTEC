@@ -85,6 +85,7 @@ public class CtrlInicioSesion implements ActionListener{
                 Doctor doctor = doctorCrud.buscarDoctor(usuario.getCedula());
                 CtrlDoctor ctrlDoctor = new CtrlDoctor(moduloDoctor, doctor);
                 ctrlDoctor.iniciar();
+                moduloDoctor.btnAplicarVacuna.setVisible(false);
                 moduloDoctor.setVisible(true);
                 break;
                 

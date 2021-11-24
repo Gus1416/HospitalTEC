@@ -118,7 +118,6 @@ public class VistaCentrosAtencion extends javax.swing.JFrame {
     cbTiposCentro.setBackground(new java.awt.Color(102, 102, 102));
     cbTiposCentro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     cbTiposCentro.setForeground(new java.awt.Color(255, 255, 255));
-    cbTiposCentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "Clínica", "EBAIS" }));
 
     btnRegistrarCentro.setBackground(new java.awt.Color(255, 255, 255));
     btnRegistrarCentro.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
