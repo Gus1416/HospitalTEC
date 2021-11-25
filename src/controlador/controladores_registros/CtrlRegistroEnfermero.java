@@ -57,23 +57,31 @@ public class CtrlRegistroEnfermero implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.registroEnfermero.btnRegistrarEnfermero){
-      String cedula = registroEnfermero.txtCedulaEnfermero.getText();
-      String password = Hash.sha1(registroEnfermero.passContrasena.getText());
-      String tipoUsuario = "Funcionario";
-      String nombre = registroEnfermero.txtNombreEnfermero.getText();
-      String tipoFuncionario = "Enfermero";
-      LocalDate fechaIngreso = LocalDate.now();
-      Area area = areaCrud.buscarArea((String)registroEnfermero.cbAreas.getSelectedItem());
-      CentroAtencion centro = centroCrud.buscarCentro((String)registroEnfermero.cbCentroAtencion.getSelectedItem());
-      boolean personasACargo = this.registroEnfermero.rbOpcionSi.isSelected();
-      boolean experienciaCapacitaciones = this.registroEnfermero.rbOpcionSi1.isSelected();
-      Enfermero nuevoEnfermero = new Enfermero(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, 
-              centro, personasACargo, experienciaCapacitaciones);
-      if (this.enfermeroCrud.registrarEnfermero(nuevoEnfermero)){
-        JOptionPane.showMessageDialog(null, "Nuevo enfermero registrado");
-        limpiar();
+      if (!this.registroEnfermero.txtNombreEnfermero.getText().equals("")
+              && !this.registroEnfermero.txtCedulaEnfermero.getText().equals("")
+              && !this.registroEnfermero.passContrasena.getText().equals("")){
+        
+        String cedula = registroEnfermero.txtCedulaEnfermero.getText();
+        String password = Hash.sha1(registroEnfermero.passContrasena.getText());
+        String tipoUsuario = "Funcionario";
+        String nombre = registroEnfermero.txtNombreEnfermero.getText();
+        String tipoFuncionario = "Enfermero";
+        LocalDate fechaIngreso = LocalDate.now();
+        Area area = areaCrud.buscarArea((String) registroEnfermero.cbAreas.getSelectedItem());
+        CentroAtencion centro = centroCrud.buscarCentro((String) registroEnfermero.cbCentroAtencion.getSelectedItem());
+        boolean personasACargo = this.registroEnfermero.rbOpcionSi.isSelected();
+        boolean experienciaCapacitaciones = this.registroEnfermero.rbOpcionSi1.isSelected();
+        Enfermero nuevoEnfermero = new Enfermero(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area,
+                centro, personasACargo, experienciaCapacitaciones);
+        
+        if (this.enfermeroCrud.registrarEnfermero(nuevoEnfermero)){
+          JOptionPane.showMessageDialog(null, "Nuevo enfermero registrado");
+          limpiar();
+        } else{
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
       } else {
-        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
   }

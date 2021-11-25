@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import modelo.ConsultasSecretarioCRUD;
 import vista.AuxVistasConsultas.Especialidad;
@@ -94,8 +95,8 @@ public void iniciar(){
      
  public void citasFechas(){
      
-    String fecha1 = (String) this.vistaAuxFechas.fecha1_txt.getText();
-    String fecha2 = (String) this.vistaAuxFechas.fecha2_txt.getText();//datos que le entran
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
     
     DefaultTableModel modeloR = new DefaultTableModel();
     this.vista.SecreTable.setModel(modeloR);  // Setear el modelo de la tabla de requisitos
@@ -167,9 +168,9 @@ public void iniciar(){
     modeloR.addColumn("Servicio");
     modeloR.addColumn("Cédula del Funcionario");
     modeloR.addColumn("Cedula del Paciente");
-    modeloR.addColumn("Fecha Seguimiento");
-    modeloR.addColumn("Observacion");
-    modeloR.addColumn("ID Tratamiento");
+//    modeloR.addColumn("Fecha Seguimiento");
+//    modeloR.addColumn("Observacion");
+//    modeloR.addColumn("ID Tratamiento");
 
     for (int i = 0; i < filas.size(); i++){
       modeloR.addRow(filas.get(i));
@@ -177,8 +178,8 @@ public void iniciar(){
  } 
       public void hospitalizacionesFecha(){
      
-    String fecha1 = (String) this.vistaAuxFechas.fecha1_txt.getText();
-    String fecha2 = (String) this.vistaAuxFechas.fecha2_txt.getText();//datos que le entran
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
     
     DefaultTableModel modeloR = new DefaultTableModel();
     this.vista.SecreTable.setModel(modeloR);  // Setear el modelo de la tabla de requisitos
@@ -192,9 +193,9 @@ public void iniciar(){
     modeloR.addColumn("Servicio");
     modeloR.addColumn("Cédula del Funcionario");
     modeloR.addColumn("Cedula del Paciente");
-    modeloR.addColumn("Fecha Seguimiento");
-    modeloR.addColumn("Observacion");
-    modeloR.addColumn("ID Tratamiento");
+//    modeloR.addColumn("Fecha Seguimiento");
+//    modeloR.addColumn("Observacion");
+//    modeloR.addColumn("ID Tratamiento");
      
     for (int i = 0; i < filas.size(); i++){
       modeloR.addRow(filas.get(i));
@@ -219,9 +220,9 @@ public void iniciar(){
     modeloR.addColumn("Servicio");
     modeloR.addColumn("Cédula del Funcionario");
     modeloR.addColumn("Cedula del Paciente");
-    modeloR.addColumn("Fecha Seguimiento");
-    modeloR.addColumn("Observacion");
-    modeloR.addColumn("ID Tratamiento");
+//    modeloR.addColumn("Fecha Seguimiento");
+//    modeloR.addColumn("Observacion");
+//    modeloR.addColumn("ID Tratamiento");
 
     
      
@@ -249,9 +250,9 @@ public void iniciar(){
     modeloR.addColumn("Servicio");
     modeloR.addColumn("Cédula del Funcionario");
     modeloR.addColumn("Cedula del Paciente");
-    modeloR.addColumn("Fecha Seguimiento");
-    modeloR.addColumn("Observacion");
-    modeloR.addColumn("ID Tratamiento");
+//    modeloR.addColumn("Fecha Seguimiento");
+//    modeloR.addColumn("Observacion");
+//    modeloR.addColumn("ID Tratamiento");
 
     
      
@@ -286,8 +287,8 @@ public void iniciar(){
        
        if (vista.citasRadioButton.isSelected() && vista.citaComboBox.getSelectedItem().toString().equals("Rango de fechas")){
        ArrayList<Object[]> list= new ArrayList<Object[]>();
-        String fecha1= (this.vistaAuxFechas.fecha1_txt.getText());
-        String fecha2= (this.vistaAuxFechas.fecha2_txt.getText());
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
         
         list=consultas.CitasFechas(fecha1, fecha2);
 
@@ -328,8 +329,8 @@ public void iniciar(){
         
         if (vista.hospitRadioButton.isSelected() && vista.hospitComboBox.getSelectedItem().toString().equals("Rango de fechas")){
         ArrayList<Object[]> list= new ArrayList<Object[]>();
-        String fecha1= (this.vistaAuxFechas.fecha1_txt.getText());
-        String fecha2= (this.vistaAuxFechas.fecha2_txt.getText());
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
         
         list=consultas.hospitalizacionFechas(fecha1, fecha2);
 
@@ -388,8 +389,8 @@ public void iniciar(){
        
        if (vista.citasRadioButton.isSelected() && vista.citaComboBox.getSelectedItem().toString().equals("Rango de fechas")){
        ArrayList<Object[]> list= new ArrayList<Object[]>();
-        String fecha1= (this.vistaAuxFechas.fecha1_txt.getText());
-        String fecha2= (this.vistaAuxFechas.fecha2_txt.getText());
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
         
         list=consultas.CitasFechas(fecha1, fecha2);
 
@@ -430,8 +431,8 @@ public void iniciar(){
         
         if (vista.hospitRadioButton.isSelected() && vista.hospitComboBox.getSelectedItem().toString().equals("Rango de fechas")){
         ArrayList<Object[]> list= new ArrayList<Object[]>();
-        String fecha1= (this.vistaAuxFechas.fecha1_txt.getText());
-        String fecha2= (this.vistaAuxFechas.fecha2_txt.getText());
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
         
         list=consultas.hospitalizacionFechas(fecha1, fecha2);
 
@@ -490,8 +491,8 @@ public void iniciar(){
        
        if (vista.citasRadioButton.isSelected() && vista.citaComboBox.getSelectedItem().toString().equals("Rango de fechas")){
        ArrayList<Object[]> list= new ArrayList<Object[]>();
-        String fecha1= (this.vistaAuxFechas.fecha1_txt.getText());
-        String fecha2= (this.vistaAuxFechas.fecha2_txt.getText());
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
         
         list=consultas.CitasFechas(fecha1, fecha2);
 
@@ -531,8 +532,8 @@ public void iniciar(){
         
         if (vista.hospitRadioButton.isSelected() && vista.hospitComboBox.getSelectedItem().toString().equals("Rango de fechas")){
         ArrayList<Object[]> list= new ArrayList<Object[]>();
-        String fecha1= (this.vistaAuxFechas.fecha1_txt.getText());
-        String fecha2= (this.vistaAuxFechas.fecha2_txt.getText());
+    Date fecha1 = this.vistaAuxFechas.FechaP1.getDate();
+    Date fecha2 = this.vistaAuxFechas.FechaP2.getDate();
         
         list=consultas.hospitalizacionFechas(fecha1, fecha2);
 

@@ -37,31 +37,46 @@ public class CtrlRegistroPaciente implements ActionListener{
 
   @Override
   public void actionPerformed(ActionEvent e) {
+
     if (e.getSource() == this.registroPaciente.btnAgregarTelefono){
       String telefonos = this.registroPaciente.txtTelefono.getText();
       modelo.addElement(telefonos);
       this.registroPaciente.listTelefonos.setModel(modelo);
       this.registroPaciente.txtTelefono.setText("");
     }
-
+      
     if (e.getSource() == this.registroPaciente.btnRegistrarPaciente){
-      String cedula = registroPaciente.txtCedulaPaciente.getText();
-      String password = Hash.sha1(registroPaciente.passContrasena.getText());
-      String tipoUsuario = "Paciente";
-      String nombre = registroPaciente.txtNombrePaciente.getText();
-      LocalDate fechaNacimiento = this.registroPaciente.dcFechaNacimiento.getCalendar().getTime().toInstant().
-              atZone(ZoneId.systemDefault()).toLocalDate();
-      String sangre = (String) this.registroPaciente.cbSangre.getSelectedItem();
-      String nacionalidad = this.registroPaciente.txtNacionalidad.getText();
-      String residencia = this.registroPaciente.txtResidencia.getText();
-      ArrayList<String> telefonos = recorrerLista();
-      Paciente nuevoPaciente = new Paciente(cedula, password, tipoUsuario, nombre, fechaNacimiento, sangre, nacionalidad,
-              residencia, telefonos);
-      if (pacienteCrud.registrarPaciente(nuevoPaciente) && pacienteCrud.registrarTelefonos(nuevoPaciente)) {
-        JOptionPane.showMessageDialog(null, "Nuevo paciente registrado");
-        limpiar();
+      if (!this.registroPaciente.txtNombrePaciente.getText().equals("")
+              && !this.registroPaciente.txtCedulaPaciente.getText().equals("")
+              && this.registroPaciente.dcFechaNacimiento.getCalendar() != null
+              && this.registroPaciente.cbSangre.getSelectedItem() != null
+              && !this.registroPaciente.txtNacionalidad.getText().equals("")
+              && !this.registroPaciente.txtResidencia.getText().equals("")
+              && !this.registroPaciente.passContrasena.getText().equals(""))
+      {
+        
+        String cedula = registroPaciente.txtCedulaPaciente.getText();
+        String password = Hash.sha1(registroPaciente.passContrasena.getText());
+        String tipoUsuario = "Paciente";
+        String nombre = registroPaciente.txtNombrePaciente.getText();
+        LocalDate fechaNacimiento = this.registroPaciente.dcFechaNacimiento.getCalendar().getTime().toInstant().
+                atZone(ZoneId.systemDefault()).toLocalDate();
+        String sangre = (String) this.registroPaciente.cbSangre.getSelectedItem();
+        String nacionalidad = this.registroPaciente.txtNacionalidad.getText();
+        String residencia = this.registroPaciente.txtResidencia.getText();
+        ArrayList<String> telefonos = recorrerLista();
+        Paciente nuevoPaciente = new Paciente(cedula, password, tipoUsuario, nombre, fechaNacimiento, sangre, nacionalidad,
+                residencia, telefonos);
+
+        if (pacienteCrud.registrarPaciente(nuevoPaciente) && pacienteCrud.registrarTelefonos(nuevoPaciente)){
+          JOptionPane.showMessageDialog(null, "Nuevo paciente registrado");
+          limpiar();
+
+        } else {
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
       } else{
-        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
   }

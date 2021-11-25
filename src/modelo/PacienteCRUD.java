@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase que contiene las operaciones CRUD de los pacientes
@@ -159,6 +161,43 @@ public class PacienteCRUD extends Conexion{
     }
   }
   
+  public Paciente buscarPacienteNombre(String pNombre){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Paciente paciente = new Paciente();
+    
+    String sql = "SELECT * FROM paciente WHERE nombre = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pNombre);
+      rs = ps.executeQuery();
+      
+      if (rs.next()){
+        paciente.setCedula(rs.getString("cedula_paciente"));
+        paciente.setNombre(rs.getString("nombre"));
+        paciente.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+        paciente.setTipoSangre(rs.getString("tipo_sangre"));
+        paciente.setNacionalidad(rs.getString("nacionalidad"));
+        paciente.setLugarResidencia(rs.getString("residencia"));
+        return paciente;
+      } else {
+        return null;
+      }
+      
+    } catch (SQLException ex){
+      System.err.println(ex.getMessage());
+      return null;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException ex){
+        System.err.println(ex.getMessage());
+      }
+    }
+  }
+  
   public boolean registrarHospitalizacion(HospitalizacionP pHospi){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -188,6 +227,37 @@ public class PacienteCRUD extends Conexion{
       } catch (SQLException ex){
         System.err.println(ex.getMessage());
       }
+    }
+  }
+  
+  public ArrayList<Citas> consultarCitasPaciente(Paciente pPaciente){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Citas> citas = new ArrayList();
+    
+    String sql = "SELECT * FROM cita WHERE cedula_paciente = ? AND estado_actual = 'REGISTRADA' OR estado_actual = 'ASIGNADA'";
+    
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pPaciente.getCedula());
+      rs = ps.executeQuery();
+      
+      while(rs.next()){
+        Citas cita = new Citas();
+        cita.setiDCita(rs.getInt("id_cita"));
+        cita.setiDArea(rs.getInt("id_area"));
+        cita.setFechaCita(rs.getDate("fecha_hora").toLocalDate());
+        cita.setObservacionAdicional(rs.getString("observacion"));
+        cita.setCedulaPaciente(pPaciente.getCedula());
+        citas.add(cita);
+      }
+      return citas;
+      
+      
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
+        return null;
     }
   }
 }

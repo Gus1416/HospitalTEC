@@ -28,7 +28,8 @@ import vista.consultas_paciente.VIEWTratamientosRangoFechas;
 import vista.consultas_paciente.VIEWTratamientosTipo;
 
 /**
- *
+ * Controlador para las consultas del paciente.
+ * 
  * @author Gustavo
  */
 public class CtrlConsultasPaciente implements ActionListener{
@@ -47,6 +48,12 @@ public class CtrlConsultasPaciente implements ActionListener{
   private AreaCRUD areaCrud;
   private ArrayList<Object[]> filas = new ArrayList<Object[]>();
   
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pConsultas ventana de consulta
+   * @param pPaciente  objeto paciente
+   */
   public CtrlConsultasPaciente(ConsultasPaciente pConsultas, Paciente pPaciente){
     this.consultas = pConsultas;
     this.paciente = pPaciente;
@@ -81,11 +88,17 @@ public class CtrlConsultasPaciente implements ActionListener{
     this.areaCrud = new AreaCRUD();
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){
     this.consultas.setTitle("Consultas");
     this.consultas.setLocationRelativeTo(null);
   }
   
+  /**
+   * Muestra las citas por rango de fechas
+   */
   private void mostrarCitasRangoFechas(){
     Date fecha1 = this.citasRangoFechas.FechaP1.getDate();
     Date fecha2 = this.citasRangoFechas.FechaP2.getDate();
@@ -93,6 +106,9 @@ public class CtrlConsultasPaciente implements ActionListener{
     crearTablaCitas(filas);
   }
   
+  /**
+   * Muestra las citas por estado
+   */
   private void mostrarCitasEstado(){
     String estado = (String)this.citasEstado.cbEstadosCita.getSelectedItem();
     ArrayList<Object[]> filas;
@@ -121,6 +137,9 @@ public class CtrlConsultasPaciente implements ActionListener{
     }
   }
   
+  /**
+   * Muesta las citas por especialidad
+   */
   private void mostrarCitasEspecialidad(){
     String area = (String)this.citasEspecialidad.cbEspecialidades.getSelectedItem();
     int idArea = this.areaCrud.buscarArea(area).getIdArea();
@@ -128,6 +147,9 @@ public class CtrlConsultasPaciente implements ActionListener{
     crearTablaCitas(filas);
   }
   
+  /**
+   * Muestra los diagnòsticos por fechas
+   */
   private void mostrarDiagnosticosRangoFechas(){
     Date fecha1 = this.diagnosticosRangoFechas.FechaP1.getDate();
     Date fecha2 = this.diagnosticosRangoFechas.FechaP2.getDate();
@@ -136,18 +158,27 @@ public class CtrlConsultasPaciente implements ActionListener{
     crearTablaDiagnosticos(filas);
   }
   
+  /**
+   * Muestra los diagnòsticos por nivel
+   */
   private void mostrarDiagnosticosNivel(){
     String nivel = (String)this.diagnosticosNivel.cbDiagnosticoNivel.getSelectedItem();
     this.filas = this.consultasCrud.pacienteDiagnosticoNivel(this.paciente.getCedula(), nivel);
     crearTablaDiagnosticos(filas);
   }
   
+  /**
+   * Muestra los diagnòsticos por nombre
+   */
   private void mostrarDiagnosticosNombre(){
     String nombreDiagnostico = (String)this.diagnosticosNombre.cbDiagnosticoNombre.getSelectedItem();
     this.filas = this.consultasCrud.pacienteDiagnosticoNombre(this.paciente.getCedula(), nombreDiagnostico);
     crearTablaDiagnosticos(filas);
   }
   
+  /**
+   * Muestra los tratamientos por fechas
+   */
   private void mostrarTratamientosRangoFechas(){
     Date fecha1 = this.tratamientosRangoFechas.FechaP1.getDate();
     Date fecha2 = this.tratamientosRangoFechas.FechaP2.getDate();
@@ -155,23 +186,37 @@ public class CtrlConsultasPaciente implements ActionListener{
     crearTablaTratamientos(filas);
   }
   
+  /**
+   * Muestra los tratamientos por tipo
+   */
   private void mostrarTratamientosTipo(){
     String tipo = (String)this.tratamientosTipo.cbTratamientoTipo.getSelectedItem();
     this.filas = this.consultasCrud.pacienteTratamientosTipo(this.paciente.getCedula(), tipo);
     crearTablaTratamientos(filas);
   }
   
+  /**
+   * Muestra los tratamientos por nombre
+   */
   private void mostrarTratamientosNombre(){
     String nombre = (String)this.tratamientosNombre.cbTratamientoNombre.getSelectedItem();
     this.filas = this.consultasCrud.pacienteTratamientosNombre(this.paciente.getCedula(), nombre);
     crearTablaTratamientos(filas);
   }
   
+  /**
+   * Muestra las hospitalizaciones
+   */
   private void mostrarHospitalizaciones(){
     this.filas = this.consultasCrud.pacienteHospitalizaciones(this.paciente.getCedula());
     crearTablaHospitalizaciones(filas);
   }
   
+  /**
+   * Creaciòn de tablas
+   * 
+   * @param pFilas  filas de la tabla
+   */
   private void crearTablaCitas(ArrayList<Object[]> pFilas){
     DefaultTableModel modelo = new DefaultTableModel();
     this.consultas.tbConsultasPaciente.setModel(modelo);
@@ -229,8 +274,6 @@ public class CtrlConsultasPaciente implements ActionListener{
     modelo.addColumn("Servicio");
     modelo.addColumn("Funcionario");
     modelo.addColumn("Fecha de Seguimiento");
-    modelo.addColumn("Observación");
-    modelo.addColumn("Tratamiento");
     
     for (int i = 0; i < pFilas.size(); i++){
       modelo.addRow(pFilas.get(i));

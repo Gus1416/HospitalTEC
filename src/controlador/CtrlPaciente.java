@@ -9,13 +9,20 @@ import vista.ModuloPaciente;
 import vista.SolicitarCitaPaciente;
 
 /**
- *
+ * Controlador para el módulo de pacientes.
+ * 
  * @author Gustavo
  */
 public class CtrlPaciente implements ActionListener{
   private ModuloPaciente moduloPaciente;
   private Paciente paciente;
   
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pModuloPaciente ventana del módulo de paciente
+   * @param pPaciente  objeto paciente
+   */
   public CtrlPaciente (ModuloPaciente pModuloPaciente, Paciente pPaciente){
     this.moduloPaciente = pModuloPaciente;
     this.paciente = pPaciente;
@@ -24,11 +31,18 @@ public class CtrlPaciente implements ActionListener{
     this.moduloPaciente.btnConsultasPaciente.addActionListener(this);
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){
     this.moduloPaciente.setTitle("Módulo de Paciente");
     this.moduloPaciente.setLocationRelativeTo(null);
   }
     
+  /**
+   * Botones de la ventana
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.moduloPaciente.btnSolicitarCita){

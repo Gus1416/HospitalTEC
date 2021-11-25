@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import modelo.ArrayList;
 import modelo.EnfermeroCRUD;
 import modelo.Paciente;
@@ -15,7 +11,8 @@ import modelo.PacienteCRUD;
 import vista.AplicarVacuna;
 
 /**
- *
+ * Controlador para la aplicaciòn de vacunas
+ * 
  * @author sebcor
  */
 public class CtrlAplicarVacuna implements ActionListener {
@@ -24,10 +21,19 @@ public class CtrlAplicarVacuna implements ActionListener {
     private AplicarVacuna vistaVacuna;
     private EnfermeroCRUD CRUDEnfermero;
 
+    /**
+     * Constructor por defecto
+     */
     public CtrlAplicarVacuna() {
     }
     
-    
+    /**
+     * Constructro con parámetros 
+     * 
+     * @param CRUDPaciente cruds del paciente
+     * @param vistaVacuna ventana de vacunas
+     * @param CRUDEnfermero  cruds de enfermero
+     */
     public CtrlAplicarVacuna(PacienteCRUD CRUDPaciente, AplicarVacuna vistaVacuna,EnfermeroCRUD CRUDEnfermero) {
         this.CRUDPaciente = CRUDPaciente;
         this.vistaVacuna = vistaVacuna;
@@ -35,12 +41,18 @@ public class CtrlAplicarVacuna implements ActionListener {
         this.vistaVacuna.btnAplicarVac.addActionListener(this);
     }
     
+    /**
+     * ´Inicia la ventana
+     */
     public void iniciar(){ 
         cargarPacientes();
         vistaVacuna.setTitle("Hospital TEC");
         vistaVacuna.setLocationRelativeTo(null);  
      }
     
+    /**
+     * Carga la lista de pacientes
+     */
     public void cargarPacientes(){      // Llenar los CB de Pacientes
     ArrayList<Paciente> pacientes = CRUDPaciente.consultarPacientes();
         for (int i = 0; i < pacientes.size(); i++) {
@@ -48,7 +60,11 @@ public class CtrlAplicarVacuna implements ActionListener {
         }
     }
     
-    
+    /**
+     * Botones de la ventan
+     * @param e 
+     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         
         String cedula=null;
@@ -62,9 +78,7 @@ public class CtrlAplicarVacuna implements ActionListener {
             }
             
         }
-        
-        
-        
+ 
         Date fechaApl= vistaVacuna.FechaAplicacion.getDate(); // hay que convertirla a fecha e sql 
         java.sql.Date sqlDate = new java.sql.Date(fechaApl.getTime());
         String Nombre= vistaVacuna.TFNombreVacuna.getText();
@@ -75,12 +89,7 @@ public class CtrlAplicarVacuna implements ActionListener {
         
         if(e.getSource() == vistaVacuna.btnAplicarVac){
             CRUDEnfermero.AplicarVacuna(cedula, sqlDate, Nombre, Farmaceutica,NumeroLote);
-            
-        }
-        
-    }
-    
-    
-    
-    
+            JOptionPane.showMessageDialog(null, "Vacuna aplicada");
+        }       
+    }  
 }

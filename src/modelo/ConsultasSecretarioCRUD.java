@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSetMetaData;
+import java.sql.Date;
 //import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public class ConsultasSecretarioCRUD extends Conexion {
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
 
-    String sql = "call db_hospitaltec.Citas();";
+    String sql = "call db_hospitaltec.Citas()";
     
     try{
       ps = con.prepareStatement(sql);
@@ -101,7 +102,7 @@ public class ConsultasSecretarioCRUD extends Conexion {
    * @param pFecha2 segunda fecha del rango
    * @return una lista con los resultados de la consulta
    */ 
-  public ArrayList<Object[]> CitasFechas(String pFecha1, String pFecha2) {
+  public ArrayList<Object[]> CitasFechas(java.util.Date pFecha1, java.util.Date pFecha2) {
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
@@ -111,8 +112,8 @@ public class ConsultasSecretarioCRUD extends Conexion {
     
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, pFecha1);
-      ps.setString(2, pFecha2);
+      ps.setDate(1, new Date(pFecha1.getTime()));
+      ps.setDate(2, new Date(pFecha2.getTime()));
       rs = ps.executeQuery();
       ResultSetMetaData rsMd = rs.getMetaData();
       int cantidadColumnas = rsMd.getColumnCount();
@@ -248,7 +249,7 @@ public class ConsultasSecretarioCRUD extends Conexion {
    * @param pFecha2 segunda fecha del rango
    * @return una lista con los resultados de la consulta
    */ 
-  public ArrayList<Object[]> hospitalizacionFechas(String pFecha1, String pFecha2) {
+  public ArrayList<Object[]> hospitalizacionFechas(java.util.Date pFecha1, java.util.Date pFecha2) {
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
@@ -258,8 +259,8 @@ public class ConsultasSecretarioCRUD extends Conexion {
     
     try {
       ps = con.prepareStatement(sql);
-      ps.setString(1, pFecha1);
-      ps.setString(2, pFecha2);
+      ps.setDate(1, new Date(pFecha1.getTime()));
+      ps.setDate(2, new Date(pFecha2.getTime()));
       rs = ps.executeQuery();
       ResultSetMetaData rsMd = rs.getMetaData();
       int cantidadColumnas = rsMd.getColumnCount();
@@ -293,7 +294,7 @@ public class ConsultasSecretarioCRUD extends Conexion {
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
 
-    String sql = "call db_hospitaltec.Hospitalizacion_Especialidad(?);";
+    String sql = "call db_hospitaltec.hospi_especialidad(?);";
     
     try{
       ps = con.prepareStatement(sql);
@@ -332,7 +333,7 @@ public class ConsultasSecretarioCRUD extends Conexion {
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
 
-    String sql = "call db_hospitaltec.Hospitalizacion_Paciente(?);";
+    String sql = "call hospi_paciente(?);";
     
     try{
       ps = con.prepareStatement(sql);

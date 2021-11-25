@@ -96,7 +96,7 @@ public class Reportes implements exportable{
           break;
 
         case "PacienteHospitalizaciones":
-          this.tabla = new PdfPTable(10);
+          this.tabla = new PdfPTable(8);
           this.tabla.setWidthPercentage(100);
           
           PdfPCell numeroInternado = new PdfPCell(new Phrase("Número de Internado"));
@@ -107,8 +107,8 @@ public class Reportes implements exportable{
           PdfPCell Servicio = new PdfPCell(new Phrase("Servicio"));
           PdfPCell funcionario = new PdfPCell(new Phrase("Funcionario"));
           PdfPCell fechaSeguimiento = new PdfPCell(new Phrase("Fecha de Seguimiento"));
-          PdfPCell observacionHospitalizacion = new PdfPCell(new Phrase("Observacion"));
-          PdfPCell tratamientoHospitalizacion = new PdfPCell(new Phrase("Tratamiento"));
+//          PdfPCell observacionHospitalizacion = new PdfPCell(new Phrase("Observacion"));
+//          PdfPCell tratamientoHospitalizacion = new PdfPCell(new Phrase("Tratamiento"));
 
           tabla.addCell(numeroInternado);
           tabla.addCell(centroAtencion);
@@ -118,8 +118,8 @@ public class Reportes implements exportable{
           tabla.addCell(Servicio);
           tabla.addCell(funcionario);
           tabla.addCell(diagnosticoHospitalizacion);
-          tabla.addCell(observacionHospitalizacion);
-          tabla.addCell(tratamientoHospitalizacion);
+//          tabla.addCell(observacionHospitalizacion);
+//          tabla.addCell(tratamientoHospitalizacion);
           break;
 
         case "Citas General":
@@ -219,7 +219,7 @@ public class Reportes implements exportable{
         //Hospitalizaciones
         case "Hospitalizacion":
 
-          this.tabla = new PdfPTable(11);
+          this.tabla = new PdfPTable(8);
           tabla.setWidthPercentage(100);
 
           PdfPCell idInternado = new PdfPCell(new Phrase("Número de internado"));
@@ -230,9 +230,9 @@ public class Reportes implements exportable{
           PdfPCell servicio = new PdfPCell(new Phrase("Servicio"));
           PdfPCell idFuncionario = new PdfPCell(new Phrase("Cédula del funcionario"));
           PdfPCell idPaciente = new PdfPCell(new Phrase("Cedula del paciente"));
-          PdfPCell fechas = new PdfPCell(new Phrase("Fecha de seguimiento"));
-          PdfPCell obv = new PdfPCell(new Phrase("Observación"));
-          PdfPCell idTrat = new PdfPCell(new Phrase("Código del tratamiento"));
+//          PdfPCell fechas = new PdfPCell(new Phrase("Fecha de seguimiento"));
+//          PdfPCell obv = new PdfPCell(new Phrase("Observación"));
+//          PdfPCell idTrat = new PdfPCell(new Phrase("Código del tratamiento"));
 
           tabla.addCell(idInternado);
           tabla.addCell(idCentro);
@@ -242,14 +242,14 @@ public class Reportes implements exportable{
           tabla.addCell(servicio);
           tabla.addCell(idFuncionario);
           tabla.addCell(idPaciente);
-          tabla.addCell(fechas);
-          tabla.addCell(obv);
-          tabla.addCell(idTrat);
+//          tabla.addCell(fechas);
+//          tabla.addCell(obv);
+//          tabla.addCell(idTrat);
           break;
           
         case "Hospitalizacion fecha":
           
-          this.tabla = new PdfPTable(11);
+          this.tabla = new PdfPTable(8);
           tabla.setWidthPercentage(100);
           
           PdfPCell idInternado1 = new PdfPCell(new Phrase("Número de internado"));
@@ -260,9 +260,9 @@ public class Reportes implements exportable{
           PdfPCell servicio1 = new PdfPCell(new Phrase("Servicio"));
           PdfPCell idFuncionario1 = new PdfPCell(new Phrase("Cédula del funcionario"));
           PdfPCell idPaciente1 = new PdfPCell(new Phrase("Cedula del paciente"));
-          PdfPCell fechas1 = new PdfPCell(new Phrase("Fecha de seguimiento"));
-          PdfPCell obv1 = new PdfPCell(new Phrase("Observación"));
-          PdfPCell idTrat1 = new PdfPCell(new Phrase("Código del tratamiento"));
+//          PdfPCell fechas1 = new PdfPCell(new Phrase("Fecha de seguimiento"));
+//          PdfPCell obv1 = new PdfPCell(new Phrase("Observación"));
+//          PdfPCell idTrat1 = new PdfPCell(new Phrase("Código del tratamiento"));
 
           tabla.addCell(idInternado1);
           tabla.addCell(idCentro1);
@@ -272,14 +272,14 @@ public class Reportes implements exportable{
           tabla.addCell(servicio1);
           tabla.addCell(idFuncionario1);
           tabla.addCell(idPaciente1);
-          tabla.addCell(fechas1);
-          tabla.addCell(obv1);
-          tabla.addCell(idTrat1);
+//          tabla.addCell(fechas1);
+//          tabla.addCell(obv1);
+//          tabla.addCell(idTrat1);
           break;
 
         case "Hospitalizacion especialidad":
           
-          this.tabla = new PdfPTable(12);
+          this.tabla = new PdfPTable(9);
           tabla.setWidthPercentage(100);
 
           PdfPCell idInternado2 = new PdfPCell(new Phrase("Número de internado"));
@@ -291,9 +291,9 @@ public class Reportes implements exportable{
           PdfPCell servicio2 = new PdfPCell(new Phrase("Servicio"));
           PdfPCell idFuncionario2 = new PdfPCell(new Phrase("Cédula del funcionario"));
           PdfPCell idPaciente2 = new PdfPCell(new Phrase("Cedula del paciente"));
-          PdfPCell fechas2 = new PdfPCell(new Phrase("Fecha de seguimiento"));
-          PdfPCell obv2 = new PdfPCell(new Phrase("Observación"));
-          PdfPCell idTrat2 = new PdfPCell(new Phrase("Código del tratamiento"));
+//          PdfPCell fechas2 = new PdfPCell(new Phrase("Fecha de seguimiento"));
+//          PdfPCell obv2 = new PdfPCell(new Phrase("Observación"));
+//          PdfPCell idTrat2 = new PdfPCell(new Phrase("Código del tratamiento"));
 
           tabla.addCell(idInternado2);
           tabla.addCell(idCentro2);
@@ -304,14 +304,14 @@ public class Reportes implements exportable{
           tabla.addCell(servicio2);
           tabla.addCell(idFuncionario2);
           tabla.addCell(idPaciente2);
-          tabla.addCell(fechas2);
-          tabla.addCell(obv2);
-          tabla.addCell(idTrat2);
+//          tabla.addCell(fechas2);
+//          tabla.addCell(obv2);
+//          tabla.addCell(idTrat2);
           break;
 
         case "Hospitalizacion paciente":
           
-          this.tabla = new PdfPTable(11);
+          this.tabla = new PdfPTable(9);
           tabla.setWidthPercentage(100);
 
           PdfPCell idInternado3 = new PdfPCell(new Phrase("Número de internado"));
@@ -323,9 +323,9 @@ public class Reportes implements exportable{
           PdfPCell servicio3 = new PdfPCell(new Phrase("Servicio"));
           PdfPCell idFuncionario3 = new PdfPCell(new Phrase("Cédula del funcionario"));
           PdfPCell idPaciente3 = new PdfPCell(new Phrase("Cedula del paciente"));
-          PdfPCell fechas3 = new PdfPCell(new Phrase("Fecha de seguimiento"));
-          PdfPCell obv3 = new PdfPCell(new Phrase("Observación"));
-          PdfPCell idTrat3 = new PdfPCell(new Phrase("Código del tratamiento"));
+//          PdfPCell fechas3 = new PdfPCell(new Phrase("Fecha de seguimiento"));
+//          PdfPCell obv3 = new PdfPCell(new Phrase("Observación"));
+//          PdfPCell idTrat3 = new PdfPCell(new Phrase("Código del tratamiento"));
 
           tabla.addCell(idInternado3);
           tabla.addCell(idCentro3);
@@ -336,9 +336,9 @@ public class Reportes implements exportable{
           tabla.addCell(servicio3);
           tabla.addCell(idFuncionario3);
           tabla.addCell(idPaciente3);
-          tabla.addCell(fechas3);
-          tabla.addCell(obv3);
-          tabla.addCell(idTrat3);
+//          tabla.addCell(fechas3);
+//          tabla.addCell(obv3);
+//          tabla.addCell(idTrat3);
           break;
           
          case "HospiPaci":
@@ -1314,8 +1314,8 @@ public class Reportes implements exportable{
         salidaCSV.write("Servicio");
         salidaCSV.write("Funcionario");
         salidaCSV.write("Fecha de Seguimiento");
-        salidaCSV.write("Observación");
-        salidaCSV.write("Tratamiento");
+//        salidaCSV.write("Observación");
+//        salidaCSV.write("Tratamiento");
 
         salidaCSV.endRecord();
 
@@ -1576,9 +1576,9 @@ public class Reportes implements exportable{
         salidaCSV.write("Servicio");
         salidaCSV.write("Cédula del Funcionario");
         salidaCSV.write("Cedula del Paciente");
-        salidaCSV.write("Fecha Seguimiento");
-        salidaCSV.write("Observacion");
-        salidaCSV.write("ID Tratamiento");
+//        salidaCSV.write("Fecha Seguimiento");
+//        salidaCSV.write("Observacion");
+//        salidaCSV.write("ID Tratamiento");
 
         salidaCSV.endRecord();// termina la escritura.
 
@@ -1623,9 +1623,9 @@ public class Reportes implements exportable{
         salidaCSV.write("Servicio");
         salidaCSV.write("Cédula del Funcionario");
         salidaCSV.write("Cedula del Paciente");
-        salidaCSV.write("Fecha Seguimiento");
-        salidaCSV.write("Observacion");
-        salidaCSV.write("ID Tratamiento");
+//        salidaCSV.write("Fecha Seguimiento");
+//        salidaCSV.write("Observacion");
+//        salidaCSV.write("ID Tratamiento");
 
         salidaCSV.endRecord();// termina la escritura.
 
@@ -1670,9 +1670,9 @@ public class Reportes implements exportable{
         salidaCSV.write("Servicio");
         salidaCSV.write("Cédula del Funcionario");
         salidaCSV.write("Cedula del Paciente");
-        salidaCSV.write("Fecha Seguimiento");
-        salidaCSV.write("Observacion");
-        salidaCSV.write("ID Tratamiento");
+//        salidaCSV.write("Fecha Seguimiento");
+//        salidaCSV.write("Observacion");
+//        salidaCSV.write("ID Tratamiento");
 
         salidaCSV.endRecord();// termina la escritura.
 
@@ -1717,9 +1717,9 @@ public class Reportes implements exportable{
         salidaCSV.write("Servicio");
         salidaCSV.write("Cédula del Funcionario");
         salidaCSV.write("Cedula del Paciente");
-        salidaCSV.write("Fecha Seguimiento");
-        salidaCSV.write("Observacion");
-        salidaCSV.write("ID Tratamiento");
+//        salidaCSV.write("Fecha Seguimiento");
+//        salidaCSV.write("Observacion");
+//        salidaCSV.write("ID Tratamiento");
 
         salidaCSV.endRecord();// termina la escritura.
 
@@ -1834,11 +1834,22 @@ public class Reportes implements exportable{
                 tr().with(td().withText("Servicio: " + pFilas.get(i)[5])),
                 tr().with(td().withText("Funcionario: " + pFilas.get(i)[6])),
                 tr().with(td().withText("Fecha de Seguimiento: " + pFilas.get(i)[7])),
-                tr().with(td().withText("Observación: " + pFilas.get(i)[8])),
-                tr().with(td().withText("Tratamiento: " + pFilas.get(i)[9])),
+//                tr().with(td().withText("Observación: " + pFilas.get(i)[8])),
+//                tr().with(td().withText("Tratamiento: " + pFilas.get(i)[9])),
                 tr().with(td().withText(" "))
         ).render();
       }
+            File archivo = new File("PacienteHospitalizaciones.html");
+      System.out.println(html2);
+      try{
+        BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+        bw.write(html2);
+        bw.close();
+      } catch (IOException e){
+        System.out.println(e);
+      }
+    }
+      
 
       if (pTipoReporte.equals("Citas General")){
 
@@ -1894,6 +1905,7 @@ public class Reportes implements exportable{
 
       if (pTipoReporte.equals("Citas fecha")){
 
+        System.out.println("SI ENTRA");
         for (int i = 0; i != pFilas.size(); i++) {
           html2 += table().with(tr().with(
                   th().withText("Cita")),
@@ -1985,9 +1997,9 @@ public class Reportes implements exportable{
                   tr().with(td().withText("Servicio: " + pFilas.get(i)[5])),
                   tr().with(td().withText("Cédula del funcionario: " + pFilas.get(i)[6])),
                   tr().with(td().withText("Cédula del paciente: " + pFilas.get(i)[7])),
-                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[8])),
-                  tr().with(td().withText("Observación " + pFilas.get(i)[9])),
-                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[10])),
+//                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[8])),
+//                  tr().with(td().withText("Observación " + pFilas.get(i)[9])),
+//                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[10])),
                   tr().with(td().withText(" "))
           ).render();
         }
@@ -2016,9 +2028,9 @@ public class Reportes implements exportable{
                   tr().with(td().withText("Servicio: " + pFilas.get(i)[5])),
                   tr().with(td().withText("Cédula del funcionario: " + pFilas.get(i)[6])),
                   tr().with(td().withText("Cédula del paciente: " + pFilas.get(i)[7])),
-                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[8])),
-                  tr().with(td().withText("Observación " + pFilas.get(i)[9])),
-                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[10])),
+//                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[8])),
+//                  tr().with(td().withText("Observación " + pFilas.get(i)[9])),
+//                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[10])),
                   tr().with(td().withText(" "))
           ).render();
         }
@@ -2047,10 +2059,10 @@ public class Reportes implements exportable{
                   tr().with(td().withText("Fecha finalización: " + pFilas.get(i)[5])),
                   tr().with(td().withText("Servicio: " + pFilas.get(i)[6])),
                   tr().with(td().withText("Cédula del funcionario: " + pFilas.get(i)[7])),
-                  tr().with(td().withText("Cédula del paciente: " + pFilas.get(i)[8])),
-                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[9])),
-                  tr().with(td().withText("Observación " + pFilas.get(i)[10])),
-                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[11])),
+                  //tr().with(td().withText("Cédula del paciente: " + pFilas.get(i)[8])),
+//                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[9])),
+//                  tr().with(td().withText("Observación " + pFilas.get(i)[10])),
+//                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[11])),
                   tr().with(td().withText(" "))
           ).render();
         }
@@ -2079,9 +2091,9 @@ public class Reportes implements exportable{
                   tr().with(td().withText("Servicio: " + pFilas.get(i)[5])),
                   tr().with(td().withText("Cédula del funcionario: " + pFilas.get(i)[6])),
                   tr().with(td().withText("Cédula del paciente: " + pFilas.get(i)[7])),
-                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[8])),
-                  tr().with(td().withText("Observación " + pFilas.get(i)[9])),
-                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[10])),
+//                  tr().with(td().withText("Fecha seguimiento: " + pFilas.get(i)[8])),
+//                  tr().with(td().withText("Observación " + pFilas.get(i)[9])),
+//                  tr().with(td().withText("Código del tratamiento " + pFilas.get(i)[10])),
                   tr().with(td().withText(" "))
           ).render();
         }
@@ -2484,8 +2496,8 @@ public class Reportes implements exportable{
           bw.close();
         } catch (IOException e){
           System.out.println(e);
-        }
       }
     }
   }
 }
+

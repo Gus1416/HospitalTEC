@@ -98,27 +98,33 @@ public class CtrlDiagnosticos implements ActionListener{
     }
     
     if (e.getSource() == this.vistaDiagnosticos.btnRegistrarDiagnostico){
-      Diagnostico nuevoDiagnostico = new Diagnostico();
-      String nombre = this.vistaDiagnosticos.txtNombreDiagnostico.getText();
-      ArrayList<Tratamiento> tratamientos = recorrerLista();
-      nuevoDiagnostico.setNombre(nombre);
-      nuevoDiagnostico.setTratamientos(tratamientos);
       
-      if (diagnosticoCrud.registrarDiagnostico(nuevoDiagnostico)){
-        nuevoDiagnostico.setId(diagnosticoCrud.consultarUnDiagnostico(nombre).getId());
-        if (diagnosticoCrud.registrarTratamientosAsociados(nuevoDiagnostico)){
-          JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo diagnóstico");
-          cargarDiagnosticos();
-          limpiar();
+      if (!this.vistaDiagnosticos.txtNombreDiagnostico.getText().equals("")){
+
+        Diagnostico nuevoDiagnostico = new Diagnostico();
+        String nombre = this.vistaDiagnosticos.txtNombreDiagnostico.getText();
+        ArrayList<Tratamiento> tratamientos = recorrerLista();
+        nuevoDiagnostico.setNombre(nombre);
+        nuevoDiagnostico.setTratamientos(tratamientos);
+
+        if (diagnosticoCrud.registrarDiagnostico(nuevoDiagnostico)){
+          nuevoDiagnostico.setId(diagnosticoCrud.consultarUnDiagnostico(nombre).getId());
+          if (diagnosticoCrud.registrarTratamientosAsociados(nuevoDiagnostico)){
+            JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo diagnóstico");
+            cargarDiagnosticos();
+            limpiar();
+          } else{
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+          }
         } else{
           JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
         }
-      } else{
-        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+      } else {
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
   }
-  
+
   private ArrayList<Tratamiento> recorrerLista(){
     ArrayList<Tratamiento> tratamientos = new ArrayList<>();
     for (int i = 0; i < this.modeloLista.getSize(); i++){

@@ -179,7 +179,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Paciente_Diagnostico_Fecha(?,?,?)";
+    String sql = "CALL P_Diagnostico_Fecha(?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
@@ -226,7 +226,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Paciente_Diagnostico_Nivel(?,?)";
+    String sql = "CALL P_Diagnostico_Nivel(?,?)";
     
      try{
       ps = con.prepareStatement(sql);
@@ -272,7 +272,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Paciente_Diagnostico_Nombre(?,?)";
+    String sql = "CALL P_Diagnostico_Nombre(?,?)";
     
      try{
       ps = con.prepareStatement(sql);
@@ -321,7 +321,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Paciente_Tratamiento_RangoFechas(?,?,?)";
+    String sql = "CALL P_Tratamiento_RangoFechas(?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
@@ -368,7 +368,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Paciente_Tratamiento_TipoTratamiento(?,?)";
+    String sql = "CALL P_Tratamiento_TipoTratamiento(?,?)";
     
      try{
       ps = con.prepareStatement(sql);
@@ -414,7 +414,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Paciente_Tratamiento_Nombre(?,?)";
+    String sql = "CALL P_Tratamiento_Nombre(?,?)";
     
      try{
       ps = con.prepareStatement(sql);
@@ -459,7 +459,7 @@ public class ConsultasPacienteCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Hospitalizacion_Paciente(?)";
+    String sql = "CALL hospi_paciente(?)";
     
      try{
       ps = con.prepareStatement(sql);

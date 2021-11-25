@@ -2,7 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.ArrayList;
@@ -11,19 +10,27 @@ import modelo.CentroAtencionCRUD;
 import vista.VistaCentrosAtencion;
 
 /**
- *
+ * Controlador para la gestion de CM
  * @author Gustavo
  */
 public class CtrlVistaCentrosAtencion implements ActionListener{
   private VistaCentrosAtencion vistaCentros;
   private CentroAtencionCRUD centrosCrud;
   
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pVistaCentros  ventana de gestión de CM
+   */
   public CtrlVistaCentrosAtencion (VistaCentrosAtencion pVistaCentros){
     this.vistaCentros = pVistaCentros;
     this.centrosCrud = new CentroAtencionCRUD(); 
     this.vistaCentros.btnRegistrarCentro.addActionListener(this);
   }
   
+  /**
+   * Inicia la ventana.
+   */
   public void iniciar(){
     cargarCentros();
     cargarTipos();
@@ -32,6 +39,9 @@ public class CtrlVistaCentrosAtencion implements ActionListener{
     this.vistaCentros.setLocationRelativeTo(null);
   }
   
+  /**
+   * Carga los CM registrados.
+   */
   private void cargarCentros(){
     ArrayList<Object[]> centros = crearFilas(this.centrosCrud.consultarCentros());
     DefaultTableModel modelo = new DefaultTableModel();
@@ -48,6 +58,9 @@ public class CtrlVistaCentrosAtencion implements ActionListener{
     }
   }
   
+  /**
+   * Carga los tipos de CM
+   */
   private void cargarTipos(){
     ArrayList<String> tipos = this.centrosCrud.consultarTipos();
     for (int i = 0; i < tipos.size(); i++){
@@ -55,6 +68,13 @@ public class CtrlVistaCentrosAtencion implements ActionListener{
     }
   }  
 
+  /**
+   * Crea las filas de la tabla.
+   * 
+   * @param pCentros lista de centros.
+   * 
+   * @return  una lista con los centros.
+   */
   private ArrayList<Object[]> crearFilas(ArrayList<CentroAtencion> pCentros){
     ArrayList<Object[]> filas = new ArrayList();
     
@@ -71,20 +91,34 @@ public class CtrlVistaCentrosAtencion implements ActionListener{
     return filas;
   }
   
+  /**
+   * Botones de la ventana
+   * 
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == this.vistaCentros.btnRegistrarCentro){
-      String nombre = this.vistaCentros.txtNombreCentro.getText();
-      String ubicacion = this.vistaCentros.txtUbicacion.getText();
-      int capacidad = (Integer)this.vistaCentros.jsCapacidad.getValue();
-      String tipo = (String)this.vistaCentros.cbTiposCentro.getSelectedItem();
-      CentroAtencion nuevoCentro = new CentroAtencion(nombre, ubicacion, capacidad, tipo);
-      if (this.centrosCrud.registrarCentro(nuevoCentro)){
-        cargarCentros();
-        JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo Centro de Atención");
-        limpiar();
+    if (e.getSource() == this.vistaCentros.btnRegistrarCentro) {
+      
+      if (!this.vistaCentros.txtNombreCentro.getText().equals("")
+              && !this.vistaCentros.txtUbicacion.getText().equals("")
+              && (Integer) this.vistaCentros.jsCapacidad.getValue() != 0){
+        String nombre = this.vistaCentros.txtNombreCentro.getText();
+        String ubicacion = this.vistaCentros.txtUbicacion.getText();
+        int capacidad = (Integer) this.vistaCentros.jsCapacidad.getValue();
+        String tipo = (String) this.vistaCentros.cbTiposCentro.getSelectedItem();
+        CentroAtencion nuevoCentro = new CentroAtencion(nombre, ubicacion, capacidad, tipo);
+        
+        if (this.centrosCrud.registrarCentro(nuevoCentro)){
+          cargarCentros();
+          JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo Centro de Atención");
+          limpiar();
+          
+        } else{
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
       } else {
-        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
   }

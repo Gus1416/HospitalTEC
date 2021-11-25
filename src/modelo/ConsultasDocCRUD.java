@@ -544,7 +544,7 @@ public class ConsultasDocCRUD extends Conexion{
     Connection con = getConexion();
     ArrayList<Object[]> objFilas = new ArrayList<>();
     
-    String sql = "CALL Hospitalizacion_Paciente(?)";
+    String sql = "CALL hospi_paciente(?)";
     
     try{
       ps = con.prepareStatement(sql);

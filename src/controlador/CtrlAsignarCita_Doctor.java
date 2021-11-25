@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import controlador.controladores_registros.CtrlRegistroDoctor;
@@ -23,8 +18,9 @@ import modelo.PacienteCRUD;
 import vista.AsignarCitaDoctor;
 
 /**
- *
- * @author sebcor "Vencer sin peligro es ganar sin gloria"- Séneca
+ * Controlador de la asignación de citas
+ * 
+ * @author sebcor 
  *
  */
 public class CtrlAsignarCita_Doctor implements ActionListener {
@@ -35,6 +31,16 @@ public class CtrlAsignarCita_Doctor implements ActionListener {
   private AsignarCitaDoctor vistaAsignar;
   private CtrlRegistroDoctor auxMed;
 
+  /**
+   * Constructor de la clase
+   * 
+   * @param pAREACRUD crud del area
+   * @param CRUDPaciente crud de los pacientes
+   * @param cita objeto cita
+   * @param CRUDcita crud de la cita
+   * @param vistaAsignar vista de asignacion
+   * @param auxMed  objeto auxiliar
+   */
   public CtrlAsignarCita_Doctor(AreaCRUD pAREACRUD, PacienteCRUD CRUDPaciente, Citas cita, CitasCRUD CRUDcita, 
           AsignarCitaDoctor vistaAsignar, CtrlRegistroDoctor auxMed) {
     this.CRUDarea = pAREACRUD;
@@ -46,9 +52,15 @@ public class CtrlAsignarCita_Doctor implements ActionListener {
     this.vistaAsignar.btnAsignarCita.addActionListener(this);
   }
 
+  /**
+   * Constructor por defecto
+   */
   public CtrlAsignarCita_Doctor() {
   }
 
+  /**
+   * Inicia la ventana
+   */
   public void iniciar() {
     cargarAreaEspecialidad();
     cargarPacientes();
@@ -56,6 +68,9 @@ public class CtrlAsignarCita_Doctor implements ActionListener {
     vistaAsignar.setLocationRelativeTo(null);
   }
 
+  /**
+   * Carga las especialidades
+   */
   public void cargarAreaEspecialidad() {      // Llenar los CB de Areas de especialidad  
     ArrayList<Area> areas = CRUDarea.consultarAreas();
     for (int i = 0; i < areas.size(); i++){
@@ -63,6 +78,9 @@ public class CtrlAsignarCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Carga la lista de pacientes
+   */
   public void cargarPacientes() {      // Llenar los CB de Pacientes
     ArrayList<Paciente> pacientes = CRUDPaciente.consultarPacientes();
     for (int i = 0; i < pacientes.size(); i++){
@@ -70,6 +88,11 @@ public class CtrlAsignarCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Botones de la ventana
+   * 
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == vistaAsignar.btnAsignarCita){

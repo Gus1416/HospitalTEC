@@ -20,12 +20,18 @@ import vista.registros.RegistroPaciente;
 import vista.registros.RegistroSecretario;
 
 /**
- *
+ * Controlador para el módulo administrador.
+ * 
  * @author Gustavo
  */
 public class CtrlModuloAdministrador implements ActionListener{
   public ModuloAdministrador moduloAdmin;
   
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pModuloAdmin  ventana del módulo de administrador
+   */
   public CtrlModuloAdministrador(ModuloAdministrador pModuloAdmin){
     this.moduloAdmin = pModuloAdmin;
     this.moduloAdmin.btnUsuarios.addActionListener(this);
@@ -37,12 +43,20 @@ public class CtrlModuloAdministrador implements ActionListener{
     this.moduloAdmin.btnTiposCentros.addActionListener(this);
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){
     this.moduloAdmin.setTitle("Módulo de Administrador");
     this.moduloAdmin.setSize(650, 400);
     this.moduloAdmin.setLocationRelativeTo(null);
   }
 
+  /**
+   * Botones de la ventana
+   * 
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.moduloAdmin.btnUsuarios){

@@ -1,4 +1,3 @@
-
 package controlador.controladores_registros;
 
 import java.awt.event.ActionEvent;
@@ -13,7 +12,6 @@ import modelo.CentroAtencion;
 import modelo.CentroAtencionCRUD;
 import modelo.Doctor;
 import modelo.DoctorCRUD;
-import modelo.Funcionario;
 import modelo.Hash;
 import vista.registros.RegistroDoctor;
 
@@ -71,37 +69,46 @@ public class CtrlRegistroDoctor implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == this.registroDoctor.btnAgregarEspecialidad){
+
+    if (this.registroDoctor.txtEspecialidad.getText().equals("")){
       String especialidad = this.registroDoctor.txtEspecialidad.getText();
       modelo.addElement(especialidad);
       this.registroDoctor.listEspecialidades.setModel(modelo);
       this.registroDoctor.txtEspecialidad.setText("");
     }
-    
-    if (e.getSource() == this.registroDoctor.btnRegistrarDoctor){
-      String cedula = registroDoctor.txtCedulaDoctor.getText();
-      String password = Hash.sha1(registroDoctor.passContrasena.getText());
-      String tipoUsuario = "Funcionario";
-      String nombre = registroDoctor.txtNombreDoctor.getText();
-      String tipoFuncionario = "Doctor";
-      LocalDate fechaIngreso = LocalDate.now();
-      Area area = areaCrud.buscarArea((String)registroDoctor.cbAreas.getSelectedItem());
-      CentroAtencion centro = centroCrud.buscarCentro((String)registroDoctor.cbCentroAtencion.getSelectedItem());
-      int codigoMedico = Integer.parseInt(registroDoctor.txtCodigoMedico.getText());
-      ArrayList<String> especialidades = recorrerLista();
-      Doctor nuevoDoctor = new Doctor(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, 
-              centro, codigoMedico, especialidades);
       
-      Doctor auxDoc=doctorCrud.buscarDoctor(cedula);
-      
-      auxFuncionario.add(auxDoc);
-      System.out.println("After add: " + auxFuncionario.size());
+    if (e.getSource() == this.registroDoctor.btnRegistrarDoctor) {
+      if (!this.registroDoctor.txtNombreDoctor.getText().equals("")
+              && !this.registroDoctor.txtCedulaDoctor.getText().equals("")
+              && !this.registroDoctor.txtCodigoMedico.getText().equals("")
+              && !this.registroDoctor.passContrasena.getText().equals("")){
+        
+        String cedula = registroDoctor.txtCedulaDoctor.getText();
+        String password = Hash.sha1(registroDoctor.passContrasena.getText());
+        String tipoUsuario = "Funcionario";
+        String nombre = registroDoctor.txtNombreDoctor.getText();
+        String tipoFuncionario = "Doctor";
+        LocalDate fechaIngreso = LocalDate.now();
+        Area area = areaCrud.buscarArea((String) registroDoctor.cbAreas.getSelectedItem());
+        CentroAtencion centro = centroCrud.buscarCentro((String) registroDoctor.cbCentroAtencion.getSelectedItem());
+        int codigoMedico = Integer.parseInt(registroDoctor.txtCodigoMedico.getText());
+        ArrayList<String> especialidades = recorrerLista();
+        Doctor nuevoDoctor = new Doctor(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area,
+                centro, codigoMedico, especialidades);
 
-      if (doctorCrud.registrarDoctor(nuevoDoctor) && doctorCrud.registrarEspecialidades(nuevoDoctor)){
-        JOptionPane.showMessageDialog(null, "Nuevo doctor registrado");
-        limpiar();
-      }else{
-        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        Doctor auxDoc = doctorCrud.buscarDoctor(cedula);
+
+        auxFuncionario.add(auxDoc);
+        System.out.println("After add: " + auxFuncionario.size());
+
+        if (doctorCrud.registrarDoctor(nuevoDoctor) && doctorCrud.registrarEspecialidades(nuevoDoctor)){
+          JOptionPane.showMessageDialog(null, "Nuevo doctor registrado");
+          limpiar();
+        } else {
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
+      } else {
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
   }

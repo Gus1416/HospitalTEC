@@ -22,7 +22,8 @@ import vista.ModuloPaciente;
 import vista.ModuloSecretario;
 
 /**
- *
+ * Controlador del inicio de sesión.
+ * 
  * @author Gustavo
  */
 public class CtrlInicioSesion implements ActionListener{
@@ -35,11 +36,17 @@ public class CtrlInicioSesion implements ActionListener{
   private PacienteCRUD pacienteCrud;
   public static String cedula;
 
+  /**
+   * Constructor por defecto
+   */
   public CtrlInicioSesion() {
     }
-  
-
-  
+ 
+  /**
+   * Constructor con parámetros
+   * 
+   * @param pInicioSesion  ventana de inicio de sesión
+   */
   public CtrlInicioSesion(InicioSesion pInicioSesion){
     this.inicioSesion = pInicioSesion;
     this.usuarioCrud = new UsuarioCRUD();
@@ -47,18 +54,31 @@ public class CtrlInicioSesion implements ActionListener{
     this.doctorCrud = new DoctorCRUD();
     this.secretarioCrud = new SecretarioCRUD();
     this.pacienteCrud = new PacienteCRUD();
+    this.enfermeroCrud = new EnfermeroCRUD();
     this.inicioSesion.btnIngresar.addActionListener(this);
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){
     this.inicioSesion.setTitle("Inicio de Sesión");
     this.inicioSesion.setLocationRelativeTo(null);
   }
 
+  /**
+   * Obtiene la cédula
+   * 
+   * @return la cédula
+   */
     public String getCedula() {
         return cedula;
     }
 
+    /**
+     * Botones de la ventana.
+     * @param e 
+     */
   @Override
   public void actionPerformed(ActionEvent e) {
     if(e.getSource() == this.inicioSesion.btnIngresar){

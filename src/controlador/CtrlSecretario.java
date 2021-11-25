@@ -18,11 +18,22 @@ import modelo.CitasCRUD;
 import modelo.PacienteCRUD;
 import modelo.Reportes;
 
+/**
+ * Controlador del módulo de secretarios
+ * 
+ * @author Laura
+ */
 public class CtrlSecretario implements ActionListener {
   private ModuloSecretario vistaSecre;
   private Secretario secretario;
   private Consultas_Secretario vista_consulta;
 
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pvistaSecre ventana de secretarios
+   * @param pSecretario  objeto secretario
+   */
   public CtrlSecretario(ModuloSecretario pvistaSecre, Secretario pSecretario) {
     this.vistaSecre = pvistaSecre;
     this.secretario = pSecretario;
@@ -32,11 +43,18 @@ public class CtrlSecretario implements ActionListener {
     this.vistaSecre.btConsultas.addActionListener(this);
   }
 
+  /**
+   * Inicia la ventana
+   */
   public void iniciar() {
     vistaSecre.setTitle("Modulo Secretario");
     vistaSecre.setLocationRelativeTo(null);
   }
 
+  /**
+   * Botones de la ventana
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
 
@@ -50,9 +68,8 @@ public class CtrlSecretario implements ActionListener {
     if (e.getSource() == vistaSecre.btnCancelarCita){
       Cancelar_Cita_Doctor cancelar = new Cancelar_Cita_Doctor();
       PacienteCRUD CRUDPaciente = new PacienteCRUD();
-      Citas cita = new Citas();
       CitasCRUD CRUDcita = new CitasCRUD();
-      CtrlCancelarCita_Doctor ctrlCancelarCita = new CtrlCancelarCita_Doctor(CRUDPaciente, cita, CRUDcita, cancelar);
+      CtrlCancelarCita_Doctor ctrlCancelarCita = new CtrlCancelarCita_Doctor(CRUDPaciente, CRUDcita, cancelar);
       ctrlCancelarCita.iniciar();
       cancelar.setVisible(true);
     }

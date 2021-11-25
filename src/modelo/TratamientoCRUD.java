@@ -232,14 +232,14 @@ public class TratamientoCRUD extends Conexion{
    * @return un booleano que indica el éxtio de la operación
    */
   public boolean registrarAtencion(String Paciente, int Cita, String Diagnostico, String Nivel, String Observaciones,
-           String Tratamiento, int Dosis, String TipoTratamiento) {
+           String Tratamiento, int Dosis, String TipoTratamiento, int pCodigoMedico) {
     PreparedStatement ps = null;
     Connection con = getConexion();
 
     LocalDate now = LocalDate.now();
     Date pdate = Date.valueOf(now);
 
-    String sql = "CALL registrar_atencion(?,?,?,?,?,?,?,?,?)";
+    String sql = "CALL registrar_atencion(?,?,?,?,?,?,?,?,?,?)";
     try{
       ps = con.prepareStatement(sql);
       ps.setString(1, Paciente);
@@ -251,6 +251,7 @@ public class TratamientoCRUD extends Conexion{
       ps.setInt(7, Dosis);
       ps.setString(8, TipoTratamiento);
       ps.setDate(9, pdate);
+      ps.setInt(10, pCodigoMedico);
       ps.execute();
       return true;
 

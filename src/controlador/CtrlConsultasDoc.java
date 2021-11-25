@@ -28,7 +28,8 @@ import vistasConsultaDoc.VIEWPacienteTratamientoRangoFechas;
 import vistasConsultaDoc.VIEWPacienteTratamientoTipo;
 
 /**
- *
+ * Controlador para las consutlas del doctor
+ * 
  * @author sebcor
  */
 public class CtrlConsultasDoc implements ActionListener {
@@ -54,9 +55,36 @@ public class CtrlConsultasDoc implements ActionListener {
   private VIEWHospiPaciente dataHospPaci;
   private Reportes report;
 
+  /**
+   * Constructor por defecto
+   */
   public CtrlConsultasDoc() {
   }
 
+  /**
+   * Constructor con parámetros
+   * 
+   * @param vistaConsultaDoc
+   * @param filas
+   * @param dataNivel
+   * @param CRUDConsultaDOC
+   * @param dataNameD
+   * @param dataRangeDateD
+   * @param dataTrataName
+   * @param dataTrataTipo
+   * @param dataTrataRange
+   * @param dataCitaEspe
+   * @param dataCitaEstate
+   * @param dataCitaDateR
+   * @param dataDiagNivel
+   * @param dataDiagPaciente
+   * @param dataTrataEspe
+   * @param dataTratamiTipo
+   * @param dataTrataPaci
+   * @param dataTrataGen
+   * @param dataHospPaci
+   * @param report 
+   */
   public CtrlConsultasDoc(Consultas_Doc vistaConsultaDoc, ArrayList<Object[]> filas, VIEWPacienteNivel dataNivel,
           ConsultasDocCRUD CRUDConsultaDOC, VIEWPacienteNombreD dataNameD, VIEWPacienteRangoFechas dataRangeDateD,
           VIEWPacienteTratamientoNombre dataTrataName, VIEWPacienteTratamientoTipo dataTrataTipo,
@@ -109,11 +137,17 @@ public class CtrlConsultasDoc implements ActionListener {
 
   }
 
+  /**
+   * Inicia la ventana
+   */
   public void iniciar() {
     vistaConsultaDoc.setTitle("Hospital TEC");
     vistaConsultaDoc.setLocationRelativeTo(null);
   }
 
+  /**
+   * Tablas de la ventana.
+   */
   public void TablePacienteNivel() {
 
     String ced = (String) this.dataNivel.TFCedNivel.getText();   // Esta seria la data de la tablilla de datos
@@ -450,9 +484,9 @@ public class CtrlConsultasDoc implements ActionListener {
     modeloC.addColumn("Servicio");
     modeloC.addColumn("Cedula Funcionario");
     modeloC.addColumn("Cedula Paciente");
-    modeloC.addColumn("Fecha Seguimiento");
-    modeloC.addColumn("Observacion");
-    modeloC.addColumn("Tratamiento");
+//    modeloC.addColumn("Fecha Seguimiento");
+//    modeloC.addColumn("Observacion");
+//    modeloC.addColumn("Tratamiento");
 
     for (int i = 0; i < filas.size(); i++){
       modeloC.addRow(filas.get(i));

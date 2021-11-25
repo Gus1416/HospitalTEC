@@ -8,7 +8,8 @@ import modelo.CitasCRUD;
 import vista.BitacoraCitas;
 
 /**
- *
+ * Controlador de la bitácora de citas
+ * 
  * @author Gustavo
  */
 public class CtrlBitacoraCitas implements ActionListener{
@@ -20,12 +21,18 @@ public class CtrlBitacoraCitas implements ActionListener{
     this.citasCrud = new CitasCRUD();
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){
     mostrarBitacora();
     this.bitacora.setTitle("Bitácora de Citas");
     this.bitacora.setLocationRelativeTo(null);
   }
   
+  /**
+   * Muestra la bitácora de citas
+   */
   private void mostrarBitacora(){
     DefaultTableModel modelo = new DefaultTableModel();
     this.bitacora.tbBitacora.setModel(modelo);
@@ -41,6 +48,10 @@ public class CtrlBitacoraCitas implements ActionListener{
     }
   }
 
+  /**
+   * Botones de la clase
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     

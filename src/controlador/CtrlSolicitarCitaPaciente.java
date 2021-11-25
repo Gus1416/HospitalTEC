@@ -18,7 +18,8 @@ import modelo.Sms;
 import vista.SolicitarCitaPaciente;
 
 /**
- *
+ * Controlador para la solicitud de cita del paciente
+ * 
  * @author Gustavo
  */
 public class CtrlSolicitarCitaPaciente implements ActionListener{
@@ -29,6 +30,12 @@ public class CtrlSolicitarCitaPaciente implements ActionListener{
   private Correo correo;
   private Sms sms;
   
+  /**
+   * Constructor de la clase
+   * 
+   * @param pSolicitarCita ventana de solicitud de cita
+   * @param pPaciente objeto de paciente
+   */
   public CtrlSolicitarCitaPaciente(SolicitarCitaPaciente pSolicitarCita, Paciente pPaciente){
     this.correo = new Correo();
     this.sms = new Sms();
@@ -39,12 +46,18 @@ public class CtrlSolicitarCitaPaciente implements ActionListener{
     this.solicitarCita.btnAsignarCita.addActionListener(this);
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){ 
     cargarAreaEspecialidad();
     this.solicitarCita.setTitle("Solicitar Cita");
     this.solicitarCita.setLocationRelativeTo(null);
   }
   
+  /**
+   * Carga las especialidades
+   */
   public void cargarAreaEspecialidad() {   
     ArrayList<Area> areas = areaCrud.consultarAreas();
     for (int i = 0; i < areas.size(); i++){
@@ -52,6 +65,11 @@ public class CtrlSolicitarCitaPaciente implements ActionListener{
     }
   }
 
+  /**
+   * Botones de la ventana
+   * 
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.solicitarCita.btnAsignarCita){

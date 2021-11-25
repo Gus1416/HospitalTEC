@@ -57,20 +57,30 @@ public class CtrlRegistroSecretario implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent e) { 
     if (e.getSource() == this.registroSecretario.btnRegistrarSecretario){
-      String cedula = registroSecretario.txtCedulaSecretario.getText();
-      String password = Hash.sha1(registroSecretario.passContrasena.getText());
-      String tipoUsuario = "Funcionario";
-      String nombre = registroSecretario.txtNombreSecretario.getText();
-      String tipoFuncionario = "Secretario";
-      LocalDate fechaIngreso = LocalDate.now();
-      Area area = areaCrud.buscarArea((String)registroSecretario.cbAreas.getSelectedItem());
-      CentroAtencion centro = centroCrud.buscarCentro((String)registroSecretario.cbCentroAtencion.getSelectedItem());
-      Secretario nuevoSecretario = new Secretario(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, centro);
-      if (this.secretarioCrud.registrarSecretario(nuevoSecretario)){
-        JOptionPane.showMessageDialog(null, "Nuevo secretario registrado");
-        limpiar();
+      if (!this.registroSecretario.txtCedulaSecretario.getText().equals("")
+              && !this.registroSecretario.passContrasena.getText().equals("")
+              && !this.registroSecretario.txtNombreSecretario.getText().equals("")){
+        
+        String cedula = registroSecretario.txtCedulaSecretario.getText();
+        String password = Hash.sha1(registroSecretario.passContrasena.getText());
+        String tipoUsuario = "Funcionario";
+        String nombre = registroSecretario.txtNombreSecretario.getText();
+        String tipoFuncionario = "Secretario";
+        LocalDate fechaIngreso = LocalDate.now();
+        Area area = areaCrud.buscarArea((String) registroSecretario.cbAreas.getSelectedItem());
+        CentroAtencion centro = centroCrud.buscarCentro((String) registroSecretario.cbCentroAtencion.getSelectedItem());
+        Secretario nuevoSecretario = new Secretario(cedula, password, tipoUsuario, nombre, tipoFuncionario, fechaIngreso, area, centro);
+        
+        if (this.secretarioCrud.registrarSecretario(nuevoSecretario)){
+          JOptionPane.showMessageDialog(null, "Nuevo secretario registrado");
+          limpiar();
+          
+        } else {
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
+        
       } else {
-        JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
   }

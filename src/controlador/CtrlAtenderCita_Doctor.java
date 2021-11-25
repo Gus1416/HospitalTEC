@@ -42,25 +42,27 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
   private CtrlRegistroDoctor auxMed;
   private DoctorCRUD doctorCrud;
   private CtrlInicioSesion session;
+  private Doctor doctor;
 
   /**
+   * Constructor de la clase
    * 
-   * 
-   * @param CRUDTratamiento
-   * @param CRUDPaciente
-   * @param CRUDDiagnostico
-   * @param vistatender
-   * @param CRUDcita
-   * @param internar
-   * @param areaCrud
-   * @param centroCrud
-   * @param auxMed
-   * @param doctorCrud
-   * @param session 
+   * @param CRUDTratamiento cruds de los tratamientos
+   * @param CRUDPaciente cruds de los pacientes
+   * @param CRUDDiagnostico crud del diagnóstico
+   * @param vistatender vista de atención
+   * @param CRUDcita crud de la cita
+   * @param internar ventana de internado
+   * @param areaCrud cruds del area
+   * @param centroCrud cruds del centro
+   * @param auxMed objeto auxiliar
+   * @param doctorCrud crud del doctor
+   * @param session  session
+   * @param pDoctor  Objeto doctor
    */
   public CtrlAtenderCita_Doctor(TratamientoCRUD CRUDTratamiento, PacienteCRUD CRUDPaciente, DiagnosticoCRUD CRUDDiagnostico, Atender_Cita_Doctor vistatender,
           CitasCRUD CRUDcita, Hospitalizacion internar, AreaCRUD areaCrud, CentroAtencionCRUD centroCrud, CtrlRegistroDoctor auxMed,
-          DoctorCRUD doctorCrud, CtrlInicioSesion session) {
+          DoctorCRUD doctorCrud, CtrlInicioSesion session, Doctor pDoctor) {
     this.CRUDTratamiento = CRUDTratamiento;
     this.CRUDPaciente = CRUDPaciente;
     this.CRUDDiagnostico = CRUDDiagnostico;
@@ -71,6 +73,7 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     this.auxMed = auxMed;
     this.doctorCrud = doctorCrud;
     this.session = session;
+    this.doctor = pDoctor;
 
     this.vistatender = vistatender;
     this.vistatender.btnCargar.addActionListener(this);
@@ -81,7 +84,9 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     this.internar.btnRegHosp.addActionListener(this);
   }
 
-
+  /**
+   * Inicia la ventana
+   */
   public void iniciar() {
     cargarPacientes();
     //cargarDiagnosticos();
@@ -89,6 +94,9 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     vistatender.setLocationRelativeTo(null);
   }
 
+  /**
+   * Carga la lista de pacientes
+   */
   public void cargarPacientes() {      // Llenar los CB de Pacientes
     ArrayList<Paciente> pacientes = CRUDPaciente.consultarPacientes();
     for (int i = 0; i < pacientes.size(); i++){
@@ -96,6 +104,9 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Carga la lista de diagnósticos
+   */
   public void cargarDiagnosticos() {      // Llenar los CB de Pacientes
     ArrayList<Diagnostico> diagnosticos = CRUDDiagnostico.consultarDiagnosticos();
     for (int i = 0; i < diagnosticos.size(); i++)
@@ -104,6 +115,9 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Carga los diagnósticos del paciente
+   */
   public void DiagnosticosPaciente() {      // Llenar los CB de Pacientes
     ArrayList<Diagnostico> diagnosticosT = CRUDDiagnostico.consultarDiagnosticoPaciente(internar.TFIdentificacion.getText());
     System.out.println("ALOOOOO");
@@ -114,6 +128,11 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Carga la lista de tratamientos
+   * 
+   * @param Nombre nombre del tratamiento
+   */
   public void cargarTratamientos(String Nombre) {      // Llenar los CB de Pacientes
     vistatender.CBTratamiento.removeAllItems();
     System.out.println(Nombre);
@@ -124,6 +143,9 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Carga la lista de areas
+   */
   private void cargarAreas() {
     ArrayList<Area> areas = areaCrud.consultarAreas();
     for (int i = 0; i < areas.size(); i++)
@@ -132,6 +154,9 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Carga la lista de centros de atención
+   */
   private void cargarCentros() {
     ArrayList<CentroAtencion> centros = centroCrud.consultarCentros();
     for (int i = 0; i < centros.size(); i++)
@@ -140,6 +165,10 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
     }
   }
 
+  /**
+   * Botones de la ventana
+   * @param e 
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
 
@@ -191,7 +220,7 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
       String TipoTratamiento = vistatender.CBTipoTratamiento.getSelectedItem().toString();
 
       if (CRUDTratamiento.registrarAtencion(nombrePaciente, IDCITA, nombreDiagnostico,
-              lvl, Observacion, Tratamiento, DOSIS, TipoTratamiento))
+              lvl, Observacion, Tratamiento, DOSIS, TipoTratamiento, this.doctor.getCodigoMedico()))
       {
         JOptionPane.showMessageDialog(null, "Tratamiento y diagnostico registrados correctamente");
 
@@ -236,36 +265,34 @@ public class CtrlAtenderCita_Doctor implements ActionListener {
       internar.TFDoctor.setText(auxMed.getAuxFuncionario().get(0).getNombre());
 
       internar.setVisible(true);
-
+    }
       if (e.getSource() == vistatender.btnHospitalizar) {
 
         ArrayList<Paciente> pacientess = CRUDPaciente.consultarPacientes();
         for (int i = 0; i < pacientess.size(); i++) {
           if (pacientess.get(i).getNombre().equals(vistatender.CBPaciente.getSelectedItem().toString()) == true){
             internar.TFIdentificacion.setText(pacientess.get(i).getCedula());
-          }
-
-          if (e.getSource() == internar.btnRegHosp) {
-
-            String CENTRO = internar.CBCentroAtencion.getSelectedItem().toString();
-            String IDPACI = internar.TFIdentificacion.getText();
-            String NAMEPACI = internar.TFNombrePaciente.getText();
-            String DIAGNO = internar.CBDiagnoPaciente.getSelectedItem().toString();
-            String SERVHOSP = internar.CBServicioMed.getSelectedItem().toString();
-            String NAMEFUNC = internar.TFDoctor.getText();
-            Date FechaInicial = internar.FechaInicialH.getDate();
-            Date FechaFinal = internar.FechaFinalH.getDate();
-
-            HospitalizacionP newhosp = new HospitalizacionP(CENTRO, IDPACI, NAMEPACI, DIAGNO, SERVHOSP, NAMEFUNC, FechaInicial, FechaFinal);
-
-            if (CRUDPaciente.registrarHospitalizacion(newhosp)){
-              JOptionPane.showMessageDialog(null, "Hospitalización registrada correctamente");
-
-            } else{
-              JOptionPane.showMessageDialog(null, "Error al registrar hospitalización");
-            }
-          }
         }
+      }
+    }
+    if (e.getSource() == internar.btnRegHosp){
+
+      String CENTRO = internar.CBCentroAtencion.getSelectedItem().toString();
+      String IDPACI = internar.TFIdentificacion.getText();
+      String NAMEPACI = internar.TFNombrePaciente.getText();
+      String DIAGNO = internar.CBDiagnoPaciente.getSelectedItem().toString();
+      String SERVHOSP = internar.CBServicioMed.getSelectedItem().toString();
+      String NAMEFUNC = internar.TFDoctor.getText();
+      Date FechaInicial = internar.FechaInicialH.getDate();
+      Date FechaFinal = internar.FechaFinalH.getDate();
+
+      HospitalizacionP newhosp = new HospitalizacionP(CENTRO, IDPACI, NAMEPACI, DIAGNO, SERVHOSP, NAMEFUNC, FechaInicial, FechaFinal);
+
+      if (CRUDPaciente.registrarHospitalizacion(newhosp)) {
+        JOptionPane.showMessageDialog(null, "Hospitalización registrada correctamente");
+
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al registrar hospitalización");
       }
     }
   }

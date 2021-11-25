@@ -18,7 +18,8 @@ import modelo.Sms;
 import vista.CancelarCitasPaciente;
 
 /**
- *
+ * Controlador para la cancelación de citas del paciente.
+ * 
  * @author Gustavo
  */
 public class CtrlCancelarCitasPaciente implements ActionListener{
@@ -28,6 +29,12 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
   private Correo correo;
   private Sms sms;
   
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pConsultaCitas ventana de cancelación
+   * @param pPaciente  objeto paciente
+   */
   public CtrlCancelarCitasPaciente(CancelarCitasPaciente pConsultaCitas, Paciente pPaciente){
     this.correo = new Correo();
     this.sms = new Sms();
@@ -37,12 +44,18 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
     this.cancelarCitas.btnCancelarCita.addActionListener(this);
   }
   
+  /**
+   * Inicia la ventana
+   */
   public void iniciar(){
     cargarCitasRegistradas();
     this.cancelarCitas.setTitle("Cancelar citas");
     this.cancelarCitas.setLocationRelativeTo(null);
   }
   
+  /**
+   * Carga las citas registradas
+   */
     private void cargarCitasRegistradas(){
     DefaultTableModel modelo = new DefaultTableModel();
     this.cancelarCitas.tbCitasRegistradas.setModel(modelo);
@@ -59,6 +72,11 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
     }
   }
 
+    /**
+     * Botones de la ventana
+     * 
+     * @param e 
+     */
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.cancelarCitas.btnCancelarCita){
@@ -90,6 +108,12 @@ public class CtrlCancelarCitasPaciente implements ActionListener{
     }
   }
   
+  /**
+   * Valida la cancelación.
+   * 
+   * @param pFechaCita fecha de la cita
+   * @return un booleano para indicar la validez
+   */
   private boolean validarCancelacion(Date pFechaCita){
     LocalDate hoy = LocalDate.now();
     ZoneId defaultZoneId = ZoneId.systemDefault();
